@@ -8,6 +8,7 @@ Buildings/Cafeteria.png
 Buildings/CafeteriaTransparent.png
 Buildings/Relaxation.png
 Buildings/RelaxationTransparent.png
+Buildings/SpaceStation.png
 Buildings/Study.png
 Buildings/StudyTransparent.png
 Dollar.png
