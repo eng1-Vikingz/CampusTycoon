@@ -18,6 +18,7 @@ public class MapUtils {
 	public abstract class Placement {
 		public static final String AccommodationBuilding = "ACCOMMODATION";
 		public static final String StudyBuilding = "STUDY";
+		public static final String StudyBuilding2 = "STUDY2";
 		public static final String CafeteriaBuilding = "CAFETERIA";
 		public static final String RelaxationBuilding = "RELAXATION";
 		public static final String Road = "ROAD"; // Most definitely not implemented yet
@@ -27,12 +28,19 @@ public class MapUtils {
 		switch (buildingType) {
 			case Placement.AccommodationBuilding:
 				return new Accommodation();
+
 			case Placement.StudyBuilding:
-				return new Study();
+				return new Study(0);
+
+			case Placement.StudyBuilding2:
+				return new Study(1);
+
 			case Placement.CafeteriaBuilding:
 				return new Cafeteria();
+
 			case Placement.RelaxationBuilding:
 				return new Relaxation();
+
 			default:
 				return new Building();
 		}
@@ -88,6 +96,10 @@ public class MapUtils {
 		map.placementType = Placement.StudyBuilding;
 		map.placeBuilding(new Coordinate(10, 13));
 		
+		map.placementType = Placement.StudyBuilding2;
+		map.placeBuilding(new Coordinate(15, 13));
+		
+
 		map.placementType = Placement.AccommodationBuilding;
 		map.placeBuilding(new Coordinate(23, 14));
 	}

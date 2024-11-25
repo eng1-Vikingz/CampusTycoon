@@ -28,24 +28,21 @@ public class GameUtils {
 	}
 	
 	// Gets the image used for hover displays (just a semi-transparent version of the original)
-	public static String getHoverImagePath(String originalImage) {
-		switch (originalImage) {
-			case Accommodation.defaultImage:
-				// e.g. "Accommodation.png" -> "AccommodationTransparent.png"
-				return Accommodation.defaultImage.replace(".png", "Transparent.png");
-			case Study.defaultImage:
-				return Study.defaultImage.replace(".png", "Transparent.png");
-			case Cafeteria.defaultImage:
-				return Cafeteria.defaultImage.replace(".png", "Transparent.png");
-			case Relaxation.defaultImage:
-				return Relaxation.defaultImage.replace(".png", "Transparent.png");
-			default:
-				System.out.print(
-					"ERROR: Could not retrieve hover image for \"" + originalImage + "\"");
-				return "MissingTexture.png";
+
+
+	/**
+	 * CHANGED: This was a 
+	 * @param originalImage
+	 * @return
+	 */
+	public static String getHoverImagePath(String originalImage){
+		if(!originalImage.isEmpty()){
+			return originalImage.replace(".png", "Transparent.png");
 		}
+		return "MissingTexture.png";
+
 	}
-	
+
 	public static void createStartMenuUI() {
         Button buttonNewGame = new Button("New Game.png", 0, 90, 262, 66);
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);

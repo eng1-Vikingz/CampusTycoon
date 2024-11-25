@@ -74,8 +74,8 @@ public class Camera {
 			
 			hoverDisplay = MapUtils.getBuilding(map.placementType);
 			hoverDisplay.drawInfo.setImage(
-				GameUtils.getHoverImagePath(
-					hoverDisplay.drawInfo.sprite.getImagePath()));
+				GameUtils.getHoverImagePath(hoverDisplay.drawInfo.sprite.getImagePath()));
+
 			Drawer.add(BuildingDisplay.Layer + 1, hoverDisplay.drawInfo);
 			
 			placementType = map.placementType;
@@ -87,8 +87,9 @@ public class Camera {
 			
 			hoverDisplay = MapUtils.getBuilding(map.placementType);
 			hoverDisplay.drawInfo.setImage(
-				GameUtils.getHoverImagePath(
-					hoverDisplay.drawInfo.sprite.getImagePath()));
+				GameUtils.getHoverImagePath(hoverDisplay.drawInfo.sprite.getImagePath()));
+
+				
 			Drawer.add(BuildingDisplay.Layer + 1, hoverDisplay.drawInfo);
 		}
 		
