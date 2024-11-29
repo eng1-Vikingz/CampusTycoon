@@ -16,6 +16,7 @@ import CampusTycoon.GameLogic.Coordinate;
 public class Study extends Building{
 	public static final String[] defaultImage = {"Buildings\\Study.png", "Buildings\\Study2.png"};
 	public static final String buildingName = "Study";
+	public static final String buildingName2 = "Study2";
 	public static int width = 3, height = 3;
 	
 	public Study(Coordinate Position, int textureIndex) {

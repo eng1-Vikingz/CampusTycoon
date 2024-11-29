@@ -82,7 +82,8 @@ public class GameUtils {
 		accommodationCount.setAnchor(Anchor.BottomCentre);
 		BuildingCounter.UI.add(accommodationCount);
 
-		
+
+		// ORIGINAL STUDY BTN
         Button buttonStudy = new Button("Buildings\\Study.png", -150, 10, 90, 66);
 		buttonStudy.setClickAction(Actions.ToggleStudyBuilding);
         buttonStudy.setAnchor(Anchor.BottomCentre);
@@ -93,6 +94,9 @@ public class GameUtils {
 		studyCount.setAnchor(Anchor.BottomCentre);
 		BuildingCounter.UI.add(studyCount);
 		
+
+
+
 
         Button buttonCafe = new Button("Buildings\\Cafeteria.png", -50, 10, 90, 66);
 		buttonCafe.setClickAction(Actions.ToggleCafeteriaBuilding);
@@ -144,7 +148,7 @@ public class GameUtils {
 			
 			
 		List<Component> UIButtons = Arrays.asList(
-			buttonAccommodation, buttonStudy, buttonCafe, buttonRelax, buttonPH5, buttonPH6, 
+			buttonAccommodation, buttonStudy, buttonCafe, buttonRelax, buttonPH5, buttonPH6,
 			notif1, notif2, buttonSatisfaction,
 			buttonDollar, buttonHouses, buttonPeople);
 		

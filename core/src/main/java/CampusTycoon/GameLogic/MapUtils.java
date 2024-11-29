@@ -21,9 +21,23 @@ public class MapUtils {
 		public static final String StudyBuilding2 = "STUDY2";
 		public static final String CafeteriaBuilding = "CAFETERIA";
 		public static final String RelaxationBuilding = "RELAXATION";
+		public static final String RelaxationBuilding2 = "RELAXATION2";
 		public static final String Road = "ROAD"; // Most definitely not implemented yet
 	}
 	
+
+	/**
+	 * CHANGED
+	 * 
+	 * To create a new building, i created a new {@class Placement} which
+	 * just loads a different texture for the study building.
+	 * 
+	 * TODO:
+	 * Do the same for the other types of buildings as for study
+	 * 
+	 * @param buildingType
+	 * @return
+	 */
 	public static Building getBuilding(String buildingType) {
 		switch (buildingType) {
 			case Placement.AccommodationBuilding:
@@ -39,8 +53,10 @@ public class MapUtils {
 				return new Cafeteria();
 
 			case Placement.RelaxationBuilding:
-				return new Relaxation();
+				return new Relaxation(0);
 
+		    case Placement.RelaxationBuilding2:
+				return new Relaxation(1);
 			default:
 				return new Building();
 		}
