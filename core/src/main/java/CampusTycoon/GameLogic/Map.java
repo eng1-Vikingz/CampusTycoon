@@ -16,7 +16,11 @@ public class Map {
 	public ArrayList<ArrayList<Tile>> grid;
 	public int width, height;
 	public Random rng = new Random();
-	public List<Building> buildings = new ArrayList<Building>();
+
+
+	public static List<Building> buildings = new ArrayList<Building>();
+
+
 	private MapDisplay display;
 	public BuildingDisplay buildingDisplay;
 	private MapUtils mapUtils;
