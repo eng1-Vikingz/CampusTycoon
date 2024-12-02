@@ -2,6 +2,7 @@ package CampusTycoon.UI;
 
 import java.util.List;
 
+import CampusTycoon.GameLogic.Tiles.Lake;
 import CampusTycoon.GameUtils;
 import CampusTycoon.GameLogic.Coordinate;
 import CampusTycoon.GameLogic.Map;
@@ -102,8 +103,8 @@ public class Camera {
 
 		gridX = (int)Math.floor((double)getGridX(X));
 		gridY = (int)Math.floor((double)getGridY(Y));
-		
-		
+
+
 		//System.out.println("X: " + X + ", Y: " + Y);
 		//System.out.println("Grid X: " + gridX + ", Grid Y: " + gridY);
 	}
@@ -112,9 +113,15 @@ public class Camera {
         return map.grid.get(map.grid.size()-Camera.gridY-1).get(Camera.gridX);
     }
     public static Tile getTileFromCoords(int X, int Y){
-        int gridWidth = (int) Math.floor((double) getGridX(X));
-        int gridHeight = (int) Math.floor((double) getGridY(Y));
-        return map.grid.get(map.grid.size()-gridHeight-1).get(gridWidth);
+
+        try {
+            int gridWidth = X;
+            int gridHeight = Y;
+            return map.grid.get(map.grid.size() - gridHeight - 1).get(gridWidth);
+        }
+        catch (Exception e){
+            return new Lake();
+        }
     }
 
 	public static void scroll(float scrollAmount) {
