@@ -4,7 +4,7 @@ import CampusTycoon.GameLogic.BuildingCounter;
 import CampusTycoon.GameLogic.Coordinate;
 
 public class Relaxation extends Building {
-	public static final String[] defaultImage = {"Buildings\\Relaxation.png", "Buildings\\Relaxation.png"};
+	public static final String[] defaultImage = {"Buildings\\Relaxation.png", "Buildings\\Relaxation2.png"};
 	public static final String buildingName = "Relaxation";
 	public static final String buildingName2 = "Relaxation2";
 	public static int width = 3, height = 3;

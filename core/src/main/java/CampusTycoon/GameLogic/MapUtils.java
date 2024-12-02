@@ -109,11 +109,19 @@ public class MapUtils {
 		map.placementType = Placement.CafeteriaBuilding;
 		map.placeBuilding(new Coordinate(4, 5));
 		
+		// 2 Types of study building
 		map.placementType = Placement.StudyBuilding;
 		map.placeBuilding(new Coordinate(10, 13));
 		
 		map.placementType = Placement.StudyBuilding2;
 		map.placeBuilding(new Coordinate(15, 13));
+
+
+		// 2 Types of recreational buildings
+		map.placementType = Placement.RelaxationBuilding;
+		map.placeBuilding(new Coordinate(25, 13));	
+		map.placementType = Placement.RelaxationBuilding2;
+		map.placeBuilding(new Coordinate(30, 13));	
 		
 
 		map.placementType = Placement.AccommodationBuilding;

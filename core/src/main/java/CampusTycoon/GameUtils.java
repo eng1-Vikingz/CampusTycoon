@@ -3,6 +3,16 @@ package CampusTycoon;
 import java.util.Arrays;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
 import CampusTycoon.GameLogic.Map;
 import CampusTycoon.GameLogic.SatisfactionMeter;
 import CampusTycoon.UI.Camera;
@@ -72,6 +82,11 @@ public class GameUtils {
 	}
 	
 	public static void createGameplayUI() {
+
+
+		setupMenu();
+
+
 		Button buttonAccommodation = new Button("Buildings\\Accommodation.png", -250, 10, 90, 66);
 		buttonAccommodation.setClickAction(Actions.ToggleAccommodationBuilding);
 		buttonAccommodation.setAnchor(Anchor.BottomCentre);
@@ -93,8 +108,6 @@ public class GameUtils {
 			-160, 110, 2f, 2f);
 		studyCount.setAnchor(Anchor.BottomCentre);
 		BuildingCounter.UI.add(studyCount);
-		
-
 
 
 
@@ -113,6 +126,10 @@ public class GameUtils {
 		buttonRelax.setClickAction(Actions.ToggleRelaxationBuilding);
         buttonRelax.setAnchor(Anchor.BottomCentre);
 		
+        Button buttonRelax2 = new Button("Buildings\\Relaxation2.png", 150, 10, 90, 66);
+		buttonRelax2.setClickAction(Actions.ToggleRelaxationBuilding);
+        buttonRelax2.setAnchor(Anchor.BottomCentre);
+
 		MenuText relaxCount = new MenuText(
 			String.valueOf(BuildingCounter.getBuildingCount(Relaxation.buildingName)), 
 			40, 110, 2f, 2f);
@@ -120,8 +137,8 @@ public class GameUtils {
 		BuildingCounter.UI.add(relaxCount);
 		
 
-        Button buttonPH5 = new Button("Placeholder.png", 150, 10, 90, 66);
-        buttonPH5.setAnchor(Anchor.BottomCentre);
+        // Button buttonPH5 = new Button("Placeholder.png", 150, 10, 90, 66);
+        // buttonPH5.setAnchor(Anchor.BottomCentre);
     
         Button buttonPH6 = new Button("Placeholder.png",250, 10, 90, 66);
         buttonPH6.setAnchor(Anchor.BottomCentre);
@@ -148,7 +165,7 @@ public class GameUtils {
 			
 			
 		List<Component> UIButtons = Arrays.asList(
-			buttonAccommodation, buttonStudy, buttonCafe, buttonRelax, buttonPH5, buttonPH6,
+			buttonAccommodation, buttonStudy, buttonCafe, buttonRelax, buttonRelax2, buttonPH6,
 			notif1, notif2, buttonSatisfaction,
 			buttonDollar, buttonHouses, buttonPeople);
 		
@@ -238,6 +255,79 @@ public class GameUtils {
 		testText.update();
 		event.eventUI.elements.add(testText);
         Drawer.add(2, testText);
+	}
+
+
+	public static void setupMenu(){
+
+
+        //Texture atlas of building menu bar
+        Texture btn1Texture = new Texture(Gdx.files.internal("Buildings\\Study.png"));
+        Texture btn2Texture = new Texture(Gdx.files.internal("Buildings\\Study.png"));
+        Texture btn3Texture = new Texture(Gdx.files.internal("Buildings\\Study.png"));
+        Texture btn4Texture = new Texture(Gdx.files.internal("Buildings\\Study.png"));
+
+
+		ImageButton btn1 = new ImageButton(new ImageButton.ImageButtonStyle());
+        btn1.getStyle().imageUp = new TextureRegionDrawable(btn1Texture);
+
+        ImageButton btn2 = new ImageButton(new ImageButton.ImageButtonStyle());
+        btn2.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(btn2Texture));
+
+        ImageButton btn3 = new ImageButton(new ImageButton.ImageButtonStyle());
+        btn3.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(btn3Texture));
+
+        ImageButton btn4 = new ImageButton(new ImageButton.ImageButtonStyle());
+        btn4.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(btn4Texture));
+
+
+        // Table for layout
+        Table table = new Table();
+        table.setFillParent(true);
+        table.bottom().center();
+        table.bottom();
+
+        // Add buttons to table
+        table.add(btn1).pad(10);
+        table.add(btn2).pad(10);
+        table.add(btn3).pad(10);
+        table.add(btn4).pad(10);
+
+        // Add table to stage
+		Stage stage = new Stage();
+        stage.addActor(table);
+
+        // Set up click listeners for buttons
+        btn1.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+
+			}
+        });
+
+        btn2.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+
+            }
+        });
+
+        btn3.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+            }
+        });
+
+        btn4.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+			}
+        });
+
 	}
 
 

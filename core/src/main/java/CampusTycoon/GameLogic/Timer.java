@@ -2,6 +2,9 @@ package CampusTycoon.GameLogic;
 
 import CampusTycoon.UI.ScreenUtils;
 import CampusTycoon.UI.Components.MenuText;
+
+import java.sql.Time;
+
 import CampusTycoon.UI.Drawer;
 
 public class Timer{
@@ -41,10 +44,24 @@ public class Timer{
             }
 			
 			if (text != null) {
-				text.text = "Time: " + String.valueOf(timeRemaining).split("\\.")[0];
+				text.text = floatToMinSec(timeRemaining);
 				text.update();
 			}
         }
+    }
+
+    private String floatToMinSec(float secs){
+        
+        int m = Math.round(secs/ 60);
+        int s = Math.round(secs % 60);
+
+        if(m > 100000){
+            return null;
+        }
+
+        return "Time: " + String.format("%02d", m) + ":" + String.format("%02d", s);
+        
+    
     }
     
     public static float getTimeRemaining() {

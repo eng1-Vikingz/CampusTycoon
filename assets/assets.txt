@@ -12,8 +12,10 @@ Buildings/AccommodationTransparent.png
 Buildings/SpaceStation.png
 Buildings/Accommodation.png
 Buildings/RelaxationTransparent.png
+Buildings/Relaxation2.png
 Buildings/Study2Transparent.png
 Buildings/Cafeteria.png
+Buildings/Relaxation2Transparent.png
 Reject.png
 Neutral.png
 Satisfaction.png
