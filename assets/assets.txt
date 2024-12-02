@@ -1,39 +1,39 @@
 .gitkeep
-Accept.png
+Leaderboard.png
+QuestionMark.png
 assets copy.txt
-Backdrop.png
-Buildings/Accommodation.png
-Buildings/AccommodationTransparent.png
-Buildings/Cafeteria.png
-Buildings/CafeteriaTransparent.png
-Buildings/Relaxation.png
-Buildings/Relaxation2.png
-Buildings/Relaxation2Transparent.png
-Buildings/RelaxationTransparent.png
-Buildings/SpaceStation.png
+House.png
+Buildings/StudyTransparent.png
 Buildings/Study.png
 Buildings/Study2.png
+Buildings/CafeteriaTransparent.png
+Buildings/Relaxation.png
+Buildings/AccommodationTransparent.png
+Buildings/SpaceStation.png
+Buildings/Accommodation.png
+Buildings/RelaxationTransparent.png
+Buildings/Relaxation2.png
 Buildings/Study2Transparent.png
-Buildings/StudyTransparent.png
-Dollar.png
-ExclamationMark.png
-House.png
-Leaderboard.png
-Load Game.png
-Main Menu.png
-Maps/York.txt
-MissingTexture copy.png
-MissingTexture.png
-Neutral.png
-New Game.png
-Person.png
-Placeholder.png
-QuestionMark.png
+Buildings/Cafeteria.png
+Buildings/Relaxation2Transparent.png
 Reject.png
+Neutral.png
 Satisfaction.png
+Backdrop.png
+MissingTexture.png
+Maps/York.txt
+New Game.png
+Accept.png
+Main Menu.png
 Settings.png
+Dollar.png
+Placeholder.png
+Load Game.png
+ExclamationMark.png
+Person.png
 TestButton.png
+MissingTexture copy.png
 Tiles/Grass.png
-Tiles/Lake.png
 Tiles/Mountain.png
 Tiles/SpriteMap.png
+Tiles/Lake.png

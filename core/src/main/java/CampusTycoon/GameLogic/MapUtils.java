@@ -114,7 +114,7 @@ public class MapUtils {
 
 
 		// Forcefully enables placement mode
-		map.placing = true;
+		//map.placing = true;
 
 		// Adds a few different buildings to the map
 		map.placementType = Placement.CafeteriaBuilding;

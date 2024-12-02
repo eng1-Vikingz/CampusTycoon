@@ -72,6 +72,7 @@ public class Map {
 
 		Building building = MapUtils.getBuilding(placementType);
 		building.setPosition(position);
+		placing = false;
 		if (!mapUtils.buildingPlaceable(building)) {
 			return; // Building location invalid
 		}
