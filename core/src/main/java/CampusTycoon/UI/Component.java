@@ -31,6 +31,7 @@ public abstract class Component {
 		public static final String ToggleStudyBuilding = "TOGGLESTUDYBUILDING";
 		public static final String ToggleCafeteriaBuilding = "TOGGLECAFETERIABUILDING";
 		public static final String ToggleRelaxationBuilding = "TOGGLERELAXATIONBUILDING";
+		public static final String ToggleRelaxation2Building = "TOGGLERELAXATION2BUILDING";
 	}
 	
 	

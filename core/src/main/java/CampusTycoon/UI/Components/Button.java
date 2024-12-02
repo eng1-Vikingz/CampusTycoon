@@ -60,6 +60,12 @@ public class Button extends Component {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.RelaxationBuilding);
 		printBuildingChange();
 	}
+
+	protected static void toggleRelaxation2Building(Boolean isAction) {
+		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.RelaxationBuilding2);
+		printBuildingChange();
+	}
+
 	private static void printBuildingChange() {
 		System.out.println(
 			"Toggled building placement mode to: " + GameUtils.map.placing +
@@ -106,6 +112,11 @@ public class Button extends Component {
 			case Actions.ToggleRelaxationBuilding:
 				action = a -> toggleRelaxationBuilding(a);
 				break;
+
+			case Actions.ToggleRelaxation2Building:
+				action = a -> toggleRelaxation2Building(a);
+				System.out.println("Relax2");
+
 			default:
 				System.out.println("Invalid action passed to button: " + this.toString());
 				break;

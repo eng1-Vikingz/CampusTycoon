@@ -84,7 +84,7 @@ public class GameUtils {
 	public static void createGameplayUI() {
 
 
-		setupMenu();
+		//setupMenu();
 
 
 		Button buttonAccommodation = new Button("Buildings\\Accommodation.png", -250, 10, 90, 66);
@@ -127,12 +127,12 @@ public class GameUtils {
         buttonRelax.setAnchor(Anchor.BottomCentre);
 		
         Button buttonRelax2 = new Button("Buildings\\Relaxation2.png", 150, 10, 90, 66);
-		buttonRelax2.setClickAction(Actions.ToggleRelaxationBuilding);
+		buttonRelax2.setClickAction(Actions.ToggleRelaxation2Building);
         buttonRelax2.setAnchor(Anchor.BottomCentre);
 
 		MenuText relaxCount = new MenuText(
 			String.valueOf(BuildingCounter.getBuildingCount(Relaxation.buildingName)), 
-			40, 110, 2f, 2f);
+			95, 110, 2f, 2f);
 		relaxCount.setAnchor(Anchor.BottomCentre);
 		BuildingCounter.UI.add(relaxCount);
 		
@@ -267,9 +267,13 @@ public class GameUtils {
         Texture btn3Texture = new Texture(Gdx.files.internal("Buildings\\Study.png"));
         Texture btn4Texture = new Texture(Gdx.files.internal("Buildings\\Study.png"));
 
+        Texture btn1TextureHover = new Texture(Gdx.files.internal("Buildings\\StudyTransparent.png"));
+
+
 
 		ImageButton btn1 = new ImageButton(new ImageButton.ImageButtonStyle());
         btn1.getStyle().imageUp = new TextureRegionDrawable(btn1Texture);
+		btn1.getStyle().imageOver = new TextureRegionDrawable(btn1TextureHover);
 
         ImageButton btn2 = new ImageButton(new ImageButton.ImageButtonStyle());
         btn2.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(btn2Texture));
@@ -294,14 +298,12 @@ public class GameUtils {
         table.add(btn4).pad(10);
 
         // Add table to stage
-		Stage stage = new Stage();
-        stage.addActor(table);
 
         // Set up click listeners for buttons
         btn1.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+				System.out.println("pressed btn1");
 
 			}
         });
@@ -327,6 +329,9 @@ public class GameUtils {
 
 			}
         });
+
+        Drawer.stage.addActor(table);
+
 
 	}
 

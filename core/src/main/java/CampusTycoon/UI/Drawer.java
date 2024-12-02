@@ -5,11 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.logging.FileHandler;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import CampusTycoon.GameLogic.Coordinate;
@@ -22,6 +24,11 @@ public class Drawer {
 		textures = new HashMap<String, Texture>(); // Note: this exists because I learned that generating hundreds of new textures every second is NOT a good idea
 	private static Map<Texture, Map<Integer, TextureRegion>>
 		textureRegions = new HashMap<Texture, Map<Integer, TextureRegion>>();
+
+
+
+	// Added stage
+	public static Stage stage = new Stage();
 	
 	private static class DrawInfo { // Cursed static class with non-static members
 		public int layer; // Used to determine draw order
@@ -54,8 +61,11 @@ public class Drawer {
 		drawQueue.clear();
 	}
 	
+
+
 	public static void drawAll() {
 		spriteBatch.begin();
+		
 
 		//Drawing the components in the drawQueue
 		for (int i = 0; i < drawQueue.size(); i++) {
@@ -73,6 +83,9 @@ public class Drawer {
 				draw(component);
 			}
 		}
+
+		stage.draw();
+
 		spriteBatch.end();
 	}
 	

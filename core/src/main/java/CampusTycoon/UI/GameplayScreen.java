@@ -6,10 +6,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 import CampusTycoon.GameUtils;
 import CampusTycoon.GameLogic.Timer;
+import CampusTycoon.GameLogic.Buildings.Building;
 
 public class GameplayScreen implements Screen{
     private Timer timer;
     private boolean stateChanged;
+    private float elapsedTime;
+
 
     @Override
     public void show() {
@@ -18,6 +21,7 @@ public class GameplayScreen implements Screen{
         GameUtils.startGame();
         GameUtils.createGameplayUI();
         stateChanged = false;  // Reset stateChanged when the screen is shown
+        elapsedTime = 0;
     }
     
     @Override
@@ -32,8 +36,21 @@ public class GameplayScreen implements Screen{
 
         ScreenUtils.clear(Color.BLACK);
         Drawer.drawAll();
-    }
-        
+
+
+        //System.out.println("Test");
+        elapsedTime += delta; // delta is the time elapsed since the last frame
+        if (elapsedTime >= 1) { // Increment counter every second
+            
+            System.out.println("second");
+
+            }
+            elapsedTime = 0; // Reset elapsed time
+        }
+
+
+
+    
         @Override
         public void resize(int width, int height) {
             Window.updateResolution(width, height);

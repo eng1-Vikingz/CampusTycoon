@@ -102,8 +102,10 @@ public class Camera {
 
 		gridX = (int)Math.floor((double)getGridX(X));
 		gridY = (int)Math.floor((double)getGridY(Y));
-		System.out.println("X: " + X + ", Y: " + Y);
-		System.out.println("Grid X: " + gridX + ", Grid Y: " + gridY);
+		
+		
+		//System.out.println("X: " + X + ", Y: " + Y);
+		//System.out.println("Grid X: " + gridX + ", Grid Y: " + gridY);
 	}
 
     public static Tile getMouseOverTile() {
@@ -191,14 +193,14 @@ public class Camera {
 		hoverDisplay.drawInfo.setOffset(x, y);
 		hoverDisplay.drawInfo.setScale(1f / zoom);
 		hoverDisplay.drawInfo.applyZoomOffset();
-		System.out.println(hoverDisplay.drawInfo.scale);
-		System.out.println(hoverDisplay.drawInfo.baseWidth);
+		//System.out.println(hoverDisplay.drawInfo.scale);
+		//System.out.println(hoverDisplay.drawInfo.baseWidth);
 	}
 
 	// For debug purposes
 	private static void printCameraInfo() {
-		System.out.println("X: " + x + ", Y: " + y +
-			"\nWidth: " + width + ", Height: " + height +
-			"\nZoom: " + zoom);
+		//System.out.println("X: " + x + ", Y: " + y +
+		//	"\nWidth: " + width + ", Height: " + height +
+		//	"\nZoom: " + zoom);
 	}
 }
