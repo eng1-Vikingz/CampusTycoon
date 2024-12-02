@@ -77,7 +77,7 @@ public class MapUtils {
         for (int x=0; x < newBuilding.width; x++){
             for (int y=0; y < newBuilding.height;y++){
                 //Checks for placing over water
-                System.out.println(Camera.getTileFromCoords(newBuilding.position.x+x,newBuilding.position.y+y));
+                //System.out.println(Camera.getTileFromCoords(newBuilding.position.x+x,newBuilding.position.y+y));
                 if (Camera.getTileFromCoords(newBuilding.position.x+x,newBuilding.position.y+y).getTileID() == 1){
                     return false;
                 }
