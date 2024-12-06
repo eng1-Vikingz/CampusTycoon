@@ -193,7 +193,7 @@ public class GameUtils {
 		buildingCounterText.setAnchor(Anchor.TopCentre);
 		BuildingCounter.totalCountUI = buildingCounterText;
 
-		MenuText timerText = new MenuText("Time: " + Timer.getTimeRemaining(), 135, 100, 2f, 2f);
+		MenuText timerText = new MenuText("Time: " + Timer.getTimeRemaining(), 180, 100, 2f, 2f);
 		timerText.setAnchor(Anchor.TopRight);
 		Timer.text = timerText;
     
