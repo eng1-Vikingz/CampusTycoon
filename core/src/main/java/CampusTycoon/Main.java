@@ -20,6 +20,7 @@ public class Main extends Game {
 		
 		// Sets the screen to the Main Menu
 		Screen screen = new StartScreen();
+		ScreenUtils.game = this;
 		ScreenUtils.currentScreen = screen;
 		setScreen(screen);
 	}
@@ -32,4 +33,5 @@ public class Main extends Game {
 		if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
 		if (ScreenUtils.currentScreen != screen) { setScreen(ScreenUtils.currentScreen); }
 	}
+
 }
