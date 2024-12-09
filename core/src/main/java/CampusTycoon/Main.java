@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
+import CampusTycoon.UI.LeaderboardFileHandler;
 import CampusTycoon.UI.ScreenUtils;
 import CampusTycoon.UI.StartScreen;
 
@@ -15,6 +16,12 @@ public class Main extends Game {
         //Gdx.graphics.setContinuousRendering(false); // Interesting function to explore later 
         //(^if rendering performance becomes an issue)
             
+
+
+
+		
+		System.out.println("BEST" + LeaderboardFileHandler.getLeaderboardTopFive());
+
         Gdx.graphics.setTitle("Campus Tycoon");
         Gdx.input.setInputProcessor(new InputHandler());
 		

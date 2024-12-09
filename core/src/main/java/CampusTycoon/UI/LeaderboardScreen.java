@@ -81,31 +81,53 @@ public class LeaderboardScreen implements Screen {
         table.top();
         table.center();
 
-        addLabel("TEST1");
-        addLabel("TEST2");
-        addLabel("TEST3");
 
 
 
+        createTitleLbl();
 
-        for(Label lbl: labels){
-            lbl.setColor(Color.WHITE);
-            lbl.setFontScale(1.5f);
+        // addLabel("TEST1");
+        // addLabel("TEST2");
+        // addLabel("TEST3");
+
+
+        for(Tuple<String, Integer> entry : LeaderboardFileHandler.getLeaderboardTopFive()){
+            addLabel(entry.x + " :: " + entry.y);
         }
 
 
         // Add back button to table
+        table.row();
+        table.row();
+        table.row();
         table.add(backBtn).pad(PADDING).align(Align.center);
 
         stage.addActor(table);
 
     }
 
+    private void createTitleLbl(){
+        Label title = new Label("LEADERBOARD", skin);
+        title.setColor(Color.WHITE);
+        title.setFontScale(3f);
+
+        table.add(title).pad(PADDING).align(Align.center);
+        table.row();
+        table.row();
+
+        labels.add(title);
+        
+    }
+
 
     private void addLabel(String text){
         Label lbl = new Label(text, this.skin);
+        lbl.setColor(Color.WHITE);
+        lbl.setFontScale(1.5f);
+
         table.add(lbl).pad(PADDING).align(Align.center);
         table.row();
+
         labels.add(lbl);
 
     }
@@ -178,3 +200,4 @@ public class LeaderboardScreen implements Screen {
     }
 
 }
+
