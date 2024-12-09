@@ -55,13 +55,15 @@ public class Map {
         }
         Building building = MapUtils.getBuilding(placementType);
         building.setPosition(position);
+        building.buildingName = placementType.replaceAll("\\d","");
+        building.score = MapUtils.getBuilding(placementType).score;
 
         //Adds building
         buildings.add(building);
         Drawer.add(-1, building.drawInfo);
 
         building.incrementBuildingCounter(); // Number go up (by 1)
-        SatisfactionMeter.increaseSatisfactionScore(5); // Placing buildings satisfies students!!!
+        SatisfactionMeter.updateSatisfactionScore(); // Placing buildings satisfies students!!!
 
     }
 
@@ -84,9 +86,12 @@ public class Map {
 
 		// Else if placing and building location valid:
 		buildings.add(building);
+        building.buildingName = placementType.replaceAll("\\d","");
+        System.out.println("Score: " + MapUtils.getBuilding(placementType).score);
+        building.score = MapUtils.getBuilding(placementType).score;
 		Drawer.add(-1, building.drawInfo);
 
 		building.incrementBuildingCounter(); // Number go up (by 1)
-		SatisfactionMeter.increaseSatisfactionScore(5); // Placing buildings satisfies students!!!
+		SatisfactionMeter.updateSatisfactionScore(); // Placing buildings satisfies students!!!
 	}
 }
