@@ -11,13 +11,16 @@ public class Event {
 	public EventPopup eventUI;
 	public int choices; // Number of choices for the event
 	public String eventText; // Description of the event
+    public String event; // event
 	public List<String> choiceText; // Text to be displayed in the choice buttons (NOT IMPLEMENTED)
 
 	public Event() {
-		eventText = "Test event";
 		choices = 3;
 		choiceText = new ArrayList<String>(Arrays.asList(
 			"Accept", "Neutral", "Reject"));
+
+        event =  EventLoader.getEvent();
+        eventText = EventLoader.getEventDescription(event);
 
 		eventUI = new EventPopup(this);
 		eventUI.initialise();
@@ -31,13 +34,13 @@ public class Event {
 
 		switch (option) {
 			case 1:
-				Option1();
+				acceptOption();
 				break;
 			case 2:
-				Option2();
+				neutralOption();
 				break;
 			case 3:
-				Option3();
+				rejectOption();
 				break;
 			default:
 				System.out.print("Invalid event choice");
@@ -46,15 +49,17 @@ public class Event {
 	}
 
 	// Temporary choice implementations, will change to abstract functions later (as each individual event should decide what the outcome of choices are)
-	public void Option1() {
-		SatisfactionMeter.modifySatisfactionScore(4);
+	public void acceptOption() {
+		SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("accept",event));
 		this.End();
 	}
-	public void Option2() {
-		this.End();
+	public void neutralOption() {
+        SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("neutral",event));
+        this.End();
 	}
-	public void Option3() {
-		SatisfactionMeter.modifySatisfactionScore(-4);
+	public void rejectOption() {
+        SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("reject",event));
+        //Add money
 		this.End();
 	}
 
