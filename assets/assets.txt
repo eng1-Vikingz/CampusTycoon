@@ -73,6 +73,7 @@ QuestionMark.png
 Reject.png
 Satisfaction.png
 Settings.png
+test.txt
 TestButton.png
 Tiles/Grass.png
 Tiles/Lake.png

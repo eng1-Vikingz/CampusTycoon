@@ -19,7 +19,9 @@ public class Main extends Game {
 
         Gdx.graphics.setTitle("Campus Tycoon");
         Gdx.input.setInputProcessor(new InputHandler());
-        EventLoader event = new EventLoader();
+
+        //Loads events
+        new EventLoader();
 
 
 		// Sets the screen to the Main Menu

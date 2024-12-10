@@ -60,7 +60,8 @@ public class EventLoader {
             System.err.println("there was a issue trying to read events yaml file");
         }
         rand = ThreadLocalRandom.current();
-        System.out.println(getEvent());
+        System.out.println("Events loaded");
+
     }
 
     //randomly returns a event
