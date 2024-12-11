@@ -73,7 +73,7 @@ jobs:
   build-release:
     runs-on: ubuntu-latest
     permissions:
-      contents: read, write
+      contents: write
 
     steps:
     - uses: actions/checkout@v4
