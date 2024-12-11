@@ -1,5 +1,6 @@
 package CampusTycoon;
 
+import java.beans.Transient;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
