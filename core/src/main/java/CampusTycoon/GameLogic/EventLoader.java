@@ -13,10 +13,14 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 
-/*
-class loads all events from yml file
+/**
+ * Class that handles loading events from yaml file
+ * featuring dictionaries for events are Strings for example event1
+ * with description that will show to the user as a popup
+ * with results of button being clicked:
+ * cost being money cost
+ * gain being satisfaction gain or lost due to event
  */
-
 public class EventLoader {
     public static ArrayList<String> eventList = new ArrayList<>();
     public static HashMap<String,String> descriptionLookup = new HashMap<>();
@@ -64,7 +68,10 @@ public class EventLoader {
 
     }
 
-    //randomly returns a event
+    /**
+     *  randomly returns a event String
+     *  @return String event
+     */
     public static String getEvent(){
         if (eventList.size() == 1){
             return eventList.get(0);
@@ -72,11 +79,21 @@ public class EventLoader {
         return eventList.get(rand.nextInt(0,eventList.size()));
     }
 
+    /**
+     * Returns the description of the event to be shown to the user
+     * @param event string
+     * @return description String
+     */
     public static String getEventDescription(String event){
         return descriptionLookup.get(event);
     }
 
-    //gets cost of choosing an action
+    /**
+     * gets cost os choosing the selected action
+     * @param action string
+     * @param event string
+     * @return cost int
+     */
     public static int getActionCost(String action,String event){
         return switch (action) {
             case "accept" -> acceptCostLookup.get(event);
@@ -86,7 +103,14 @@ public class EventLoader {
         };
     }
 
-    //Get gains of choosing an action
+
+
+    /**
+     * Gets satisfaction gain/lost due to a event
+     * @param action string
+     * @param event string
+     * @return satisfaction int
+     */
     public static int getActionGain(String action,String event){
         return switch (action) {
             case "accept" -> acceptGainLookup.get(event);
@@ -97,7 +121,12 @@ public class EventLoader {
     }
 
 
-    //getters for hashMaps Dictionaries
+
+
+    /**
+     * getters for hashMaps Dictionaries
+     * @return string / integer
+     */
     public static ArrayList<String> getEventList() {
         return eventList;
     }

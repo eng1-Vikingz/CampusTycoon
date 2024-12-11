@@ -47,7 +47,7 @@ public class GameplayScreen implements Screen{
 
         //times when next event is
         eventCounter += rand.nextInt(0,1000) * delta;
-        if (eventCounter >= 12000){
+        if (eventCounter >= 12000 && GameUtils.currentEvent == null){
             eventCounter =0;
             //Pop event
             GameUtils.currentEvent = new Event();
