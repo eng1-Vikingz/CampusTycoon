@@ -1,5 +1,6 @@
 package CampusTycoon.UI;
 
+import CampusTycoon.GameLogic.Event;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -8,10 +9,14 @@ import CampusTycoon.GameUtils;
 import CampusTycoon.GameLogic.Timer;
 import CampusTycoon.GameLogic.Buildings.Building;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class GameplayScreen implements Screen{
     private Timer timer;
     private boolean stateChanged;
     private float elapsedTime;
+    private ThreadLocalRandom rand;
+    private float eventCounter;
 
 
     @Override
@@ -22,12 +27,14 @@ public class GameplayScreen implements Screen{
         GameUtils.createGameplayUI();
         stateChanged = false;  // Reset stateChanged when the screen is shown
         elapsedTime = 0;
+        rand = ThreadLocalRandom.current();
+        eventCounter = 0f;
     }
-    
+
     @Override
     public void render(float delta) {
         timer.update(delta); // Update the timer every frame
-        
+
 
         // Check if the timer has ended and stateChanged is false
         if (timer.hasEnded() && !stateChanged) {
@@ -38,10 +45,19 @@ public class GameplayScreen implements Screen{
         Drawer.drawAll();
 
 
-        //System.out.println("Test");
+        //times when next event is
+        eventCounter += rand.nextInt(0,1000) * delta;
+        if (eventCounter >= 12000 && GameUtils.currentEvent == null){
+            eventCounter =0;
+            //Pop event
+            GameUtils.currentEvent = new Event();
+            System.out.println("Event opened");
+        }
+
+
         elapsedTime += delta; // delta is the time elapsed since the last frame
         if (elapsedTime >= 1) { // Increment counter every second
-            
+
             System.out.println("second");
 
             }
@@ -50,25 +66,25 @@ public class GameplayScreen implements Screen{
 
 
 
-    
+
         @Override
         public void resize(int width, int height) {
             Window.updateResolution(width, height);
             Drawer.updateAll();
         }
-    
+
         @Override
         public void pause() {
         }
-    
+
         @Override
         public void resume() {
         }
-    
+
         @Override
         public void hide() {
         }
-    
+
         @Override
         public void dispose() {
             // Destroy screen's assets here.

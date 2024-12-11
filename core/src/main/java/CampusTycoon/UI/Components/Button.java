@@ -11,7 +11,7 @@ import CampusTycoon.GameLogic.MapUtils;
 
 public class Button extends Component {
 	public int value; // Used to carry information about which button was pressed (i.e. in events)
-	
+
 	public Button(float X, float Y, float Width, float Height) {
 		super(X, Y, Width, Height);
 	}
@@ -21,8 +21,8 @@ public class Button extends Component {
 	public Button(List<String> imagePaths, float X, float Y, float Width, float Height) {
 		super(imagePaths, X, Y, Width, Height);
 	}
-	
-	
+
+
 	protected static void openStartScreen(Boolean isAction) {
 		ScreenUtils.OpenStartScreen();
 		System.out.println("Screen changed to StartScreen");
@@ -40,11 +40,12 @@ public class Button extends Component {
 		ScreenUtils.openLeaderboardScreen();
 		System.out.println("Screen changed to Leaderboard screen");
 	}
-	
+
 	protected static void openEventPopup(Boolean isAction) {
 		GameUtils.currentEvent = new Event();
 		System.out.println("Event opened");
 	}
+
 	protected static void closeEventPopup(Boolean isAction) {
 		GameUtils.currentEvent.eventUI.close();
 		System.out.println("Event closed");
@@ -81,7 +82,7 @@ public class Button extends Component {
 			"\nToggled building placement type to: " + GameUtils.map.placementType);
 	}
 
-	
+
 	@Override
 	public void setClickAction(String Action) {
 		Consumer<Boolean> action = a -> none(a);
@@ -94,11 +95,7 @@ public class Button extends Component {
 				action = a -> openGameplayScreen(a);
 				break;
 
-			case Actions.OpenLeaderboardScreen:
-				action = a -> openLeaderboardScreen(a);
-				break;
-				
-				
+
 			// Events
 			case Actions.OpenEventPopup:
 				action = a -> openEventPopup(a);
@@ -106,12 +103,12 @@ public class Button extends Component {
 			case Actions.CloseEventPopup:
 				action = a -> closeEventPopup(a);
 				break;
-				
+
 			case Actions.ChooseEventOption:
 				action = a -> chooseEventOption(a);
 				break;
-				
-			
+
+
 			// Building toggles
 			case Actions.ToggleAccommodationBuilding:
 				action = a -> toggleAccommodationBuilding(a);
