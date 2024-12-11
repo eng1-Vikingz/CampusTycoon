@@ -59,9 +59,11 @@ public class GameUtils {
         buttonNewGame.setAnchor(Anchor.Centre);
 
         Button buttonLeaderboard = new Button("Leaderboard.png", 0, 20, 262, 66);
+        buttonLeaderboard.setClickAction(Actions.OpenLeaderboardScreen);
         buttonLeaderboard.setAnchor(Anchor.Centre);
 
         Button buttonSettings = new Button("Settings.png", 0, -50, 262, 66);
+        buttonSettings.setClickAction(Actions.OpenSettingsScreen);
         buttonSettings.setAnchor(Anchor.Centre);
 
 

@@ -8,15 +8,16 @@ import CampusTycoon.InputHandler;
 
 public final class ScreenUtils {
 	public static Screen currentScreen;
-	
+
 	public static Screen startScreen = new StartScreen();
 	public static Screen gameplayScreen = new GameplayScreen();
 	public static Screen endScreen = new EndScreen();
 
 	public static LeaderboardScreen leaderboardScreen = new LeaderboardScreen();
-	
+    public static SettingsScreen settingsScreen = new SettingsScreen();
+
 	public static Game game;
-	
+
 	public static void openGameplayScreen() {
 		currentScreen = gameplayScreen;
 	}
@@ -34,6 +35,11 @@ public final class ScreenUtils {
 		currentScreen = leaderboardScreen;
 		leaderboardScreen.takeInput();
 	}
+    public static void openSettingsScreen(){
+        currentScreen = settingsScreen;
+        settingsScreen.takeInput();
+    }
+
 
 	public static void resetInputProcessor(){
 		Gdx.input.setInputProcessor(new InputHandler());

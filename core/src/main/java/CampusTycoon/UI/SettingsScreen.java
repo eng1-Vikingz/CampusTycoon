@@ -26,7 +26,7 @@ import com.badlogic.gdx.utils.Align;
  * top right of the screen that display the users balance,
  * satisfaction etc.
  */
-public class LeaderboardScreen implements Screen {
+public class SettingsScreen implements Screen {
 
     final int PADDING = 3;
 
@@ -53,7 +53,7 @@ public class LeaderboardScreen implements Screen {
     Table table;
 
 
-    public LeaderboardScreen() {
+    public SettingsScreen() {
 
         super();
 
@@ -144,7 +144,6 @@ public class LeaderboardScreen implements Screen {
         //clears screen
         com.badlogic.gdx.utils.ScreenUtils.clear(Color.BLACK);
         Drawer.drawAll();
-
 
         System.out.println("Rendering leaderboard");
         batch.begin();
