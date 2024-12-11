@@ -2,6 +2,8 @@ package CampusTycoon.GameLogic;
 
 
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
@@ -35,7 +37,8 @@ public class EventLoader {
     public EventLoader() {
         final Properties modules = new Properties();
         try {
-            Reader yamlFile = new FileReader("event.yml");
+            FileHandle fileReader = Gdx.files.internal("event.yml");
+            String yamlFile = fileReader.readString();
             Yaml yaml = new Yaml();
             Map<String, Object> data = (Map<String, Object>) yaml.load(yamlFile);
             eventList.addAll((Collection<? extends String>) data.get("eventList"));
