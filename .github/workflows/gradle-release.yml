@@ -9,9 +9,13 @@ name: Make Release
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags: [ '*.*.*' ]
+        
+#  push:
+#   branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+
 
 jobs:
   build:
@@ -97,12 +101,12 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
-    - name: GetProjectVersion
-      run: ./gradlew properties >> $GITHUB_OUTPUT
-      id: projectVersion  
+#    - name: GetProjectVersion
+#      run: ./gradlew properties >> $GITHUB_OUTPUT
+#      id: projectVersion  
     
-    - name: Check version
-      run: echo ${{steps.GetProjectVersion.id}}
+#    - name: Check version
+#     run: echo ${{steps.GetProjectVersion.id}}
       
     - name: clean gradle project 
       run: ./gradlew clean
