@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 
 public class LeaderboardFileHandler{
 
-    static String FILE_NAME = "test.txt";
+    public static String FILE_NAME = "test.txt";
 
 
-    public static HashMap<String, List<Integer>> getLeaderboard(){
+    public static HashMap<String, List<Integer>> getLeaderboard(String filename){
 
         HashMap<String, List<Integer>> leaderboard = new HashMap<String, List<Integer>>();
 
-        try(Scanner reader = new Scanner(new File(FILE_NAME))){
+        try(Scanner reader = new Scanner(new File(filename))){
             while(reader.hasNextLine()){
 
                 String[] line = reader.nextLine().split(",");
@@ -33,12 +33,16 @@ public class LeaderboardFileHandler{
             reader.close();
         }
         catch (FileNotFoundException e){
-            System.out.println("'" + FILE_NAME + "' did not exist!");
-            createNewFile();
+            System.out.println("'" + filename + "' did not exist!");
+            createNewFile(filename);
             
         }
         return leaderboard;
     } 
+
+    public static HashMap<String, List<Integer>> getLeaderboard(){
+        return getLeaderboard(FILE_NAME);
+    }
 
     private static ArrayList<Integer> stringListToIntList(List<String> list){
         ArrayList<Integer> intList = new ArrayList<>();
@@ -50,9 +54,9 @@ public class LeaderboardFileHandler{
     }
 
 
-    public static boolean addLeaderboardEntry(String key, Integer value){
+    public static boolean addLeaderboardEntry(String filename, String key, Integer value){
 
-        HashMap<String, List<Integer>> leaderboard = getLeaderboard();
+        HashMap<String, List<Integer>> leaderboard = getLeaderboard(filename);
         if(leaderboard.keySet().contains(key)){
             List<Integer> values = leaderboard.get(key);
             values.add(value);
@@ -67,7 +71,7 @@ public class LeaderboardFileHandler{
 
 
         try {
-            FileWriter myWriter = new FileWriter(FILE_NAME);
+            FileWriter myWriter = new FileWriter(filename);
 
 
             for(String x : leaderboard.keySet()){
@@ -89,10 +93,14 @@ public class LeaderboardFileHandler{
         return false;
     }
 
+    public static boolean addLeaderboardEntry(String key, Integer value){
+        return addLeaderboardEntry(FILE_NAME, key, value);
+    }
 
-    public static ArrayList<Tuple<String, Integer>> getLeaderboardTopFive(){
 
-        HashMap<String, List<Integer>> leaderboard = getLeaderboard();
+    public static ArrayList<Tuple<String, Integer>> getLeaderboardTopFive(String filename){
+
+        HashMap<String, List<Integer>> leaderboard = getLeaderboard(filename);
         ArrayList<Tuple<String, Integer>> best = new ArrayList<>();
 
         ArrayList<String> keys = new ArrayList<>();
@@ -131,6 +139,10 @@ public class LeaderboardFileHandler{
         
     }
 
+    public static ArrayList<Tuple<String, Integer>> getLeaderboardTopFive(){
+        return getLeaderboardTopFive(FILE_NAME);
+    }
+
     private static int getMax(ArrayList<Integer> values){
 
         int index = -1;
@@ -144,11 +156,11 @@ public class LeaderboardFileHandler{
         return index;
     }
 
-    private static boolean createNewFile(){
+    public static boolean createNewFile(String filename){
         try{
-            File newFile = new File(FILE_NAME);
+            File newFile = new File(filename);
             if(newFile.createNewFile()){
-                System.out.println("Created new file: '" + FILE_NAME + "'");
+                System.out.println("Created new file: '" + filename + "'");
                 return true;
             }
 
@@ -157,6 +169,24 @@ public class LeaderboardFileHandler{
             System.out.println("An error occured, could not create file");
         }
         return false;
+    }
+
+    public static boolean createNewFile(){
+        return createNewFile(FILE_NAME);
+    }
+
+    public static boolean removeFile(String filename){
+        File file = new File(filename);
+        Boolean result = file.delete();
+
+        if(result){
+            System.out.println("Removed: " + filename);
+        }
+        else{
+            System.out.println("Could not remove " + filename);
+        }
+        return result;
+        
     }
 
 }

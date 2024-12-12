@@ -17,5 +17,27 @@ public class Tuple<X, Y> {
         return str;
     }
 
+    @Override
+    public boolean equals(Object o){
+      if(this == o){
+        return true;
+      }
+
+      if(o == null){
+        return false;
+      }
+
+      if(o instanceof Tuple){
+        Tuple<X, Y> tuple = (Tuple<X, Y>) o;
+        
+        if(this.x.equals(tuple.x) && this.y.equals(tuple.y)){
+          return true;
+        }
+      }
+
+      return false;
+
+    }
+
 
   } 
