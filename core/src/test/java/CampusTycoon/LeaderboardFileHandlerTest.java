@@ -26,6 +26,7 @@ public class LeaderboardFileHandlerTest {
         LeaderboardFileHandler.addLeaderboardEntry(filename, "test1", 100);
         LeaderboardFileHandler.addLeaderboardEntry(filename, "test1", 200);
         LeaderboardFileHandler.addLeaderboardEntry(filename, "test2", 500);
+        
 
         HashMap<String, List<Integer>> leaderboard = LeaderboardFileHandler.getLeaderboard(filename);
         HashMap<String, List<Integer>> expectedLeaderboard = new HashMap<>();
