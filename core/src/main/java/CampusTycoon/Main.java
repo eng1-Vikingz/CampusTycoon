@@ -1,11 +1,10 @@
 package CampusTycoon;
 
-import CampusTycoon.GameLogic.EventLoader;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
-import CampusTycoon.UI.LeaderboardFileHandler;
+import CampusTycoon.GameLogic.EventLoader;
 import CampusTycoon.UI.ScreenUtils;
 import CampusTycoon.UI.StartScreen;
 
@@ -17,6 +16,7 @@ public class Main extends Game {
         //Gdx.graphics.setContinuousRendering(false); // Interesting function to explore later
         //(^if rendering performance becomes an issue)
 
+		
         Gdx.graphics.setTitle("Campus Tycoon");
         Gdx.input.setInputProcessor(new InputHandler());
 
