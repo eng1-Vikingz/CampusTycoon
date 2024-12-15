@@ -1,6 +1,7 @@
 package CampusTycoon.UI;
 
 import CampusTycoon.GameLogic.Event;
+import CampusTycoon.GameLogic.MoneyHandler;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -34,6 +35,7 @@ public class GameplayScreen implements Screen{
     @Override
     public void render(float delta) {
         timer.update(delta); // Update the timer every frame
+        MoneyHandler.update(delta); // Update the balance of the player
 
 
         // Check if the timer has ended and stateChanged is false

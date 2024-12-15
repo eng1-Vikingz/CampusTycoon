@@ -51,19 +51,27 @@ public class Event {
 	// Temporary choice implementations, will change to abstract functions later (as each individual event should decide what the outcome of choices are)
 	public void acceptOption() {
 		SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("accept",event));
-		this.End();
-	}
+        allowChoice("accept");
+    }
 	public void neutralOption() {
         SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("neutral",event));
-        this.End();
-	}
+        allowChoice("neutral");
+    }
 	public void rejectOption() {
         SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("reject",event));
-        //Add money
-		this.End();
-	}
+        allowChoice("reject");
+    }
 
-	public void End() {
+    private void allowChoice(String reject) {
+        if (MoneyHandler.addMoney(-EventLoader.getActionCost(reject, event))) {
+            this.End();
+        } else {
+            //todo add alerts
+            System.out.println("player is out of money");
+        }
+    }
+
+    public void End() {
 		eventUI.close();
 		GameUtils.currentEvent = null;
 	}

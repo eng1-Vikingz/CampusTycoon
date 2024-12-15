@@ -6,6 +6,7 @@ import java.util.List;
 
 import CampusTycoon.InputHandler;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /**
  * This class is used for drawing game stats to the screen.
@@ -36,6 +38,8 @@ public class SettingsScreen implements Screen {
     private final BitmapFont font;
     private final Stage stage;
     private final Skin skin;
+    private final Label resolutionLabel;
+
 
     //Used to resize UI renderer to new screen size
     float width;
@@ -59,11 +63,17 @@ public class SettingsScreen implements Screen {
 
         this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
+
         batch = new SpriteBatch();
-        stage = new Stage();
+        stage = new Stage(new ScreenViewport());
+
         font = new BitmapFont();
         font.getData().setScale(1.5f);
         labels = new ArrayList<>();
+
+        // Resolution label
+        this.resolutionLabel = new Label(Gdx.graphics.getWidth() + " " + Gdx.graphics.getHeight() + " fps " + Gdx.graphics.getFramesPerSecond(),skin);
+
 
         // Back button
         backBtn = new TextButton("Back", skin);
@@ -81,41 +91,50 @@ public class SettingsScreen implements Screen {
         table.setFillParent(true);
         table.top();
         table.center();
-
-
-
-
         createTitleLbl();
 
-        // addLabel("TEST1");
-        // addLabel("TEST2");
-        // addLabel("TEST3");
+        TextButton fullscreenButton = new TextButton("Fullscreen",skin);
+        fullscreenButton.addListener(e -> {
+            if (fullscreenButton.isPressed()){
+                Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+            }
+            return true;
+        });
 
-
-        for(Tuple<String, Integer> entry : LeaderboardFileHandler.getLeaderboardTopFive()){
-            addLabel(entry.x + " :: " + entry.y);
-        }
+        TextButton windowButton = new TextButton("Window Mode", skin);
+        windowButton.addListener(e -> {
+            if (windowButton.isPressed()){
+                Gdx.graphics.setWindowedMode(1280,720);
+            }
+            return true;
+        });
 
 
         // Add back button to table
+
+        table.row().padTop(20);
         table.row();
-        table.row();
+        table.add(resolutionLabel);
+        table.row().padTop(50);
+        table.add(windowButton).padBottom(55);
+        table.row().padBottom(50);
+        table.add(fullscreenButton);
         table.row();
         table.add(backBtn).pad(PADDING).align(Align.center);
+
 
         stage.addActor(table);
 
     }
 
     private void createTitleLbl(){
-        Label title = new Label("LEADERBOARD", skin);
+        Label title = new Label("Settings", skin);
         title.setColor(Color.WHITE);
         title.setFontScale(3f);
 
         table.add(title).pad(PADDING).align(Align.center);
         table.row();
         table.row();
-
         labels.add(title);
 
     }
@@ -135,6 +154,7 @@ public class SettingsScreen implements Screen {
 
 
 
+
     /**
      * Draws the labels to the screen
      * @param delta Time since last frame
@@ -144,8 +164,9 @@ public class SettingsScreen implements Screen {
         //clears screen
         com.badlogic.gdx.utils.ScreenUtils.clear(Color.BLACK);
         Drawer.drawAll();
+        resolutionLabel.setText(CurrentWindowSize());
 
-        System.out.println("Rendering leaderboard");
+
         batch.begin();
 
         stage.act(delta);
@@ -158,10 +179,23 @@ public class SettingsScreen implements Screen {
      * @param width New width
      * @param height New height
      */
-    public void resize(float width, float height){
+    @Override
+    public void resize(int width, int height){
         this.width = width;
         this.height = height;
+        Window.updateResolution(width, height);
+        Drawer.updateAll();
+        stage.getViewport().update(width, height, true);
+
     }
+
+    public static String CurrentWindowSize(){
+        Graphics.DisplayMode displayMode = Gdx.graphics.getDisplayMode();
+        if (Gdx.graphics.isFullscreen()) return displayMode.toString();
+        return Gdx.graphics.getWidth() + "x" + Gdx.graphics.getHeight() + ", bpp " + displayMode.bitsPerPixel + " hz: "+ Gdx.graphics.getFramesPerSecond();
+    }
+
+
 
     /**
      * disposes stats being drawn for garbage collection
@@ -175,11 +209,6 @@ public class SettingsScreen implements Screen {
 
     @Override
     public void show() {
-    }
-
-
-    @Override
-    public void resize(int width, int height) {
     }
 
 

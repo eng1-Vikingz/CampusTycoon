@@ -84,6 +84,9 @@ public class Map {
 			building = new SpaceStation(position);
 		}
 
+        if (!MoneyHandler.addMoney(-building.cost)){
+            return; //no money
+        }
 		// Else if placing and building location valid:
 		buildings.add(building);
         building.buildingName = placementType.replaceAll("\\d","");
@@ -92,6 +95,7 @@ public class Map {
 		Drawer.add(-1, building.drawInfo);
 
 		building.incrementBuildingCounter(); // Number go up (by 1)
+
 		SatisfactionMeter.updateSatisfactionScore(); // Placing buildings satisfies students!!!
 	}
 }

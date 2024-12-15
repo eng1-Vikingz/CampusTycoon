@@ -186,7 +186,7 @@ public class GameUtils {
 		// Add all buttons to the InputHandler to allow for interaction handling
 		InputHandler.add(UIButtons);
 
-        MenuText satisfactionText = new MenuText("", 50, 30, 2f, 2f);
+        MenuText satisfactionText = new MenuText("", 80, 30, 2f, 2f);
         satisfactionText.setAnchor(Anchor.TopRight);
 		SatisfactionMeter.satisfactionText = satisfactionText;
 		SatisfactionMeter.updateDisplay();
@@ -205,8 +205,12 @@ public class GameUtils {
 		timerText.setAnchor(Anchor.TopRight);
 		Timer.text = timerText;
 
+        MenuText moneyText = new MenuText(Integer.toString(MoneyHandler.getMoney()),-230,25,2f,2f);
+        moneyText.setAnchor(Anchor.TopCentre);
+        MoneyHandler.text = moneyText;
 
-        List<Component> textElements = Arrays.asList(satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText);
+
+        List<Component> textElements = Arrays.asList(satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText,moneyText);
 
 		// Add all text to the drawQueue
 		for (Component text : textElements) {
