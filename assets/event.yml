@@ -4,22 +4,22 @@ eventList: [event1,event2]
 event1:
   - Description: "description"
   #what happens if you accept
-  - acceptGain: 100
-  - acceptCost: 100
+  - acceptGain: 300
+  - acceptCost: 1000
   #what happens if you don't do anything
-  - neutralGain: -1
-  - neutralCost: -1
+  - neutralGain: -100
+  - neutralCost: 0
   #what happens if you reject
   - rejectGain: -100
-  - rejectCost: -200
+  - rejectCost: -2000
 event2:
   - Description: "description2"
   #what happens if you accept
   - acceptGain: 100
-  - acceptCost: 100
+  - acceptCost: 500
   #what happens if you don't do anything
-  - neutralGain: -1
-  - neutralCost: -1
+  - neutralGain: 100
+  - neutralCost: 0
   #what happens if you reject
-  - rejectGain: -100
-  - rejectCost: -200
+  - rejectGain: -300
+  - rejectCost: 0

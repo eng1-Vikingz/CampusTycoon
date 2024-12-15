@@ -10,11 +10,13 @@ public class Building {
 	public MapBuilding drawInfo;
 	public Coordinate position;
 	public int width, height;
+    public int cost;
     public int score;
 
 	public Building() {
 		width = 1;
 		height = 1;
+        cost =100;
 		position = new Coordinate(0, 0);
 		drawInfo = new MapBuilding(
 			"MissingTexture.png",
@@ -24,16 +26,18 @@ public class Building {
 	public Building(Coordinate Position) {
 		width = 1;
 		height = 1;
+        cost =100;
 		position = Position;
 		drawInfo = new MapBuilding(
 			"MissingTexture.png",
 			position.x, position.y);
 		drawInfo.setAnchor(Anchor.BottomLeft);
 	}
-	protected Building(Coordinate Position, String ImagePath, int Width, int Height) {
+	protected Building(Coordinate Position, String ImagePath,int Cost,int Width, int Height) {
 		position = Position;
 		width = Width;
 		height = Height;
+        cost = Cost;
 		drawInfo = new MapBuilding(
 			ImagePath,
 			position.x, position.y,

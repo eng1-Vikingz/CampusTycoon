@@ -20,15 +20,16 @@ public class Study extends Building{
 	public static final String[] defaultImage = {"Buildings\\Study.png", "Buildings\\Study2.png"};
 	public static final String buildingName = "Study";
 	public static final String buildingName2 = "Study2";
+    public static int cost = 100;
 	public static int width = 3, height = 3;
 
 
 	public Study(Coordinate Position, int textureIndex) {
-		super(Position, defaultImage[textureIndex], width , height);
+		super(Position, defaultImage[textureIndex],cost, width , height);
         score = 300;
 	}
 	public Study(int textureIndex) {
-		super(new Coordinate(0, 0), defaultImage[textureIndex], width , height);
+		super(new Coordinate(0, 0), defaultImage[textureIndex], cost, width , height);
         score = 300;
 	}
 
