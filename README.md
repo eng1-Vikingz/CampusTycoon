@@ -4,6 +4,8 @@ The game designed by team 9, for the uni of york compsci eng1 module.
 
 Perfect in *almost* every way.
 
+Modified and remastered by team 2, for the second part of the eng1 module.
+
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
