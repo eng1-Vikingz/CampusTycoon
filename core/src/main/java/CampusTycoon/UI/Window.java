@@ -1,5 +1,7 @@
 package CampusTycoon.UI;
 
+import CampusTycoon.UI.Components.Component;
+
 public class Window {
 	public static int defaultWidth = 1280; // Treat as a constant
 	public static int defaultHeight = 720; // Do not ask me why they need to be specifically these values but just know that they do otherwise everything breaks

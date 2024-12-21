@@ -1,8 +1,5 @@
 package CampusTycoon.UI.Components;
 
-import CampusTycoon.UI.Component;
-import CampusTycoon.UI.SpriteSheet;
-
 public class MapTile extends Component {
 
 	private int mapHeight;

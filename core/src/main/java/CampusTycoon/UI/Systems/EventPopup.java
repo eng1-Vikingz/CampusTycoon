@@ -1,10 +1,10 @@
 package CampusTycoon.UI.Systems;
 
-import CampusTycoon.GameUtils;
-import CampusTycoon.InputHandler;
 import CampusTycoon.GameLogic.Event;
-import CampusTycoon.UI.Component;
-import CampusTycoon.UI.Drawer;
+import CampusTycoon.UI.Components.Component;
+import CampusTycoon.Util.Drawer;
+import CampusTycoon.Util.GameUtils;
+import CampusTycoon.Util.InputHandler;
 
 import java.util.List;
 import java.util.ArrayList;

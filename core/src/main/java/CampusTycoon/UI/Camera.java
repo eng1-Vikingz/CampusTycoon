@@ -2,17 +2,19 @@ package CampusTycoon.UI;
 
 import java.util.List;
 
-import CampusTycoon.GameLogic.Tiles.Lake;
-import CampusTycoon.GameUtils;
-import CampusTycoon.GameLogic.Coordinate;
-import CampusTycoon.GameLogic.Map;
-import CampusTycoon.GameLogic.MapUtils;
-import CampusTycoon.GameLogic.Buildings.Building;
-import CampusTycoon.GameLogic.Tiles.Tile;
+import CampusTycoon.Buildings.Building;
+import CampusTycoon.Maps.Map;
+import CampusTycoon.Tiles.Lake;
+import CampusTycoon.Tiles.Tile;
 import CampusTycoon.UI.Components.MapBuilding;
 import CampusTycoon.UI.Components.MapTile;
 import CampusTycoon.UI.Systems.BuildingDisplay;
 import CampusTycoon.UI.Systems.MapDisplay;
+import CampusTycoon.Util.Drawer;
+import CampusTycoon.Util.GameUtils;
+import CampusTycoon.Util.MapUtils;
+import CampusTycoon.Util.ScreenUtils;
+import CampusTycoon.Util.Types.Coordinate;
 
 public class Camera {
 	public static Map map; // The game map

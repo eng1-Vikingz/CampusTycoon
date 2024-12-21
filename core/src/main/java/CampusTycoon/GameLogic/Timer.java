@@ -1,11 +1,10 @@
 package CampusTycoon.GameLogic;
 
-import CampusTycoon.UI.ScreenUtils;
 import CampusTycoon.UI.Components.MenuText;
+import CampusTycoon.Util.Drawer;
+import CampusTycoon.Util.ScreenUtils;
 
 import java.sql.Time;
-
-import CampusTycoon.UI.Drawer;
 
 public class Timer{
 	public static MenuText text;

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import CampusTycoon.GameUtils;
 import CampusTycoon.UI.Systems.EventPopup;
+import CampusTycoon.Util.GameUtils;
 
 public class Event {
 	public EventPopup eventUI;

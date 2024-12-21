@@ -2,8 +2,7 @@ package CampusTycoon.UI.Components;
 
 import java.util.List;
 
-import CampusTycoon.GameLogic.Tiles.Tile;
-import CampusTycoon.UI.Component;
+import CampusTycoon.Tiles.Tile;
 
 public class MapBuilding extends Component {
 	float gridBaseWidth, gridBaseHeight;

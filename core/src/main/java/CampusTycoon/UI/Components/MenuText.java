@@ -1,7 +1,5 @@
 package CampusTycoon.UI.Components;
 
-import CampusTycoon.UI.Component;
-
 public class MenuText extends Component {
 
 	public MenuText(String text, float X, float Y, float WidthScale, float HeightScale) {
