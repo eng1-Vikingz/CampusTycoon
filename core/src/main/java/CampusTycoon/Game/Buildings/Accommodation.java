@@ -8,6 +8,7 @@ public class Accommodation extends Building {
 	public static final String buildingName = "Accommodation";
     public static int cost = 200;
 	public static int width = 3, height = 3;
+	public static Coordinate position;
 
 
 	public Accommodation(Coordinate Position) {

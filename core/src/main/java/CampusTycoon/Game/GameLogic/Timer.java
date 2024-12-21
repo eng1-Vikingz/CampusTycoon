@@ -4,7 +4,6 @@ import CampusTycoon.UI.Components.MenuText;
 import CampusTycoon.Util.Drawer;
 import CampusTycoon.Util.ScreenUtils;
 
-import java.sql.Time;
 
 public class Timer{
 	public static MenuText text;
