@@ -19,4 +19,20 @@ public class Coordinate {
 		double y = point.y - this.y;
 		return Math.sqrt(x * x + y * y);
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		Coordinate coord = (Coordinate) o;
+
+		return (this.x == coord.x) && (this.y == coord.y);
+		
+	}
 }
