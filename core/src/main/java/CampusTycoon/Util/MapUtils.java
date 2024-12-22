@@ -5,10 +5,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
 
-import CampusTycoon.Buildings.*;
-import CampusTycoon.Maps.Map;
-import CampusTycoon.Maps.York;
-import CampusTycoon.Tiles.*;
+import CampusTycoon.Game.Buildings.*;
+import CampusTycoon.Game.Maps.Map;
+import CampusTycoon.Game.Maps.York;
+import CampusTycoon.Game.Tiles.*;
 import CampusTycoon.UI.Camera;
 import CampusTycoon.Util.Types.Coordinate;
 

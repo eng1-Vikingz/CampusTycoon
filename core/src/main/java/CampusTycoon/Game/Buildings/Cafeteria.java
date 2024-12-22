@@ -1,6 +1,6 @@
-package CampusTycoon.Buildings;
+package CampusTycoon.Game.Buildings;
 
-import CampusTycoon.GameLogic.BuildingCounter;
+import CampusTycoon.Game.GameLogic.BuildingCounter;
 import CampusTycoon.Util.Types.Coordinate;
 
 public class Cafeteria extends Building {

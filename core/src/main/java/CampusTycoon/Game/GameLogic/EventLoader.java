@@ -1,4 +1,4 @@
-package CampusTycoon.GameLogic;
+package CampusTycoon.Game.GameLogic;
 
 
 

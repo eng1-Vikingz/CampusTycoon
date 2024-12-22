@@ -1,13 +1,13 @@
-package CampusTycoon.Maps;
+package CampusTycoon.Game.Maps;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import CampusTycoon.Buildings.*;
-import CampusTycoon.GameLogic.MoneyHandler;
-import CampusTycoon.GameLogic.SatisfactionMeter;
-import CampusTycoon.Tiles.*;
+import CampusTycoon.Game.Buildings.*;
+import CampusTycoon.Game.GameLogic.MoneyHandler;
+import CampusTycoon.Game.GameLogic.SatisfactionMeter;
+import CampusTycoon.Game.Tiles.*;
 import CampusTycoon.UI.Systems.BuildingDisplay;
 import CampusTycoon.UI.Systems.MapDisplay;
 import CampusTycoon.Util.Drawer;

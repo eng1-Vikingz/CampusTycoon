@@ -2,7 +2,7 @@ package CampusTycoon.UI.Systems;
 
 import java.util.List;
 
-import CampusTycoon.Buildings.Building;
+import CampusTycoon.Game.Buildings.Building;
 import CampusTycoon.Util.Drawer;
 
 public class BuildingDisplay {

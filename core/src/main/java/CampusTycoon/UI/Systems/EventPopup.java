@@ -1,6 +1,6 @@
 package CampusTycoon.UI.Systems;
 
-import CampusTycoon.GameLogic.Event;
+import CampusTycoon.Game.GameLogic.Event;
 import CampusTycoon.UI.Components.Component;
 import CampusTycoon.Util.Drawer;
 import CampusTycoon.Util.GameUtils;

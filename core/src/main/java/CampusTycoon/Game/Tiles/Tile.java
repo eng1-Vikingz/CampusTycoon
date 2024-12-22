@@ -1,4 +1,4 @@
-package CampusTycoon.Tiles;
+package CampusTycoon.Game.Tiles;
 
 import CampusTycoon.Util.Types.Coordinate;
 

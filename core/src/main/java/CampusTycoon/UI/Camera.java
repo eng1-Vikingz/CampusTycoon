@@ -2,10 +2,10 @@ package CampusTycoon.UI;
 
 import java.util.List;
 
-import CampusTycoon.Buildings.Building;
-import CampusTycoon.Maps.Map;
-import CampusTycoon.Tiles.Lake;
-import CampusTycoon.Tiles.Tile;
+import CampusTycoon.Game.Buildings.Building;
+import CampusTycoon.Game.Maps.Map;
+import CampusTycoon.Game.Tiles.Lake;
+import CampusTycoon.Game.Tiles.Tile;
 import CampusTycoon.UI.Components.MapBuilding;
 import CampusTycoon.UI.Components.MapTile;
 import CampusTycoon.UI.Systems.BuildingDisplay;

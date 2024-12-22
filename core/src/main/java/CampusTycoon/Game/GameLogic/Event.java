@@ -1,4 +1,4 @@
-package CampusTycoon.GameLogic;
+package CampusTycoon.Game.GameLogic;
 
 import java.util.List;
 import java.util.ArrayList;

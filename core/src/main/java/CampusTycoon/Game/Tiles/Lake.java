@@ -1,4 +1,4 @@
-package CampusTycoon.Tiles;
+package CampusTycoon.Game.Tiles;
 
 public class Lake implements Tile {
 	@Override

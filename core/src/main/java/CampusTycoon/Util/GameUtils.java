@@ -3,9 +3,9 @@ package CampusTycoon.Util;
 import java.util.Arrays;
 import java.util.List;
 
-import CampusTycoon.Buildings.*;
-import CampusTycoon.GameLogic.*;
-import CampusTycoon.Maps.Map;
+import CampusTycoon.Game.Buildings.*;
+import CampusTycoon.Game.GameLogic.*;
+import CampusTycoon.Game.Maps.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

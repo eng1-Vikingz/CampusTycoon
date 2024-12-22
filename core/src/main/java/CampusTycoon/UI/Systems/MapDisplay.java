@@ -1,7 +1,7 @@
 package CampusTycoon.UI.Systems;
 
-import CampusTycoon.Maps.Map;
-import CampusTycoon.Tiles.Tile;
+import CampusTycoon.Game.Maps.Map;
+import CampusTycoon.Game.Tiles.Tile;
 import CampusTycoon.UI.Camera;
 import CampusTycoon.UI.Components.MapTile;
 import CampusTycoon.UI.Components.SpriteSheet;

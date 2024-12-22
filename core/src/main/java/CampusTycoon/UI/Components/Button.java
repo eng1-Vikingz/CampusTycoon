@@ -3,10 +3,10 @@ package CampusTycoon.UI.Components;
 import java.util.List;
 import java.util.function.Consumer;
 
+import CampusTycoon.Game.GameLogic.Event;
 import CampusTycoon.Util.GameUtils;
 import CampusTycoon.Util.MapUtils;
 import CampusTycoon.Util.ScreenUtils;
-import CampusTycoon.GameLogic.Event;
 
 public class Button extends Component {
 	public int value; // Used to carry information about which button was pressed (i.e. in events)

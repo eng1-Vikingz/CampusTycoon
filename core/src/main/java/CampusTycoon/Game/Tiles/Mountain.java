@@ -1,4 +1,4 @@
-package CampusTycoon.Tiles;
+package CampusTycoon.Game.Tiles;
 
 public class Mountain implements Tile {
 	@Override

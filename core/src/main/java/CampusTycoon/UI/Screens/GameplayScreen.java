@@ -1,12 +1,12 @@
 package CampusTycoon.UI.Screens;
 
-import CampusTycoon.GameLogic.Event;
-import CampusTycoon.GameLogic.MoneyHandler;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import CampusTycoon.GameLogic.Timer;
+import CampusTycoon.Game.GameLogic.Event;
+import CampusTycoon.Game.GameLogic.MoneyHandler;
+import CampusTycoon.Game.GameLogic.Timer;
 import CampusTycoon.UI.Window;
 import CampusTycoon.Util.Drawer;
 import CampusTycoon.Util.GameUtils;

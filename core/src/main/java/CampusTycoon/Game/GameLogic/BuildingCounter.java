@@ -1,6 +1,6 @@
-package CampusTycoon.GameLogic;
+package CampusTycoon.Game.GameLogic;
 
-import CampusTycoon.Buildings.*;
+import CampusTycoon.Game.Buildings.*;
 import CampusTycoon.UI.Components.MenuText;
 
 import java.util.ArrayList;

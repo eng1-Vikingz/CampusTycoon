@@ -1,4 +1,4 @@
-package CampusTycoon.Maps;
+package CampusTycoon.Game.Maps;
 
 // Didn't want to use a class for this but the txt file that was meant to be read instead wasn't compiling into the .jar file and it was like 6am so we just did this and went to sleep
 public final class York {

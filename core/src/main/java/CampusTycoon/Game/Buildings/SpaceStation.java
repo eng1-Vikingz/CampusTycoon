@@ -1,4 +1,4 @@
-package CampusTycoon.Buildings;
+package CampusTycoon.Game.Buildings;
 
 import CampusTycoon.Util.Types.Coordinate;
 

@@ -1,6 +1,6 @@
-package CampusTycoon.GameLogic;
+package CampusTycoon.Game.GameLogic;
 
-import CampusTycoon.Maps.Map;
+import CampusTycoon.Game.Maps.Map;
 import CampusTycoon.UI.Components.Component;
 
 import java.util.Objects;
