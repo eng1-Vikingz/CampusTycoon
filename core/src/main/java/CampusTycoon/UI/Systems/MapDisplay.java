@@ -1,12 +1,12 @@
 package CampusTycoon.UI.Systems;
 
-import CampusTycoon.GameLogic.Map;
-import CampusTycoon.GameLogic.Tiles.Tile;
-import CampusTycoon.UI.Drawer;
-import CampusTycoon.UI.SpriteSheet;
+import CampusTycoon.Game.Maps.Map;
+import CampusTycoon.Game.Tiles.Tile;
 import CampusTycoon.UI.Camera;
-import CampusTycoon.UI.Component.Anchor;
 import CampusTycoon.UI.Components.MapTile;
+import CampusTycoon.UI.Components.SpriteSheet;
+import CampusTycoon.UI.Components.Component.Anchor;
+import CampusTycoon.Util.Drawer;
 
 import java.util.List;
 

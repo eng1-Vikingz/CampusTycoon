@@ -4,9 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
-import CampusTycoon.GameLogic.EventLoader;
-import CampusTycoon.UI.ScreenUtils;
-import CampusTycoon.UI.StartScreen;
+import CampusTycoon.Game.GameLogic.EventLoader;
+import CampusTycoon.UI.Screens.StartScreen;
+import CampusTycoon.Util.InputHandler;
+import CampusTycoon.Util.ScreenUtils;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {

@@ -2,8 +2,6 @@ package CampusTycoon.UI.Components;
 
 import java.util.List;
 
-import CampusTycoon.UI.Component;
-
 public class Backdrop extends Component {
 
 	public Backdrop(float X, float Y, float Width, float Height) {

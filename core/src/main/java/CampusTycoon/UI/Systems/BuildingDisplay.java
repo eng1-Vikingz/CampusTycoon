@@ -2,8 +2,8 @@ package CampusTycoon.UI.Systems;
 
 import java.util.List;
 
-import CampusTycoon.GameLogic.Buildings.Building;
-import CampusTycoon.UI.Drawer;
+import CampusTycoon.Game.Buildings.Building;
+import CampusTycoon.Util.Drawer;
 
 public class BuildingDisplay {
 	public static final int Layer = -1;
