@@ -53,12 +53,15 @@ jobs:
     - name: Make jar
       run: ./gradlew lwjgl:jar
       
-    - name: Make Release
-      uses: ncipollo/release-action@v1
-      id: Create_release
+    - name: release
+      uses: softprops/action-gh-release@v1
       with:
-        name: Release ${{github.ref_name}}
-        artifacts: "lwjgl3/libs/CampusTycoon-${{github.ref_name}}.jar"
+        files: |
+          lwjgl3/libs/CampusTycoon-1.0.0.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      
         
   dependency-submission:
 
