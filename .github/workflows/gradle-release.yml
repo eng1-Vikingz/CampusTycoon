@@ -54,13 +54,13 @@ jobs:
       run: ./gradlew lwjgl:jar
     
     - name: list Directory
-      run: ls 
+      run: ls "lwjgl3/build/libs/"
       
     - name: release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          lwjgl3/build/libs/CampusTycoon-1.0.0.jar
+          lwjgl3/build/libs/CampusTycoon-${{github.ref_name}}.jar
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
