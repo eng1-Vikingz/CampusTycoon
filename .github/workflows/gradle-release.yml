@@ -58,7 +58,7 @@ jobs:
       with:
         files: |
           lwjgl3/libs/CampusTycoon-1.0.0.jar
-        env:
+      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       
