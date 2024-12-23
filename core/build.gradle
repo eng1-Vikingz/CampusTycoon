@@ -5,9 +5,9 @@ dependencies {
 
   testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 
-  
+
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
-  implementation group: 'org.yaml', name: 'snakeyaml', version: '1.8'
+  implementation group: 'org.yaml', name: 'snakeyaml', version: '2.3'
 
 
 
