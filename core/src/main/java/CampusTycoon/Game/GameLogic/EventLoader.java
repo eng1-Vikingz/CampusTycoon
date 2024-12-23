@@ -25,20 +25,24 @@ import java.util.stream.Collectors;
  */
 public class EventLoader {
     public static ArrayList<String> eventList = new ArrayList<>();
-    public static HashMap<String,String> descriptionLookup = new HashMap<>();
-    public static HashMap<String, Integer> acceptGainLookup = new HashMap<>();
-    public static HashMap<String, Integer> acceptCostLookup = new HashMap<>();
-    public static HashMap<String, Integer> neutralGainLookup = new HashMap<>();
-    public static HashMap<String, Integer> neutralCostLookup = new HashMap<>();
-    public static HashMap<String, Integer> rejectGainLookup = new HashMap<>();
-    public static HashMap<String, Integer> rejectCostLookup = new HashMap<>();
+    private static HashMap<String,String> descriptionLookup = new HashMap<>();
+    private static HashMap<String, Integer> acceptGainLookup = new HashMap<>();
+    private static HashMap<String, Integer> acceptCostLookup = new HashMap<>();
+    private static HashMap<String, Integer> neutralGainLookup = new HashMap<>();
+    private static HashMap<String, Integer> neutralCostLookup = new HashMap<>();
+    private static HashMap<String, Integer> rejectGainLookup = new HashMap<>();
+    private static HashMap<String, Integer> rejectCostLookup = new HashMap<>();
     private static Random rand;
 
-    public EventLoader() {
-        final Properties modules = new Properties();
+
+    /**
+     * loads data via SnakeYaml Parser and loads all needed data into HashMaps
+     * @param yamlFile
+     * @throws IOException
+     */
+    public boolean loadYamlContents(String yamlFile) throws IOException {
         try {
-            FileHandle fileReader = Gdx.files.internal("event.yml");
-            String yamlFile = fileReader.readString();
+            final Properties modules = new Properties();
             Yaml yaml = new Yaml();
             Map<String, Object> data = (Map<String, Object>) yaml.load(yamlFile);
             eventList.addAll((Collection<? extends String>) data.get("eventList"));
@@ -63,13 +67,51 @@ public class EventLoader {
                 rejectGainLookup.put(event, (Integer) modules.get("rejectGain"));
                 rejectCostLookup.put(event, (Integer) modules.get("rejectCost"));
             }
-        } catch (Exception e){
-            System.err.println("there was a issue trying to read events yaml file");
+        }
+        catch (Exception e){
+            throw new IOException("File Is invalid");
         }
         rand = ThreadLocalRandom.current();
         System.out.println("Events loaded");
-
+        return true;
     }
+
+
+    /**
+     * Default LibGdx fileLoader uses yamlFile to load events
+     * @param file
+     */
+    public EventLoader(String file) {
+        try {
+            FileHandle fileReader = Gdx.files.internal(file);
+            String yamlFile = fileReader.readString();
+            if(!loadYamlContents(yamlFile)){
+                throw new IOException("There has been a problem loading yaml into dictionaries");
+            }
+        } catch (Exception e){
+            System.err.println("there was a issue trying to read events yaml file,\n" + e);
+        }
+    }
+
+
+    /**
+     * Because you can't use libgdx file handler without lwjgl applicationLister,
+     * using java native file handling instead.
+     * @param file String of path of File
+     * @param test Boolean of if test being used
+     */
+    public EventLoader(String file,boolean test) throws IOException {
+        if (test){
+            String yamlFile = new Scanner(new File(file)).useDelimiter("\\Z").next();
+            if(!loadYamlContents(yamlFile)){
+                throw new IOException("There has been a problem loading yaml into dictionaries");
+            }
+        }
+        else{
+            throw new IOException("absolutePath Isn't supported while not in test mode");
+        }
+    }
+
 
     /**
      *  randomly returns a event String
@@ -160,5 +202,16 @@ public class EventLoader {
 
     public static HashMap<String, Integer> getRejectCostLookup() {
         return rejectCostLookup;
+    }
+
+    public static void resetStatics(){
+        eventList = new ArrayList<>();
+        descriptionLookup = new HashMap<>();
+        acceptGainLookup = new HashMap<>();
+        acceptCostLookup = new HashMap<>();
+        neutralGainLookup = new HashMap<>();
+        neutralCostLookup = new HashMap<>();
+        rejectGainLookup = new HashMap<>();
+        rejectCostLookup = new HashMap<>();
     }
 }

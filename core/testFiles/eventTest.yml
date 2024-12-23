@@ -1,0 +1,25 @@
+#sets number of actions to use
+eventList: [event1,event2]
+#satisfaction,Cost
+event1:
+  - Description: "description"
+  #what happens if you accept
+  - acceptGain: 300
+  - acceptCost: 1000
+  #what happens if you don't do anything
+  - neutralGain: -100
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: -100
+  - rejectCost: -2000
+event2:
+  - Description: "description2"
+  #what happens if you accept
+  - acceptGain: 100
+  - acceptCost: 500
+  #what happens if you don't do anything
+  - neutralGain: 100
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: -300
+  - rejectCost: 0
