@@ -1,11 +1,11 @@
-package CampusTycoon;
-
-import CampusTycoon.GameLogic.Event;
-import CampusTycoon.GameLogic.EventLoader;
+package CampusTycoon.GameLogic;
 
 
 
-import CampusTycoon.UI.Tuple;
+
+
+
+import CampusTycoon.Game.GameLogic.EventLoader;
 import org.junit.jupiter.api.Test;
 
 import com.badlogic.gdx.files.FileHandle;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import static CampusTycoon.GameLogic.EventLoader.*;
+
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,7 +33,7 @@ public class EventFileHandlerTest {
 
     /**
      * Tests if events can be loaded from valid and if the correct Exception is flagged if invalid
-     * @throws IOException
+     * @throws IOException If there's an issue with the test file that not expected
      */
     @Test
     public void test_load_events() throws IOException {
@@ -78,7 +78,7 @@ public class EventFileHandlerTest {
         new EventLoader(validFile, true);
         assertEquals(eventList,EventLoader.getEventList());
         assertEquals(acceptGainLookup,EventLoader.getAcceptGainLookup());
-        assertEquals(acceptCostLookup,EventLoader.getAcceptCostLookup());
+        assertEquals(acceptCostLookup, EventLoader.getAcceptCostLookup());
         assertEquals(neutralGainLookup,EventLoader.getNeutralGainLookup());
         assertEquals(neutralCostLookup,EventLoader.getNeutralCostLookup());
         assertEquals(rejectGainLookup,EventLoader.getRejectGainLookup());
