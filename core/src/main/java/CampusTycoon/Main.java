@@ -16,12 +16,12 @@ public class Main extends Game {
         //Gdx.graphics.setContinuousRendering(false); // Interesting function to explore later
         //(^if rendering performance becomes an issue)
 
-		
+
         Gdx.graphics.setTitle("Campus Tycoon");
         Gdx.input.setInputProcessor(new InputHandler());
 
         //Loads events
-        new EventLoader();
+        new EventLoader("event.yml");
 
 
 		// Sets the screen to the Main Menu
