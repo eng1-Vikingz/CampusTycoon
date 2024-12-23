@@ -31,7 +31,10 @@ public class EventFileHandlerTest {
     String validFile = "testFiles/eventTest.yml";
     String invalidFile = "testFiles/eventTestInvalid.yml";
 
-
+    /**
+     * Tests if events can be loaded from valid and if the correct Exception is flagged if invalid
+     * @throws IOException
+     */
     @Test
     public void test_load_events() throws IOException {
 
@@ -91,6 +94,10 @@ public class EventFileHandlerTest {
         System.out.println("> Finished test_load_events()");
     }
 
+
+    /**
+     * Checks that the method lookup switch case working
+     */
     @Test
     public void test_method_actions(){
         HashMap<String, Integer> acceptGainLookup = new HashMap<>();
@@ -140,8 +147,10 @@ public class EventFileHandlerTest {
         assertEquals(neutralCostLookup.get("event2"),EventLoader.getActionCost("neutral","event2"));
         assertEquals(rejectCostLookup.get("event2"),EventLoader.getActionCost("reject","event2"));
 
-        EventLoader.resetStatics();
+        //no event
+        assertEquals(EventLoader.getActionCost("null","null"),-1);
 
+        EventLoader.resetStatics();
         System.out.println("> Finished test_method_actions()");
     }
 
