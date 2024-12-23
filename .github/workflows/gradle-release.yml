@@ -51,7 +51,7 @@ jobs:
       run: ./gradlew lwjgl:jar
       
     - name: Make Release
-      uses: actions/create-release@v4
+      uses: ncipollo/release-action@v1
       id: Create_release
       with:
         name: Release ${{github.ref_name}}
