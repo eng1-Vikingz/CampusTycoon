@@ -1,5 +1,6 @@
 package CampusTycoon;
 
+import CampusTycoon.Util.GameMusic;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -21,9 +22,13 @@ public class Main extends Game {
         Gdx.graphics.setTitle("Campus Tycoon");
         Gdx.input.setInputProcessor(new InputHandler());
 
+
         //Loads events
         new EventLoader("event.yml");
 
+        //Initialises Music and starts Music
+        new GameMusic();
+        GameMusic.play();
 
 		// Sets the screen to the Main Menu
 		Screen screen = new StartScreen();

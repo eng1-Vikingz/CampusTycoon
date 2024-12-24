@@ -6,21 +6,20 @@ import java.util.List;
 
 import CampusTycoon.UI.Window;
 import CampusTycoon.Util.Drawer;
+import CampusTycoon.Util.GameMusic;
 import CampusTycoon.Util.InputHandler;
 import CampusTycoon.Util.ScreenUtils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -43,6 +42,10 @@ public class SettingsScreen implements Screen {
     private final Stage stage;
     private final Skin skin;
     private final Label resolutionLabel;
+    private final Slider MusicVolumeSlider;
+    private final Label MusicVolumeLabel;
+    private String musicVolume;
+    private String soundVolume;
 
 
     //Used to resize UI renderer to new screen size
@@ -113,19 +116,27 @@ public class SettingsScreen implements Screen {
             return true;
         });
 
+        // Create Music volume slider
+        MusicVolumeSlider = new Slider(0, 1, 0.1f, false, skin); // Min: 0, Max: 100, Step: 1
+        MusicVolumeSlider.setValue(GameMusic.getVolume());
+        MusicVolumeLabel = new Label(musicVolume, skin);
+        this.musicVolume = "Music Volume: " + MusicVolumeSlider.getValue();
+
 
         // Add back button to table
-
         table.row().padTop(20);
         table.row();
         table.add(resolutionLabel);
         table.row().padTop(50);
-        table.add(windowButton).padBottom(55);
-        table.row().padBottom(50);
-        table.add(fullscreenButton);
+        table.add(fullscreenButton).padBottom(10);;
+        table.row().padBottom(25);
+        table.add(windowButton);
         table.row();
+        table.add(MusicVolumeLabel);
+        table.row();
+        table.add(MusicVolumeSlider);
+        table.row().padBottom(50);
         table.add(backBtn).pad(PADDING).align(Align.center);
-
 
         stage.addActor(table);
 
@@ -168,11 +179,28 @@ public class SettingsScreen implements Screen {
         //clears screen
         com.badlogic.gdx.utils.ScreenUtils.clear(Color.BLACK);
         Drawer.drawAll();
+
+
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+            //Go Back button here
+        }
+
+        //Update labels strings
+        //soundVolume = "Sound Volume: " + Math.round(SoundVolumeSlider.getValue() * 10);
+        musicVolume = "Music Volume: " + Math.round(MusicVolumeSlider.getValue() * 10);
+
+        //Update Values
+        //GameSounds.setVolume(SoundVolumeSlider.getValue());
+        GameMusic.setVolume(MusicVolumeSlider.getValue());
+
+        //Apply update
+        //SoundVolumeLabel.setText(soundVolume);
+        MusicVolumeLabel.setText(musicVolume);
         resolutionLabel.setText(CurrentWindowSize());
 
 
-        batch.begin();
 
+        batch.begin();
         stage.act(delta);
         stage.draw();
         batch.end();

@@ -1,6 +1,7 @@
 .gitkeep
 Accept.png
 assets copy.txt
+audio/Background_Music.ogg
 Backdrop.png
 Buildings/Accommodation.png
 Buildings/AccommodationTransparent.png
@@ -73,6 +74,7 @@ QuestionMark.png
 Reject.png
 Satisfaction.png
 Settings.png
+test.txt
 TestButton.png
 Tiles/Grass.png
 Tiles/Lake.png

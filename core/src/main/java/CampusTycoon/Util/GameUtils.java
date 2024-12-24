@@ -28,6 +28,9 @@ public class GameUtils {
 	public static Map map;
 	public static Event currentEvent;
 
+
+
+
 	public static void startGame() {
 		map = new Map();
 		Camera.map = map;
