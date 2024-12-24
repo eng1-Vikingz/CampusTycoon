@@ -15,6 +15,7 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -88,8 +89,7 @@ public class SettingsScreen implements Screen {
         backBtn.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
-                ScreenUtils.OpenStartScreen();
-                ScreenUtils.resetInputProcessor();
+                goBack();
             }
         });
 
@@ -142,6 +142,17 @@ public class SettingsScreen implements Screen {
 
     }
 
+    private void goBack() {
+        if (ScreenUtils.GameActive) {
+            ScreenUtils.resetInputProcessor();
+            ScreenUtils.openGameplayScreen();
+        }
+        else {
+            ScreenUtils.OpenStartScreen();
+            ScreenUtils.resetInputProcessor();
+        }
+    }
+
     private void createTitleLbl(){
         Label title = new Label("Settings", skin);
         title.setColor(Color.WHITE);
@@ -177,12 +188,15 @@ public class SettingsScreen implements Screen {
     @Override
     public void render(float delta) {
         //clears screen
+        Gdx.gl.glClearColor(0.1f, 0.1f, 0.4f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         com.badlogic.gdx.utils.ScreenUtils.clear(Color.BLACK);
-        Drawer.drawAll();
+
+
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
-            //Go Back button here
+            goBack();
         }
 
         //Update labels strings
@@ -256,8 +270,7 @@ public class SettingsScreen implements Screen {
 
     @Override
     public void hide() {
-        Drawer.clear();
-        InputHandler.clear();
+
     }
 
     public void takeInput(){

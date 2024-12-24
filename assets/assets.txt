@@ -70,6 +70,7 @@ Neutral.png
 New Game.png
 Person.png
 Placeholder.png
+png/background.png
 QuestionMark.png
 Reject.png
 Satisfaction.png
