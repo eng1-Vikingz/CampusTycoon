@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import CampusTycoon.UI.Window;
-import CampusTycoon.Util.Drawer;
-import CampusTycoon.Util.GameMusic;
-import CampusTycoon.Util.InputHandler;
-import CampusTycoon.Util.ScreenUtils;
+import CampusTycoon.Util.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
@@ -45,8 +42,11 @@ public class SettingsScreen implements Screen {
     private final Label resolutionLabel;
     private final Slider MusicVolumeSlider;
     private final Label MusicVolumeLabel;
+    private final Slider SoundVolumeSlider;
+    private final Label SoundVolumeLabel;
     private String musicVolume;
     private String soundVolume;
+
 
 
     //Used to resize UI renderer to new screen size
@@ -60,6 +60,9 @@ public class SettingsScreen implements Screen {
 
     //Stores all labels
     List<Label> labels;
+
+    //Sound Timer
+    private float haltTimer = 0f;
 
     // Container for drawing labels to the screen
     Table table;
@@ -123,6 +126,14 @@ public class SettingsScreen implements Screen {
         this.musicVolume = "Music Volume: " + MusicVolumeSlider.getValue();
 
 
+        // Create Sound volume slider
+        SoundVolumeSlider = new Slider(0, 1, 0.1f, false, skin); // Min: 0, Max: 100, Step: 1
+        SoundVolumeSlider.setValue(GameSounds.getVolume());
+        SoundVolumeLabel = new Label(soundVolume, skin);
+        this.soundVolume = "Sound Volume: " + SoundVolumeSlider.getValue();
+
+
+
         // Add back button to table
         table.row().padTop(20);
         table.row();
@@ -135,9 +146,12 @@ public class SettingsScreen implements Screen {
         table.add(MusicVolumeLabel);
         table.row();
         table.add(MusicVolumeSlider);
+        table.row();
+        table.add(SoundVolumeLabel);
+        table.row();
+        table.add(SoundVolumeSlider);
         table.row().padBottom(50);
         table.add(backBtn).pad(PADDING).align(Align.center);
-
         stage.addActor(table);
 
     }
@@ -193,22 +207,25 @@ public class SettingsScreen implements Screen {
         com.badlogic.gdx.utils.ScreenUtils.clear(Color.BLACK);
 
 
-
-
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             goBack();
         }
 
+        if (SoundVolumeSlider.isDragging() && haltTimer >= 0.5){
+            GameSounds.playPlacedBuilding();
+            haltTimer = 0;
+        }
+
         //Update labels strings
-        //soundVolume = "Sound Volume: " + Math.round(SoundVolumeSlider.getValue() * 10);
+        soundVolume = "Sound Volume: " + Math.round(SoundVolumeSlider.getValue() * 10);
         musicVolume = "Music Volume: " + Math.round(MusicVolumeSlider.getValue() * 10);
 
         //Update Values
-        //GameSounds.setVolume(SoundVolumeSlider.getValue());
+        GameSounds.setVolume(SoundVolumeSlider.getValue());
         GameMusic.setVolume(MusicVolumeSlider.getValue());
 
         //Apply update
-        //SoundVolumeLabel.setText(soundVolume);
+        SoundVolumeLabel.setText(soundVolume);
         MusicVolumeLabel.setText(musicVolume);
         resolutionLabel.setText(CurrentWindowSize());
 
@@ -218,6 +235,7 @@ public class SettingsScreen implements Screen {
         stage.act(delta);
         stage.draw();
         batch.end();
+        haltTimer += delta;
     }
 
     /**

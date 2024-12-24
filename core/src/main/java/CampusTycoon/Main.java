@@ -1,6 +1,7 @@
 package CampusTycoon;
 
 import CampusTycoon.Util.GameMusic;
+import CampusTycoon.Util.GameSounds;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -29,6 +30,10 @@ public class Main extends Game {
         //Initialises Music and starts Music
         new GameMusic();
         GameMusic.play();
+
+        //Initialise Sounds and starts Sounds
+        new GameSounds();
+
 
 		// Sets the screen to the Main Menu
 		Screen screen = new StartScreen();

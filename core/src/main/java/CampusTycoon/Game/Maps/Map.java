@@ -11,6 +11,7 @@ import CampusTycoon.Game.Tiles.*;
 import CampusTycoon.UI.Systems.BuildingDisplay;
 import CampusTycoon.UI.Systems.MapDisplay;
 import CampusTycoon.Util.Drawer;
+import CampusTycoon.Util.GameSounds;
 import CampusTycoon.Util.MapUtils;
 import CampusTycoon.Util.Types.Coordinate;
 
@@ -80,15 +81,18 @@ public class Map {
 		building.setPosition(position);
 		placing = false;
 		if (!mapUtils.buildingPlaceable(building)) {
+            GameSounds.playPlaceError();
 			return; // Building location invalid
 		}
 
 		if (mapUtils.outsideMap(position)) {
 			// Tried to place a building in the void, so places a space station instead
 			building = new SpaceStation(position);
+            GameSounds.playPlaceError();
 		}
 
         if (!MoneyHandler.addMoney(-building.cost)){
+            GameSounds.playPlaceError();
             return; //no money
         }
 		// Else if placing and building location valid:
@@ -101,5 +105,6 @@ public class Map {
 		building.incrementBuildingCounter(); // Number go up (by 1)
 
 		SatisfactionMeter.updateSatisfactionScore(); // Placing buildings satisfies students!!!
+        GameSounds.playPlacedBuilding();
 	}
 }
