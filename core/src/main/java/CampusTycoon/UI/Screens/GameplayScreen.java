@@ -1,5 +1,6 @@
 package CampusTycoon.UI.Screens;
 
+import CampusTycoon.UI.Components.BankruptMenu;
 import CampusTycoon.UI.Components.PauseMenu;
 import CampusTycoon.UI.Components.PopupMenu;
 import CampusTycoon.Util.InputHandler;
@@ -29,6 +30,9 @@ public class GameplayScreen implements Screen{
     private Skin skin;
     private PauseMenu pauseMenu;
     private boolean paused;
+    private BankruptMenu bankruptMenu;
+    private boolean bankrupt;
+
 
 
     @Override
@@ -44,7 +48,9 @@ public class GameplayScreen implements Screen{
             eventCounter = 0f;
             this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
             pauseMenu = new PauseMenu(skin);
+            bankruptMenu = new BankruptMenu(skin);
             paused = false;
+            bankrupt = false;
             CampusTycoon.Util.ScreenUtils.GameActive = true;
         }
     }
@@ -107,16 +113,18 @@ public class GameplayScreen implements Screen{
 
     @Override
     public void pause() {
-        if (!paused) {
-            Drawer.stage.addActor(pauseMenu);
-            pauseMenu.setPosition((Drawer.stage.getWidth() - pauseMenu.getWidth()) / 2, (Drawer.stage.getHeight() - pauseMenu.getHeight()) / 2);
-            Gdx.input.setInputProcessor(Drawer.stage);
-            paused = true;
-        }
-        else{
-            CampusTycoon.Util.ScreenUtils.resetInputProcessor();
-            pauseMenu.remove();
-            paused = false;
+        if (!bankrupt) {
+            if (!paused) {
+                Drawer.stage.addActor(pauseMenu);
+                pauseMenu.toFront();
+                pauseMenu.setPosition((Drawer.stage.getWidth() - pauseMenu.getWidth()) / 2, ((Drawer.stage.getHeight() - pauseMenu.getHeight()) / 2)-50);
+                Gdx.input.setInputProcessor(Drawer.stage);
+                paused = true;
+            } else {
+                CampusTycoon.Util.ScreenUtils.resetInputProcessor();
+                pauseMenu.remove();
+                paused = false;
+            }
         }
     }
 
@@ -134,4 +142,15 @@ public class GameplayScreen implements Screen{
         // Destroy screen's assets here.
     }
 
+    public void displayBankruptWarning() {
+        this.bankrupt = true;
+        this.paused = true;
+        Drawer.stage.addActor(bankruptMenu);
+        bankruptMenu.setPosition((Drawer.stage.getWidth() - pauseMenu.getWidth()) / 2, ((Drawer.stage.getHeight() - pauseMenu.getHeight()) / 2)-50);
+        Gdx.input.setInputProcessor(Drawer.stage);
+    }
+
+    public void setBankrupt(boolean bankrupt) {
+        this.bankrupt = bankrupt;
+    }
 }

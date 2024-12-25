@@ -8,11 +8,14 @@ import CampusTycoon.Game.Buildings.*;
 import CampusTycoon.Game.GameLogic.MoneyHandler;
 import CampusTycoon.Game.GameLogic.SatisfactionMeter;
 import CampusTycoon.Game.Tiles.*;
+import CampusTycoon.UI.Components.BankruptMenu;
+import CampusTycoon.UI.Screens.GameplayScreen;
 import CampusTycoon.UI.Systems.BuildingDisplay;
 import CampusTycoon.UI.Systems.MapDisplay;
 import CampusTycoon.Util.Drawer;
 import CampusTycoon.Util.GameSounds;
 import CampusTycoon.Util.MapUtils;
+import CampusTycoon.Util.ScreenUtils;
 import CampusTycoon.Util.Types.Coordinate;
 
 public class Map {
@@ -92,9 +95,11 @@ public class Map {
 		}
 
         if (!MoneyHandler.addMoney(-building.cost)){
+            ((GameplayScreen) ScreenUtils.gameplayScreen).displayBankruptWarning();
             GameSounds.playPlaceError();
             return; //no money
         }
+
 		// Else if placing and building location valid:
 		buildings.add(building);
         building.buildingName = placementType.replaceAll("\\d","");

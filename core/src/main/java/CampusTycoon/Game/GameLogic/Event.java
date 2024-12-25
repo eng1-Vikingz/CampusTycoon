@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import CampusTycoon.UI.Screens.GameplayScreen;
 import CampusTycoon.UI.Systems.EventPopup;
+import CampusTycoon.Util.GameSounds;
 import CampusTycoon.Util.GameUtils;
+import CampusTycoon.Util.ScreenUtils;
 
 public class Event {
 	public EventPopup eventUI;
@@ -50,24 +53,42 @@ public class Event {
 
 	// Temporary choice implementations, will change to abstract functions later (as each individual event should decide what the outcome of choices are)
 	public void acceptOption() {
-		SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("accept",event));
-        allowChoice("accept");
+        if (allowChoice("accept")) {
+            SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("accept", event));
+            this.End();
+        }
+        else{
+            ((GameplayScreen) ScreenUtils.gameplayScreen).displayBankruptWarning();
+            GameSounds.playPlaceError();
+        }
     }
 	public void neutralOption() {
-        SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("neutral",event));
-        allowChoice("neutral");
+        if (allowChoice("neutral")) {
+            SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("neutral", event));
+            this.End();
+        }
+        else{
+            ((GameplayScreen) ScreenUtils.gameplayScreen).displayBankruptWarning();
+            GameSounds.playPlaceError();
+        }
     }
 	public void rejectOption() {
-        SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("reject",event));
-        allowChoice("reject");
+        if (allowChoice("reject")) {
+            SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("reject", event));
+            this.End();
+        }
+        else{
+            ((GameplayScreen) ScreenUtils.gameplayScreen).displayBankruptWarning();
+            GameSounds.playPlaceError();
+        }
     }
 
-    private void allowChoice(String reject) {
-        if (MoneyHandler.addMoney(-EventLoader.getActionCost(reject, event))) {
-            this.End();
+    private boolean allowChoice(String choice) {
+        if (MoneyHandler.addMoney(-EventLoader.getActionCost(choice, event))) {
+            return true;
         } else {
-            //todo add alerts
-            System.out.println("player is out of money");
+            System.out.println("no money");
+            return false;
         }
     }
 

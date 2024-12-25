@@ -5,7 +5,7 @@ event1:
   - Description: "description"
   #what happens if you accept
   - acceptGain: 300
-  - acceptCost: 1000
+  - acceptCost: 10000
   #what happens if you don't do anything
   - neutralGain: -100
   - neutralCost: 0
