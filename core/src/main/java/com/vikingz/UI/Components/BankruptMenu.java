@@ -24,7 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  * To close the pause menu, the user has to press the esc button again.
  */
 public class BankruptMenu extends Window {
-
+    TextButton quitBtn;
 
     /**
      * Creates a new pause menu
@@ -45,7 +45,7 @@ public class BankruptMenu extends Window {
         this.add(message).padBottom(20).row();
         this.setBackground(new TextureRegionDrawable(new Texture("png/background.png")));
 
-        TextButton quitBtn = new TextButton("Dismiss", skin);
+        quitBtn = new TextButton("Dismiss", skin);
         this.add(quitBtn).pad(10);
 
         // Created for yes - no game events
@@ -59,5 +59,9 @@ public class BankruptMenu extends Window {
                 remove();
             }
         });
+    }
+
+    public void clickQuit(){
+        quitBtn.toggle();
     }
 }

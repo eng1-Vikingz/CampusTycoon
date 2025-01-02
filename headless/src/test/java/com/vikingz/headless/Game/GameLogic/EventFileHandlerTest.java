@@ -11,9 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EventFileHandlerTest {
 
+
+    // !!! WARNING Since I had to re do some of the packages, these tests now 
+    // !!! take the files from the testFiles folder found under the headless folder
+    // !!! and NOT the core folder like it did originally.
+
     //Test files
     String validFile = "testFiles/eventTest.yml";
     String invalidFile = "testFiles/eventTestInvalid.yml";
+
+    // !!! 
 
     /**
      * Tests if events can be loaded from valid and if the correct Exception is flagged if invalid

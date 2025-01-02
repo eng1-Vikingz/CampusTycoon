@@ -1,5 +1,5 @@
 apply plugin: 'application'
-
+apply plugin: 'jacoco'
 
 java.sourceCompatibility = 17
 java.targetCompatibility = 17
@@ -43,4 +43,8 @@ tasks.register('dist') {
 
 test{
   useJUnitPlatform()
+}
+
+jacocoTestReport {
+  sourceSets project(':core').sourceSets.main
 }
