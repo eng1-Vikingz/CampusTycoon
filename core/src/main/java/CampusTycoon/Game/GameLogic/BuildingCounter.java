@@ -56,6 +56,29 @@ public class BuildingCounter {
 				return 4; // Default building
 		}
 	}
+
+	public static int getBuildingCountByBuilding(String building){
+		switch (building) {
+			case "Accommodation":
+				return buildingCounts[0];
+
+			case "Study":
+				return buildingCounts[1];
+				
+			case "Cafeteria":
+				return buildingCounts[2];
+
+			case "Relaxation":
+				return buildingCounts[3];
+
+			case "default":
+				return buildingCounts[4];
+
+			default:
+				return -1;
+		}
+
+	}
 	
 	
 	public static void increaseBuildingCounter(String building, int value) {

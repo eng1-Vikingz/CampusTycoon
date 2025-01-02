@@ -10,7 +10,7 @@ public class TupleTest {
     
 
     @Test 
-    public void test_createTuple(){
+    public void testCreateTuple(){
         
         Tuple<String, Integer> a = new Tuple<String,Integer>("test", 5);
 
@@ -21,7 +21,7 @@ public class TupleTest {
 
 
     @Test
-    public void test_toString(){
+    public void testToString(){
 
         Tuple<String, Integer> a = new Tuple<String,Integer>("test", 5);
 
@@ -31,11 +31,27 @@ public class TupleTest {
     }
 
     @Test
-    public void test_equals(){
+    public void testEquals(){
         Tuple<String, Integer> a = new Tuple<String,Integer>("test", 5);
         Tuple<String, Integer> b = new Tuple<String,Integer>("test", 5);
 
+        Tuple<String, Integer> c = new Tuple<String,Integer>("failTest", 999);
+        Tuple<String, String> d = new Tuple<String,String>("failTest", "999");
+        
+        Tuple<String, Integer> e = new Tuple<String,Integer>("test", 999);
+        Tuple<String, Integer> f = new Tuple<String,Integer>("999", 5);
+
+
+        assertTrue(a.equals(a));
         assertTrue(a.equals(b));
+        
+        assertFalse(a.equals(new Object()));
+        assertFalse(a.equals(c));
+        assertFalse(a.equals(null));
+        assertFalse(a.equals(d));
+
+        assertFalse(a.equals(e));
+        assertFalse(a.equals(f));
 
     }
 

@@ -1,4 +1,4 @@
-package CampusTycoon.GameLogic;
+package CampusTycoon.Game.GameLogic;
 
 import CampusTycoon.Game.GameLogic.EventLoader;
 import org.junit.jupiter.api.Test;

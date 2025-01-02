@@ -1,5 +1,7 @@
 	package CampusTycoon.Game.Buildings;
 
+import java.beans.Transient;
+
 import CampusTycoon.Game.GameLogic.BuildingCounter;
 import CampusTycoon.UI.Components.MapBuilding;
 import CampusTycoon.UI.Components.Component.Anchor;

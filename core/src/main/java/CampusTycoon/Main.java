@@ -44,8 +44,6 @@ public class Main extends Game {
 	@Override
 	public void render () {
 
-
-
 		if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
 		if (ScreenUtils.currentScreen != screen) { setScreen(ScreenUtils.currentScreen); }
 	}

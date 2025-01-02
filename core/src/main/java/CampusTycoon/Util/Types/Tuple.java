@@ -31,8 +31,9 @@ public class Tuple<X, Y> {
 
 		Tuple<?, ?> tuple = (Tuple<?, ?>) o;
 
-		return (x == null ? tuple.x == null : x.equals(tuple.x)) && (y == null ? tuple.y == null : y.equals(tuple.y));
+		return (x.equals(tuple.x) && y.equals(tuple.y));
 	}
+
 
 
 

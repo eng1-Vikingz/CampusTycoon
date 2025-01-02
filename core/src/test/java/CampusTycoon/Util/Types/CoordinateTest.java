@@ -1,6 +1,8 @@
 package CampusTycoon.Util.Types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +10,7 @@ public class CoordinateTest {
     
 
     @Test
-    public void test_createCoordinate_defaultConstructor(){
+    public void testCreateCoordinate_defaultConstructor(){
 
         Coordinate newCoord = new Coordinate();
 
@@ -17,7 +19,7 @@ public class CoordinateTest {
     }
 
     @Test
-    public void test_createCoordinate_argsConstructor(){
+    public void testCreateCoordinate_argsConstructor(){
 
         Coordinate newCoord = new Coordinate(4,5);
 
@@ -26,7 +28,8 @@ public class CoordinateTest {
     }
 
 
-    @Test void test_coordDistance(){
+    @Test 
+    void testCoordDistance(){
 
         Coordinate x = new Coordinate(1,1);
         Coordinate y = new Coordinate(2,2);
@@ -34,5 +37,21 @@ public class CoordinateTest {
         assertEquals(1.414, y.distance(x), 0.1);
 
     }
+
+    @Test
+    void testEquals(){
+
+        Coordinate a = new Coordinate(1,2);
+        Coordinate b = new Coordinate(1,2);
+        Coordinate c = new Coordinate(999,999);
+
+        assertTrue(a.equals(a));
+        assertTrue(a.equals(b));
+        
+        assertFalse(a.equals(c));
+        assertFalse(a.equals(null));
+        assertFalse(a.equals(new Object()));
+
+    }    
 
 }

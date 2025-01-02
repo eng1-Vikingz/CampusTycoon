@@ -15,10 +15,5 @@ public class SpaceStation extends Building {
         score = 9999;
 	}
 
-
-	@Override
-	public void incrementBuildingCounter() {
-		// Do nothing because space stations are special
-	}
 }
 
