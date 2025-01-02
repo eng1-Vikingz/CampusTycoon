@@ -31,7 +31,6 @@ class BuildingsTest {
     @Test
     public void testSetPosition(){
 
-
         Coordinate pos = new Coordinate(10, 15);
 
         acom.setPosition(pos);
@@ -45,7 +44,6 @@ class BuildingsTest {
         assertEquals(new Coordinate(10,15), relax.position);
         assertEquals(new Coordinate(10,15), space.position);
         assertEquals(new Coordinate(10,15), study.position);
-        assertEquals(true, false);
     }   
 
 

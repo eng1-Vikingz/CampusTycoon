@@ -5,7 +5,7 @@ import CampusTycoon.UI.Components.MapBuilding;
 import CampusTycoon.UI.Components.Component.Anchor;
 import CampusTycoon.Util.Types.Coordinate;
 
-public abstract class Building {
+public class Building {
 	public String buildingName = "null"; // Used in the BuildingCounter
 	public MapBuilding drawInfo;
 	public Coordinate position;
