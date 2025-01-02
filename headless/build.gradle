@@ -1,14 +1,15 @@
 apply plugin: 'application'
 apply plugin: 'jacoco'
 
+
 java.sourceCompatibility = 17
 java.targetCompatibility = 17
 if (JavaVersion.current().isJava9Compatible()) {
         compileJava.options.release.set(17)
 }
-
 sourceSets.test.resources.srcDirs += [rootProject.file('assets').path] 
-mainClassName = 'com.vikingz.headless.HeadlessLauncher'
+
+mainClassName = 'com.vikingz.campustycoon.headless.HeadlessLauncher'
 application.setMainClass(mainClassName)
 eclipse.project.name = appName + '-headless'
 
@@ -17,7 +18,7 @@ dependencies {
   implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
   implementation project(':core')
 
-  testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation platform('org.junit:junit-bom:5.10.0')
   testImplementation 'org.junit.jupiter:junit-jupiter'
   testImplementation 'org.mockito:mockito-core:5.11.0'
 }
