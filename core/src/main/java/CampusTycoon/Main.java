@@ -9,6 +9,7 @@ import com.badlogic.gdx.Screen;
 import CampusTycoon.Game.GameLogic.EventLoader;
 import CampusTycoon.UI.Screens.StartScreen;
 import CampusTycoon.Util.InputHandler;
+
 import CampusTycoon.Util.ScreenUtils;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
