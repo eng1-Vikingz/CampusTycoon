@@ -8,7 +8,6 @@ import CampusTycoon.Game.Buildings.*;
 import CampusTycoon.Game.GameLogic.MoneyHandler;
 import CampusTycoon.Game.GameLogic.SatisfactionMeter;
 import CampusTycoon.Game.Tiles.*;
-import CampusTycoon.UI.Components.BankruptMenu;
 import CampusTycoon.UI.Screens.GameplayScreen;
 import CampusTycoon.UI.Systems.BuildingDisplay;
 import CampusTycoon.UI.Systems.MapDisplay;

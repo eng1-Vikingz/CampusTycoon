@@ -121,6 +121,7 @@ public class LeaderboardFileHandler{
         }
 
         for(int i = 0; i < 5; i++){
+            
 
             try{
                 int index = getMax(values);

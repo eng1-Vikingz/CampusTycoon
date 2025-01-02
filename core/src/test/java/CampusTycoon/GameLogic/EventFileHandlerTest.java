@@ -1,29 +1,13 @@
 package CampusTycoon.GameLogic;
 
-
-
-
-
-
 import CampusTycoon.Game.GameLogic.EventLoader;
 import org.junit.jupiter.api.Test;
 
-import com.badlogic.gdx.files.FileHandle;
-import org.yaml.snakeyaml.Yaml;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-
-
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EventFileHandlerTest {
 

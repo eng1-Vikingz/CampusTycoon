@@ -1,11 +1,11 @@
-package CampusTycoon.Game.Buildings;
+	package CampusTycoon.Game.Buildings;
 
 import CampusTycoon.Game.GameLogic.BuildingCounter;
 import CampusTycoon.UI.Components.MapBuilding;
 import CampusTycoon.UI.Components.Component.Anchor;
 import CampusTycoon.Util.Types.Coordinate;
 
-public class Building {
+public abstract class Building {
 	public String buildingName = "null"; // Used in the BuildingCounter
 	public MapBuilding drawInfo;
 	public Coordinate position;
