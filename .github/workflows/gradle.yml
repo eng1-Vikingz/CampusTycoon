@@ -42,7 +42,7 @@ jobs:
       run: ./gradlew build
 
     - name: Build Jar for artifacts
-    - run: ./gradlew jar
+      run: ./gradlew jar
 
     - name: Upload jar to actions artifacts
       uses: actions/upload-artifact@v3.1.1
