@@ -18,7 +18,7 @@ on:
 
 
 jobs:
-  build:
+  Release:
     name: Create Release
     runs-on: ubuntu-latest
     permissions:
@@ -61,12 +61,16 @@ jobs:
       with:
         name: CampusTycoon-${{github.ref_name}}.jar
         path: lwjgl3/build/libs/
+        
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.1
+      with:
+        name: CampusTycoon-${{github.ref_name}}.jar
       
     - name: release
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          lwjgl3/build/libs/CampusTycoon-${{github.ref_name}}.jar
+        files: CampusTycoon-${{github.ref_name}}.jar
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
