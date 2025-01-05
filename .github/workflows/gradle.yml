@@ -73,12 +73,12 @@ jobs:
       - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
         uses: actions/download-artifact@v4
         with:
-          name: CampusTycoon-${{github.ref_name}}.jar 
+          name: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
         
       - name: release
         uses: softprops/action-gh-release@v1
         with:
-          files: CampusTycoon-${{github.ref_name}}.jar
+          files: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
