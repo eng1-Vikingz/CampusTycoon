@@ -116,4 +116,12 @@ public class Timer{
 			BuildingCounter.reset();
         }
     }
+
+    /**
+     * Checks if the timer is running.
+     * @return If the timer is running.
+     */
+    public boolean isRunning() {
+        return isRunning;
+    }
 }

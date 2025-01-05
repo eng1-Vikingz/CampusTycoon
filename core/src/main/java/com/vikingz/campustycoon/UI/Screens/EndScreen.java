@@ -20,6 +20,7 @@ public class EndScreen implements Screen{
      * Constructor for the EndScreen class.
      */
     public EndScreen() {
+        
     }
 
     /**

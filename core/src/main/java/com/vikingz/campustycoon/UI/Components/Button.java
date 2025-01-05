@@ -115,29 +115,29 @@ public class Button extends Component {
 
 	// Toggles which building is being placed.
 
-	protected static void toggleAccommodationBuilding(Boolean isAction) {
+	public static void toggleAccommodationBuilding(Boolean isAction) {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.AccommodationBuilding);
 		printBuildingChange();
 	}
-	protected static void toggleStudyBuilding(Boolean isAction) {
+	public static void toggleStudyBuilding(Boolean isAction) {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.StudyBuilding);
 		printBuildingChange();
 	}
-	protected static void toggleCafeteriaBuilding(Boolean isAction) {
+	public static void toggleCafeteriaBuilding(Boolean isAction) {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.CafeteriaBuilding);
 		printBuildingChange();
 	}
-	protected static void toggleRelaxationBuilding(Boolean isAction) {
+	public static void toggleRelaxationBuilding(Boolean isAction) {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.RelaxationBuilding);
 		printBuildingChange();
 	}
 
-	protected static void toggleRelaxation2Building(Boolean isAction) {
+	public static void toggleRelaxation2Building(Boolean isAction) {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.RelaxationBuilding2);
 		printBuildingChange();
 	}
 
-	private static void printBuildingChange() {
+	public static void printBuildingChange() {
 		System.out.println(
 			"Toggled building placement mode to: " + GameUtils.map.placing +
 			"\nToggled building placement type to: " + GameUtils.map.placementType);

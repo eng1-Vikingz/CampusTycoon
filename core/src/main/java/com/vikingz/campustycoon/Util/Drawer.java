@@ -20,7 +20,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class Drawer {
 	private static List<DrawInfo> drawQueue = new LinkedList<>();
-	private static SpriteBatch spriteBatch = new SpriteBatch();
+	public static SpriteBatch spriteBatch = new SpriteBatch();
 	private static BitmapFont font = new BitmapFont();
 	private static Map<String, Texture>
 		textures = new HashMap<String, Texture>(); // Note: this exists because I learned that generating hundreds of new textures every second is NOT a good idea
@@ -31,6 +31,7 @@ public class Drawer {
 
 	// Added stage
 	public static Stage stage = new Stage();
+
 	
 	private static class DrawInfo { // Cursed static class with non-static members
 		public int layer; // Used to determine draw order

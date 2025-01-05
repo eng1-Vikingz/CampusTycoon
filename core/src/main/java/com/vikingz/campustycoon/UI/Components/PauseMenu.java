@@ -25,6 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  */
 public class PauseMenu extends Window {
 
+    public TextButton settingsBtn, quitBtn;
 
     /**
      * Creates a new pause menu
@@ -46,9 +47,9 @@ public class PauseMenu extends Window {
         this.setBackground(new TextureRegionDrawable(new Texture("png/background.png")));
 
 
-        TextButton settingsBtn = new TextButton("Settings", skin);
+        settingsBtn = new TextButton("Settings", skin);
 
-        TextButton quitBtn = new TextButton("Quit", skin);
+        quitBtn = new TextButton("Quit", skin);
         this.add(settingsBtn).pad(10);
         this.add(quitBtn).pad(10);
 

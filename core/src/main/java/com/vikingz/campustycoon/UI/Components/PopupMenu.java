@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  */
 public class PopupMenu extends Window {
 
-    private String Message = "";
+    private String message = "";
 
 
     // Skin for the popup
@@ -25,11 +25,13 @@ public class PopupMenu extends Window {
     /**
      * Creates a new Popup menu
      * @param skin Skin for the menu
-     * @param Message Message to be displayed in the popup
+     * @param message Message to be displayed in the popup
      */
-    public PopupMenu(Skin skin, String Message) {
+    public PopupMenu(Skin skin, String message) {
 
         super("Popup", skin);
+
+        this.message = message;
 
         this.setSize(600, 400);
         this.setModal(true);
@@ -39,8 +41,8 @@ public class PopupMenu extends Window {
         this.skin = skin;
 
 
-        Label message = new Label(Message, skin);
-        this.add(message).padBottom(20).row();
+        Label messagelbl = new Label(message, skin);
+        this.add(messagelbl).padBottom(20).row();
 
     }
 
@@ -118,10 +120,10 @@ public class PopupMenu extends Window {
 
     //Getters and Setters
     public String getMessage() {
-        return Message;
+        return message;
     }
     public void setMessage(String message) {
-        Message = message;
+        this.message = message;
     }
 
 

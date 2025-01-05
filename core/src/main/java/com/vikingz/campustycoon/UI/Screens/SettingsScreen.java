@@ -69,18 +69,21 @@ public class SettingsScreen implements Screen {
     // Container for drawing labels to the screen
     Table table;
 
+    public SettingsScreen() {
+        this(new SpriteBatch());
+    }
 
     /**
      * Constructor for the SettingsScreen
      */
-    public SettingsScreen() {
+    public SettingsScreen(SpriteBatch batch) {
 
         super();
 
         this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
 
-        batch = new SpriteBatch();
+        this.batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
 
         font = new BitmapFont();

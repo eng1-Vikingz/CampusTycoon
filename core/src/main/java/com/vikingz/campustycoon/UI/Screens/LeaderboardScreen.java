@@ -79,7 +79,10 @@ public class LeaderboardScreen implements Screen {
         this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
         this.batch = batch;
+        SpriteBatch.createDefaultShader();
+        
         stage = new Stage();
+
         font = new BitmapFont();
         font.getData().setScale(1.5f);
         labels = new ArrayList<>();

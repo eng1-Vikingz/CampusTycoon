@@ -29,11 +29,27 @@ public class MoneyHandler {
     }
 
     /**
+     * Takes money from the player
+     * @param amount
+     * @return
+     */
+    public static boolean spendMoney(int amount){
+        return addMoney(-amount);
+    }
+
+    /**
      * returns current money counter
      * @return money int
      */
     public static int getMoney() {
         return money;
+    }
+
+    /**
+     * Resets the money counter to 1000
+     */
+    public static void resetBank(){
+        money = 1000;
     }
 
     /**
