@@ -7,16 +7,24 @@
 
 name: Java CI with Gradle
 
+
+#Builds on new tag releases,pushs to main or pull requests
 on:
   push:
     branches: [ "main" ]
+    tags: [ '*.*.*' ]
   pull_request:
     branches: [ "main" ]
 
+    
 jobs:
+#Matrix operating systems being used
   build:
-
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, windows-2022, macos-14]
+    
+    runs-on: ${{ matrix.os }}
     permissions:
       contents: read
 
@@ -36,38 +44,107 @@ jobs:
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 7.5
+        gradle-home-cache-cleanup: true
+        cache-read-only: false
+      
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+
+    - name: Build Jar for artifacts
+      run: ./gradlew jar
       
+    - name: Upload jar to actions artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
+        path: lwjgl3/build/libs/
+  
+  release:
+      runs-on: ubuntu-24.04
+      needs: [ "build" ]
+      permissions:
+        contents: write
 
-    # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
-    # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
-    #
-    # - name: Setup Gradle
-    #   uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-    #   with:
-    #     gradle-version: '8.9'
-    #
-    # - name: Build with Gradle 8.9
-    #   run: gradle build
+      #Only runs when a tag is released with ubuntu
+      
+      if: github.ref_type == 'tag' 
+    
+      steps:
 
-  dependency-submission:
+      - name: Download a Build Artifact  #Must USE THE SAME VERSION AS UPLOAD
+        uses: actions/download-artifact@v4
+        with:
+          name: CampusTycoon-${{github.ref_name}}-ubuntu-24.04.jar
 
-    runs-on: ubuntu-latest
+      - name: Upload release Linux
+        uses: softprops/action-gh-release@v1
+        with:
+          files: CampusTycoon-${{github.ref_name}}.jar
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+
+  jacoco-report:
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
+    
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+        
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+          
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 7.5
+          gradle-home-cache-cleanup: true
+          cache-read-only: false
+        
+
+      - name: Build with Gradle Wrapper 
+        run: ./gradlew clean build jacocoTestReport  --i
+
+      - name: Upload JaCoCo coverage report as a workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: headless/build/reports/jacoco/test/html
+        
+
+  dependency-submission:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+    - name: Setup Java
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
         distribution: 'temurin'
-
+        java-version: 17
+    
     # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      uses: gradle/actions/dependency-submission@v4
+      with:
+          gradle-version: 7.5
+          gradle-home-cache-cleanup: true
+          cache-read-only: false
+        
+
+
