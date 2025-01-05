@@ -71,33 +71,61 @@ jobs:
       if: github.ref_type == 'tag' 
     
       steps:
-      - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
+
+#Windows      
+      - name: Download a Build Artifact Windows #Must USE THE SAME VERSION AS UPLOAD
         uses: actions/download-artifact@v4
         with:
           name: CampusTycoon-${{github.ref_name}}-windows-2022.jar
 
-      - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
+      - name: Rename to Windows
+        run: mv CampusTycoon-${{github.ref_name}}.jar CampusTycoon-${{github.ref_name}}-windows.jar
+
+      - name: Upload release Windows
+        uses: softprops/action-gh-release@v1
+        with:
+          files: CampusTycoon-${{github.ref_name}}-windows.jar
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#Linux
+      - name: Download a Build Artifact Linux #Must USE THE SAME VERSION AS UPLOAD
         uses: actions/download-artifact@v4
         with:
           name: CampusTycoon-${{github.ref_name}}-ubuntu-24.04.jar
 
-      
-      - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
+      - name: Rename to Linux
+        run: mv CampusTycoon-${{github.ref_name}}.jar CampusTycoon-${{github.ref_name}}-linux.jar
+
+      - name: Upload release Linux
+        uses: softprops/action-gh-release@v1
+        with:
+          files: CampusTycoon-${{github.ref_name}}-linux.jar
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#Macos        
+      - name: Download a Build Artifact Macos #Must USE THE SAME VERSION AS UPLOAD
         uses: actions/download-artifact@v4
         with:
           name: CampusTycoon-${{github.ref_name}}-macos-14.jar
 
-          
-      - name: ubuntu list release files
+      - name: Rename to Macos
+        run: mv CampusTycoon-${{github.ref_name}}.jar CampusTycoon-${{github.ref_name}}-macos.jar
+
+
+      - name: Ubuntu list release files
         run: ls 
 
         
-      - name: release
+      - name: Upload release Macos
         uses: softprops/action-gh-release@v1
         with:
-          files: CampusTycoon-${{github.ref_name}}.jar
+          files: CampusTycoon-${{github.ref_name}}-macos.jar
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
 
       
       
