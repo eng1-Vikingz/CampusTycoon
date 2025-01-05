@@ -17,8 +17,11 @@ on:
     
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-12]
+    
+    runs-on: ${{ matrix.os }}
     permissions:
       contents: read
 
@@ -38,7 +41,7 @@ jobs:
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 
+      uses: gradle/actions/setup-gradle@v4
       with:
         gradle-version: 7.5
         gradle-home-cache-cleanup: true
@@ -50,11 +53,11 @@ jobs:
 
     - name: Build Jar for artifacts
       run: ./gradlew jar
-
+      
     - name: Upload jar to actions artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: CampusTycoon-${{github.ref_name}}.jar
+        name: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
         path: lwjgl3/build/libs/
   
   release:
