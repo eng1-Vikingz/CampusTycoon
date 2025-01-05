@@ -6,6 +6,9 @@ import com.vikingz.campustycoon.UI.Components.MenuText;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used to keep track of the number of buildings in the game.
+ */
 public class BuildingCounter {
     private static int totalBuildingCount = 0;
 	
@@ -14,20 +17,36 @@ public class BuildingCounter {
 	public static List<MenuText> UI = new ArrayList<MenuText>();
 	public static MenuText totalCountUI;
 	
+	/**
+	 * Resets the counter
+	 */
 	public static void reset() {
 		totalBuildingCount = 0;
 		buildingCounts = new int[5];
 		UI = new ArrayList<MenuText>();
 	}
 
+	/**
+	 * Gets the total building count.
+	 * @return The total building count.
+	 */
     public static int getTotalBuildingCount() {
         return totalBuildingCount;
     }
 	
+	/**
+	 * Gets the building count of a specific building.
+	 * @param building The building to get the count of.
+	 * @return The building count.
+	 */
 	public static int getBuildingCount(String building) {
 		return buildingCounts[getBuildingCountIndex(building)];
 	}
 	
+
+	/**
+	 * Updates the display;
+	 */
 	public static void updateDisplay() {
 		if (UI.isEmpty()) {
 			return;
@@ -57,6 +76,13 @@ public class BuildingCounter {
 		}
 	}
 
+	/**
+	 * CHANGED
+	 * 
+	 * Gets the building count by the building id.
+	 * @param building The building id.
+	 * @return The building count.
+	 */
 	public static int getBuildingCountByBuilding(String building){
 		switch (building) {
 			case "Accommodation":
@@ -81,22 +107,40 @@ public class BuildingCounter {
 	}
 	
 	
+	/**
+	 * Increases the building count of a specific building.
+	 * @param building The building to increase the count of.
+	 * @param value The value to increase the count by.
+	 */
 	public static void increaseBuildingCounter(String building, int value) {
 		buildingCounts[getBuildingCountIndex(building)] += value;
         increaseBuildingCounter(value);
     }
 
+	/**
+	 * Decreases the building count.
+	 * @param building The building to decrease the count of.
+	 * @param value The value to decrease the count by.
+	 */
     public static void decreaseBuildingCounter(String building, int value) {
 		buildingCounts[getBuildingCountIndex(building)] -= value;
         decreaseBuildingCounter(value);
     }
 	
 
+	/**
+	 * Increases the total building count.
+	 * @param value The value to increase the total building count by.
+	 */
     public static void increaseBuildingCounter(int value) {
         totalBuildingCount += value;
 		updateDisplay();
     }
 
+	/**
+	 * Decreases the total building count.
+	 * @param value The value to decrease the total building count by.
+	 */
     public static void decreaseBuildingCounter(int value) {
         totalBuildingCount -= value;
 		updateDisplay();

@@ -1,0 +1,79 @@
+@startuml
+
+package com.vikingz.campustycoon {
+    package Game {
+        package Buildings {
+            class Accommodation
+            class Building
+            class Cafeteria
+            class Relaxation
+            class SpaceStation
+            class Study
+        }
+        package GameLogic {
+            class BuildingCounter
+            class Event
+            class EventLoader
+            class MoneyHandler
+            class SatisfactionMeter
+            class Timer
+        }
+        package Maps {
+            class Map
+            class York
+        }
+        package Tiles {
+            interface Tile
+            class Grass
+            class Lake
+            class Mountain
+        }
+    }
+    package UI {
+        class Camera
+        package Components {
+            class Backdrop
+            class BankruptMenu
+            class Button
+            class Component
+            class MapBuilding
+            class MapTile
+            class MenuText
+            class PauseMenu
+            class PopupMenu
+            class Sprite
+            class SpriteSheet            
+        }
+        package Screens {
+            class EndScreen
+            class GameplayScreen
+            class LeaderboardScreen
+            class SettingsSCreen
+            class StartScreen
+        }
+        package Systems {
+            class BuildingDisplay
+            class EventPopup
+            class MapDisplay
+        }
+        class Window
+    }
+    package Util {
+        class Drawer
+        class GameMusic
+        class GameSounds
+        class GameUtils
+        class InputHandler
+        class LeaderboardFileHandler
+        class MapUtils
+        class ScreenUtils
+        package Types {
+            class Coordinate
+            class CoordinatePair
+            class Tuple
+        }
+    }
+    class Main
+}
+
+@enduml

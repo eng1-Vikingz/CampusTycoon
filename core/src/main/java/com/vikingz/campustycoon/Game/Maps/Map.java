@@ -17,6 +17,9 @@ import com.vikingz.campustycoon.Util.MapUtils;
 import com.vikingz.campustycoon.Util.ScreenUtils;
 import com.vikingz.campustycoon.Util.Types.Coordinate;
 
+/**
+ * This class is used to create a map.
+ */
 public class Map {
 	public static String defaultMap = "York.txt";
 
@@ -24,9 +27,7 @@ public class Map {
 	public int width, height;
 	public Random rng = new Random();
 
-
 	public static List<Building> buildings = new ArrayList<Building>();
-
 
 	private MapDisplay display;
 	public BuildingDisplay buildingDisplay;
@@ -35,6 +36,9 @@ public class Map {
 	public boolean placing;
 	public String placementType;
 
+	/**
+	 * Constructor for the Map class.
+	 */
 	public Map() {
 		mapUtils = new MapUtils(this);
 		mapUtils.initialiseGrid();
@@ -46,6 +50,10 @@ public class Map {
 		buildingDisplay.drawBuildings();
 	}
 
+	/**
+	 * Toggles the ability to place a building.
+	 * @param building
+	 */
 	public void toggleBuildingPlacement(String building) {
 		if (placementType == building) {
 			this.placing = !placing;
@@ -56,6 +64,10 @@ public class Map {
 		this.placing = true;
 	}
 
+	/**
+	 * Places a building on the map, bypassing the user.
+	 * @param position The position to place the building.
+	 */
     public void placeBuildingBypass(Coordinate position){
         if (!placing) {
             return; // Placement mode currently toggled off
@@ -74,6 +86,10 @@ public class Map {
 
     }
 
+	/**
+	 * Places a building on the map.
+	 * @param position The position to place the building.
+	 */
 	public void placeBuilding(Coordinate position) {
 		if (!placing) {
 			return; // Placement mode currently toggled off

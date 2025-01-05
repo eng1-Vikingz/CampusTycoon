@@ -1,6 +1,8 @@
 package com.vikingz.campustycoon.Game.Tiles;
 
-
+/**
+ * This interface is used to create a tile.
+ */
 public interface Tile {
 	
 	// The Width and Length of any sprite

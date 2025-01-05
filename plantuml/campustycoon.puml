@@ -1,0 +1,213 @@
+@startuml
+
+package com.vikingz.campustycoon {
+    package Game {
+        package Buildings {
+            class Accommodation {
+                +Accommodation(Coordinate Position)
+                +Accommodation()
+                +incrementBuildingCounter()
+            }
+            class Building {
+                -String buildingName
+                -MapBuilding drawInfo
+                -Coordinate position
+                -int width
+                -int height
+                -int cost
+                -int score
+                +Building()
+                +Building(Coordinate Position)
+                +Building(Coordinate Position, String ImagePath, int Cost, int Width, int Height)
+                +setPosition(Coordinate Position)
+                +incrementBuildingCounter()
+            }
+            class Cafeteria {
+                +Cafeteria(Coordinate Position)
+                +Cafeteria()
+                +incrementBuildingCounter()
+            }
+            class Relaxation {
+                +Relaxation(Coordinate Position)
+                +Relaxation()
+                +incrementBuildingCounter()
+            }
+            class SpaceStation {
+                +SpaceStation(Coordinate Position)
+            }
+            class Study {
+                +Study(Coordinate Position, int textureIndex)
+                +Study(int textureIndex)
+                +incrementBuildingCounter()
+            }
+        }
+        package GameLogic {
+            class BuildingCounter {
+                +reset()
+                +getTotalBuildingCount()
+                +getBuildingCount(String building)
+                +increaseBuildingCounter(String buildingName, int count)
+            }
+            class Event {
+                +Event(String eventName, String eventText, int cost, int gain)
+            }
+            class EventLoader {
+                +EventLoader(String fileName)
+                +getNeutralGainLookup()
+                +getNeutralCostLookup()
+                +getRejectGainLookup()
+                +getRejectCostLookup()
+                +resetStatics()
+            }
+            class MoneyHandler {
+                +addMoney(int amount)
+                +getMoney()
+            }
+            class SatisfactionMeter {
+                +updateSatisfactionScore()
+            }
+            class Timer {
+                +getTimeRemaining()
+            }
+        }
+        package Maps {
+            class Map {
+                +Map()
+                +toggleBuildingPlacement(String building)
+                +placeBuildingBypass(Coordinate position)
+                +placeBuilding(Coordinate position)
+            }
+            class York {
+            }
+        }
+        package Tiles {
+            interface Tile {
+                +getTileID()
+            }
+        }
+    }
+    package UI {
+        class Camera {
+        }
+        package Components {
+            class Component {
+                +setClickAction(String action)
+                +setOffset(float X, float Y)
+                +setScale(float Scale)
+                +setImage(String ImagePath)
+                +getX()
+                +getY()
+                +getWidth()
+                +getHeight()
+                +getBaseX()
+                +getBaseY()
+                +getBaseWidth()
+                +getBaseHeight()
+                +setX(float x)
+                +setY(float y)
+                +setWidth(float width)
+                +setHeight(float height)
+            }
+            class MapBuilding {
+                +MapBuilding(String imagePath, float X, float Y)
+                +MapBuilding()
+                +setGridCoordinates(int X, int Y)
+                +applyZoomOffset()
+                +setClickAction(String action)
+            }
+        }
+        package Screens {
+            class GameplayScreen {
+                +show()
+                +render(float delta)
+                +resize(int width, int height)
+                +pause()
+                +resume()
+                +hide()
+                +dispose()
+                +displayBankruptWarning()
+                +setBankrupt(boolean bankrupt)
+            }
+            class LeaderboardScreen {
+                +LeaderboardScreen(SpriteBatch batch)
+            }
+        }
+        package Systems {
+            class BuildingDisplay {
+                +BuildingDisplay(List<Building> Buildings)
+                +drawBuildings()
+            }
+            class MapDisplay {
+                +MapDisplay(Map Map)
+                +drawMap()
+            }
+        }
+        class Window {
+        }
+    }
+    package Util {
+        class Drawer {
+            +clear()
+            +drawAll()
+            +updateAll()
+            +add(int layer, Component component)
+            +remove(int layer, Component component)
+            +remove(Component component)
+        }
+        class GameMusic {
+            +play()
+        }
+        class GameSounds {
+            +playPlacedBuilding()
+            +playPlaceError()
+            +getVolume()
+            +setVolume(float volume)
+        }
+        class GameUtils {
+            +createStartMenuUI()
+            +createGameplayUI()
+            +createEventPopupUI(Event event)
+            +createEndScreenUI()
+            +setupMenu()
+        }
+        class InputHandler {
+        }
+        class LeaderboardFileHandler {
+        }
+        class MapUtils {
+            +MapUtils(Map Map)
+            +getBuilding(String buildingType)
+            +buildingPlaceable(Building newBuilding)
+            +tileHasBuilding(Coordinate tile)
+            +outsideMap(Coordinate tile)
+            +initialiseBuildings()
+            +initialiseGrid()
+            +getTile(int tileID)
+        }
+        class ScreenUtils {
+        }
+        package Types {
+            class Coordinate {
+                +Coordinate(int x, int y)
+                +int x
+                +int y
+            }
+        }
+    }
+    class Main {
+        +create()
+        +render()
+    }
+}
+
+Game.Buildings.Building <|-- Game.Buildings.Accommodation
+Game.Buildings.Building <|-- Game.Buildings.Cafeteria
+Game.Buildings.Building <|-- Game.Buildings.Relaxation
+Game.Buildings.Building <|-- Game.Buildings.SpaceStation
+Game.Buildings.Building <|-- Game.Buildings.Study
+
+Game.Tiles.Tile <|.. Game.Tiles.Grass
+
+UI.Components.Component <|-- UI.Components.MapBuilding
+
+@enduml

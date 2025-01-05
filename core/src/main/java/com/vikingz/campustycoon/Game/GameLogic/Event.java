@@ -10,6 +10,9 @@ import com.vikingz.campustycoon.Util.GameSounds;
 import com.vikingz.campustycoon.Util.GameUtils;
 import com.vikingz.campustycoon.Util.ScreenUtils;
 
+/**
+ * This class is used to create and manage an events.
+ */
 public class Event {
 	public EventPopup eventUI;
 	public int choices; // Number of choices for the event
@@ -17,6 +20,9 @@ public class Event {
     public String event; // event
 	public List<String> choiceText; // Text to be displayed in the choice buttons (NOT IMPLEMENTED)
 
+    /**
+     * Constructor for Event.
+     */
 	public Event() {
 		choices = 3;
 		choiceText = new ArrayList<String>(Arrays.asList(
@@ -29,12 +35,16 @@ public class Event {
 		eventUI.initialise();
 	}
 
+    /**
+     * Chooses an option for the event.
+     * @param option
+     */
 	public void chooseOption(int option) {
 		if (option > choices) {
 			System.out.print("Invalid event choice");
 			return;
 		}
-
+        // Switch statement to determine which option was chosen
 		switch (option) {
 			case 1:
 				acceptOption();
@@ -51,7 +61,11 @@ public class Event {
 		}
 	}
 
-	// Temporary choice implementations, will change to abstract functions later (as each individual event should decide what the outcome of choices are)
+    // TODO: Temporary choice implementations, will change to abstract functions later (as each individual event should decide what the outcome of choices are)
+    
+    /**
+     * Accepts the event.
+     */
 	public void acceptOption() {
         if (allowChoice("accept")) {
             SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("accept", event));
@@ -62,6 +76,10 @@ public class Event {
             GameSounds.playPlaceError();
         }
     }
+
+    /**
+     * Neutral option for the event.
+     */
 	public void neutralOption() {
         if (allowChoice("neutral")) {
             SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("neutral", event));
@@ -72,6 +90,10 @@ public class Event {
             GameSounds.playPlaceError();
         }
     }
+
+    /**
+     * Rejects the event.
+     */
 	public void rejectOption() {
         if (allowChoice("reject")) {
             SatisfactionMeter.modifySatisfactionScore(EventLoader.getActionGain("reject", event));
@@ -83,6 +105,11 @@ public class Event {
         }
     }
 
+    /**
+     * Checks if the player has enough money to make a choice.
+     * @param choice The choice to be made.
+     * @return
+     */
     private boolean allowChoice(String choice) {
         if (MoneyHandler.addMoney(-EventLoader.getActionCost(choice, event))) {
             return true;
@@ -92,6 +119,9 @@ public class Event {
         }
     }
 
+    /**
+     * Ends the event.
+     */
     public void End() {
 		eventUI.close();
 		GameUtils.currentEvent = null;

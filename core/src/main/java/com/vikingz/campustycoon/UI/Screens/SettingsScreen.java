@@ -28,6 +28,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  * This class contains all the labels that are on the
  * top right of the screen that display the users balance,
  * satisfaction etc.
+ * 
+ * TODO: We should prob put the stats drawing into another class
  */
 public class SettingsScreen implements Screen {
 
@@ -68,6 +70,9 @@ public class SettingsScreen implements Screen {
     Table table;
 
 
+    /**
+     * Constructor for the SettingsScreen
+     */
     public SettingsScreen() {
 
         super();
@@ -156,6 +161,9 @@ public class SettingsScreen implements Screen {
 
     }
 
+    /**
+     * Goes back to the previous screen
+     */
     private void goBack() {
         if (ScreenUtils.GameActive) {
             ScreenUtils.resetInputProcessor();
@@ -167,6 +175,9 @@ public class SettingsScreen implements Screen {
         }
     }
 
+    /**
+     * Creates the title label for the settings screen
+     */
     private void createTitleLbl(){
         Label title = new Label("Settings", skin);
         title.setColor(Color.WHITE);
@@ -178,21 +189,6 @@ public class SettingsScreen implements Screen {
         labels.add(title);
 
     }
-
-
-    private void addLabel(String text){
-        Label lbl = new Label(text, this.skin);
-        lbl.setColor(Color.WHITE);
-        lbl.setFontScale(1.5f);
-
-        table.add(lbl).pad(PADDING).align(Align.center);
-        table.row();
-
-        labels.add(lbl);
-
-    }
-
-
 
 
     /**

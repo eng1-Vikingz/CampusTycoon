@@ -2,8 +2,6 @@ package com.vikingz.campustycoon.UI.Screens;
 
 import com.vikingz.campustycoon.UI.Components.BankruptMenu;
 import com.vikingz.campustycoon.UI.Components.PauseMenu;
-import com.vikingz.campustycoon.UI.Components.PopupMenu;
-import com.vikingz.campustycoon.Util.InputHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -21,6 +19,9 @@ import com.vikingz.campustycoon.Util.GameUtils;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class is used to create the gameplay screen.
+ */
 public class GameplayScreen implements Screen{
     private Timer timer;
     private boolean stateChanged;
@@ -34,7 +35,9 @@ public class GameplayScreen implements Screen{
     private boolean bankrupt;
 
 
-
+    /**
+     * Shows the gameplay screen.
+     */
     @Override
     public void show() {
         if (!com.vikingz.campustycoon.Util.ScreenUtils.GameActive) {
@@ -55,6 +58,9 @@ public class GameplayScreen implements Screen{
         }
     }
 
+    /**
+     * Render the gameplay screen.
+     */
     @Override
     public void render(float delta) {
         // Clear screen
@@ -98,11 +104,17 @@ public class GameplayScreen implements Screen{
         Drawer.drawAll();
     }
 
-
+    /**
+     * Set the paused state of the game.
+     * @param paused
+     */
     public void setPaused(boolean paused) {
         this.paused = paused;
     }
 
+    /**
+     * Resize the gameplay screen.
+     */
     @Override
     public void resize(int width, int height) {
         Window.updateResolution(width, height);
@@ -111,6 +123,10 @@ public class GameplayScreen implements Screen{
 
     }
 
+    /**
+     * Pause the game.
+     * -> Opens the pause menu
+     */
     @Override
     public void pause() {
         if (!bankrupt) {
@@ -142,6 +158,9 @@ public class GameplayScreen implements Screen{
         // Destroy screen's assets here.
     }
 
+    /**
+     * Display the bankrupt warning.
+     */
     public void displayBankruptWarning() {
         this.bankrupt = true;
         this.paused = true;

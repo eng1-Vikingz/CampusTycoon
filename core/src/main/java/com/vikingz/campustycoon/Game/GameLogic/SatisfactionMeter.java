@@ -2,18 +2,27 @@ package com.vikingz.campustycoon.Game.GameLogic;
 
 import com.vikingz.campustycoon.Game.Maps.Map;
 import com.vikingz.campustycoon.UI.Components.Component;
-
 import java.util.Objects;
 
+/**
+ * This class is used to manage the satisfaction meter.
+ */
 public class SatisfactionMeter {
 	public static Component satisfactionText;
     private static int satisfactionScore = 0;
     private static int satisfactionModifier = 0;
 
+    /**
+     * Gets the satisfaction score.
+     * @return
+     */
     public static int getSatisfactionScore() {
         return satisfactionScore;
     }
 
+    /**
+     * Updates the satisfaction score based on a satisfaction formula.
+     */
     public static void updateSatisfactionScore() {
         System.out.println("Satisfaction Function Called");
         satisfactionScore = 0;
@@ -38,11 +47,18 @@ public class SatisfactionMeter {
 		SatisfactionMeter.updateDisplay();
     }
 
+    /**
+     * Modifies the satisfaction score.
+     * @param value
+     */
     public static void modifySatisfactionScore(int value) {
         satisfactionModifier += value;
 		SatisfactionMeter.updateDisplay();
     }
 
+    /**
+     *  Updates the display.
+     */
 	public static void updateDisplay() {
 		if (satisfactionText == null) {
 			return;

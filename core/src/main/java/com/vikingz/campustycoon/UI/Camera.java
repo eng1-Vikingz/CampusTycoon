@@ -16,6 +16,10 @@ import com.vikingz.campustycoon.Util.MapUtils;
 import com.vikingz.campustycoon.Util.ScreenUtils;
 import com.vikingz.campustycoon.Util.Types.Coordinate;
 
+/**
+ * This class is used to create a camera.
+ * Controls zooming, movement etc.
+ */
 public class Camera {
 	public static Map map; // The game map
 	public static int gridX, gridY; // Current grid coordinates of the mouse
@@ -30,6 +34,9 @@ public class Camera {
 	private static String placementType;
 	private static Building hoverDisplay;
 
+	/**
+	 * Updates the camera.
+	 */
 	public static void update() {
 		printCameraInfo();
 		updateDrawTiles();
@@ -37,11 +44,16 @@ public class Camera {
 		drawCursor();
 	}
 
-	// Calculates which Grid coordinate the mouse is over
+	/**
+	 * Calculates which Grid coordinate the mouse is over
+	 * @param X
+	 * @return
+	 */
 	private static float getGridX(int X) {
 		float GridX = zoom * (X - x) / (Tile.SpriteSize);
 		return GridX;
 	}
+
 	private static float getGridY(int Y) {
 		float GridY = zoom * (Window.height - Y - y) / (Tile.SpriteSize);
 		return GridY;
@@ -100,6 +112,11 @@ public class Camera {
 		updateCursor();
 	}
 
+	/**
+	 * Checks which tile the mouse is over
+	 * @param X
+	 * @param Y
+	 */
 	public static void checkMouseOverTile(int X, int Y) {
 		lastMousePos = new Coordinate(X, Y);
 
@@ -114,6 +131,13 @@ public class Camera {
     public static Tile getMouseOverTile() {
         return map.grid.get(map.grid.size()-Camera.gridY-1).get(Camera.gridX);
     }
+
+	/**
+	 * Gets the tile from the grid coordinates
+	 * @param X
+	 * @param Y
+	 * @return
+	 */
     public static Tile getTileFromCoords(int X, int Y){
 
         try {
@@ -126,6 +150,10 @@ public class Camera {
         }
     }
 
+	/**
+	 * Zooms the camera
+	 * @param scrollAmount
+	 */
 	public static void scroll(float scrollAmount) {
 		float oldZoom = zoom;
 

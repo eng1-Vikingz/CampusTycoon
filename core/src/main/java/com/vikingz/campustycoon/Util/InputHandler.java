@@ -11,10 +11,13 @@ import com.vikingz.campustycoon.UI.Components.Component;
 
 public class InputHandler implements InputProcessor {
 	private static final int LeftClick = 0;
+	@SuppressWarnings("unused")
 	private static final int RightClick = 1;
+	@SuppressWarnings("unused")
 	private static final int MiddleClick = 2;
 	
 	private static List<Component> clickables = new ArrayList<Component>();
+	@SuppressWarnings("unused")
 	private static boolean leftClickDown = false;
 	
 	

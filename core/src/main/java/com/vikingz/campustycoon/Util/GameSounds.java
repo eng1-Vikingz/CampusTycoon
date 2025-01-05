@@ -3,7 +3,6 @@ package com.vikingz.campustycoon.Util;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class GameSounds {
@@ -20,15 +19,15 @@ public class GameSounds {
     public static float volume = 1f;
 
     // Could be useful for more sounds later on
-    private static final ArrayList<Sound> sounds = new ArrayList<>() {
-        {
-            add(placeBuilding1);
-            add(placeBuilding2);
-            add(placeBuilding3);
-            add(placeError1);
-            add(placeError2);
-        }
-    };
+    // private static final ArrayList<Sound> sounds = new ArrayList<>() {
+    //     {
+    //         add(placeBuilding1);
+    //         add(placeBuilding2);
+    //         add(placeBuilding3);
+    //         add(placeError1);
+    //         add(placeError2);
+    //     }
+    // };
 
     /**
      * Plays the placed building sound

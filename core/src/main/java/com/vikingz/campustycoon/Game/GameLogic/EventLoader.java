@@ -40,6 +40,7 @@ public class EventLoader {
      * @param yamlFile
      * @throws IOException
      */
+    @SuppressWarnings("unchecked")
     public boolean loadYamlContents(String yamlFile) throws IOException {
         try {
             final Properties modules = new Properties();
@@ -102,6 +103,7 @@ public class EventLoader {
      */
     public EventLoader(String file,boolean test) throws IOException {
         if (test){
+            @SuppressWarnings("resource")
             String yamlFile = new Scanner(new File(file)).useDelimiter("\\Z").next();
             if(!loadYamlContents(yamlFile)){
                 throw new IOException("There has been a problem loading yaml into dictionaries");
@@ -168,10 +170,9 @@ public class EventLoader {
 
 
 
-    /**
-     * getters for hashMaps Dictionaries
-     * @return string / integer
-     */
+    // Getters for hashMaps Dictionaries | Pretty self explanatory
+
+
     public static ArrayList<String> getEventList() {
         return eventList;
     }

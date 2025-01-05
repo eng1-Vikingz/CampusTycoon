@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class is used to create a sprite.
+ */
 public class Sprite {
 	// Contains the locations of where all Component images are stored
 	// Uses getters/setters to obsfuscate single images vs animations, and 
@@ -15,21 +18,41 @@ public class Sprite {
 	public boolean usesSpriteSheet = false;
 	public SpriteSheet spriteSheet = null;
 	
+	/**
+	 * Constructor for the Sprite class.
+	 * @param ImagePath
+	 */
 	public Sprite(String ImagePath) {
 		Initialise();
 		setDefaultImage(ImagePath);
 	}
+
+	/**
+	 * Constructor for the Sprite class.
+	 * @param ImagePaths
+	 */
 	public Sprite(List<String> ImagePaths) {
 		Initialise();
 		setDefaultAnimation(ImagePaths);
 	}
 	
+	/**
+	 * Constructor for the Sprite class.
+	 * @param SpriteSheet
+	 * @param SpriteID
+	 */
 	public Sprite(SpriteSheet SpriteSheet, int SpriteID) {
 		spriteSheet = SpriteSheet;
 		usesSpriteSheet = true;
 		Initialise();
 		setDefaultImage(SpriteID);
 	}
+
+	/**
+	 * Constructor for the Sprite class.
+	 * @param SpriteSheet
+	 * @param SpriteIDs
+	 */
 	public Sprite(SpriteSheet SpriteSheet, ArrayList<Integer> SpriteIDs) {
 		spriteSheet = SpriteSheet;
 		usesSpriteSheet = true;
@@ -37,6 +60,9 @@ public class Sprite {
 		setDefaultAnimation(SpriteIDs);
 	}
 	
+	/**
+	 * Initialises the sprite class
+	 */
 	private void Initialise() {
 		animationType.put("DEFAULT", new AnimationInfo()); // Default image
 		animationType.put("HOVER", new AnimationInfo()); // To be shown on mouse hover

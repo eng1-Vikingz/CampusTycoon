@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.logging.FileHandler;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -52,6 +51,7 @@ public class Drawer {
 		
 		for (int i = 0; i < count; i++) {
 			if (drawQueue.get(left).component.getClass() == type.getClass()) {
+				@SuppressWarnings("unchecked")
 				T component = (T)drawQueue.get(left).component; // Should be a safe cast
 				layerComponents.add(component);
 				drawQueue.remove(left);

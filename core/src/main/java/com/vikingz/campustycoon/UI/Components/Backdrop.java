@@ -2,14 +2,45 @@ package com.vikingz.campustycoon.UI.Components;
 
 import java.util.List;
 
+/**
+ * This class is used to create a backdrop.
+ * 
+ * Pretty trivial, simply uses the {@class Component} class to create a backdrop.
+ */
 public class Backdrop extends Component {
 
+
+    /**
+     * Constructor for the Backdrop class.
+     * @param X 
+     * @param Y 
+     * @param Width
+     * @param Height
+     */
 	public Backdrop(float X, float Y, float Width, float Height) {
 		super(X, Y, Width, Height);
 	}
+
+    /**
+     * Constructor for the Backdrop class.
+     * @param imagePath 
+     * @param X
+     * @param Y
+     * @param Width
+     * @param Height
+     */
 	public Backdrop(String imagePath, float X, float Y, float Width, float Height) {
 		super(imagePath, X, Y, Width, Height);
 	}
+
+    /**
+     * Constructor for the Backdrop class.
+     * @param imagePaths
+     * @param X
+     * @param Y
+     * @param Width
+     * @param Height
+     */
 	public Backdrop(List<String> imagePaths, float X, float Y, float Width, float Height) {
 		super(imagePaths, X, Y, Width, Height);
 	}

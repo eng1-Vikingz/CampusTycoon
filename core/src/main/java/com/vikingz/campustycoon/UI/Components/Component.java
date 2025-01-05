@@ -5,6 +5,10 @@ import java.util.function.Consumer;
 
 import com.vikingz.campustycoon.UI.Window;
 
+
+/**
+ * This class is used to create a component.
+ */
 public abstract class Component {
 
 	// Add to this class when implementing a new anchor point
@@ -39,7 +43,7 @@ public abstract class Component {
 		public static final String ToggleRelaxation2Building = "TOGGLERELAXATION2BUILDING";
 	}
 
-
+	// Default actions are set to do nothing
 	protected Consumer<Boolean> clickAction = a -> none(a);
 	protected Consumer<Boolean> hoverAction = a -> none(a);
 	protected Consumer<Boolean> callAction = a -> none(a);
@@ -61,6 +65,13 @@ public abstract class Component {
 	public Boolean isText = false;
 	public String text;
 
+	/**
+	 * Constructor for a component.
+	 * @param X The x position of the component.
+	 * @param Y The y position of the component.
+	 * @param Width The width of the component.
+	 * @param Height The height of the component.
+	 */
 	public Component(float X, float Y, float Width, float Height) {
 		sprite = new Sprite("null");
 		initialise(X, Y, Width, Height);
@@ -78,6 +89,13 @@ public abstract class Component {
 		initialise(X, Y, Width, Height);
 	}
 
+	/**
+	 * Initialises the component.
+	 * @param X
+	 * @param Y
+	 * @param Width
+	 * @param Height
+	 */
 	protected void initialise(float X, float Y, float Width, float Height) {
 		baseX = X;
 		baseY = Y;
@@ -124,6 +142,9 @@ public abstract class Component {
 		anchor = anchorPoint;
 	}
 
+	/**
+	 * Applies anchor
+	 */
 	private void applyAnchor() {
 		// I don't know how to do this without using a switch statement
 		// If only I could store functions within a HashMap, then the Anchor constants could be keys and call the correct function simply by passing the Anchor point to the HashMap

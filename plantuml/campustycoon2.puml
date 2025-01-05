@@ -1,0 +1,72 @@
+@startuml
+
+package com.vikingz.campustycoon {
+    package Game {
+        package Buildings {
+            class Accommodation
+            class Building
+            class Cafeteria
+            class Relaxation
+            class SpaceStation
+            class Study
+        }
+        package GameLogic {
+            class BuildingCounter
+            class Event
+            class EventLoader
+            class MoneyHandler
+            class SatisfactionMeter
+            class Timer
+        }
+        package Maps {
+            class Map
+            class York
+        }
+        package Tiles {
+            interface Tile
+            class Grass
+        }
+    }
+    package UI {
+        class Camera
+        package Components {
+            class Component
+            class MapBuilding
+        }
+        package Screens {
+            class GameplayScreen
+            class LeaderboardScreen
+        }
+        package Systems {
+            class BuildingDisplay
+            class MapDisplay
+        }
+        class Window
+    }
+    package Util {
+        class Drawer
+        class GameMusic
+        class GameSounds
+        class GameUtils
+        class InputHandler
+        class LeaderboardFileHandler
+        class MapUtils
+        class ScreenUtils
+        package Types {
+            class Coordinate
+        }
+    }
+    class Main
+}
+
+Game.Buildings.Building <|-- Game.Buildings.Accommodation
+Game.Buildings.Building <|-- Game.Buildings.Cafeteria
+Game.Buildings.Building <|-- Game.Buildings.Relaxation
+Game.Buildings.Building <|-- Game.Buildings.SpaceStation
+Game.Buildings.Building <|-- Game.Buildings.Study
+
+Game.Tiles.Tile <|.. Game.Tiles.Grass
+
+UI.Components.Component <|-- UI.Components.MapBuilding
+
+@enduml

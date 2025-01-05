@@ -8,55 +8,112 @@ import com.vikingz.campustycoon.Util.GameUtils;
 import com.vikingz.campustycoon.Util.MapUtils;
 import com.vikingz.campustycoon.Util.ScreenUtils;
 
+/**
+ * This class is used to create a button.
+ */
 public class Button extends Component {
 	public int value; // Used to carry information about which button was pressed (i.e. in events)
 
+	/**
+	 * Constructor for the Button class.
+	 * @param X
+	 * @param Y
+	 * @param Width
+	 * @param Height
+	 */
 	public Button(float X, float Y, float Width, float Height) {
 		super(X, Y, Width, Height);
 	}
+
+	/**
+	 * Constructor for the Button class.
+	 * @param imagePath
+	 * @param X
+	 * @param Y
+	 * @param Width
+	 * @param Height
+	 */
 	public Button(String imagePath, float X, float Y, float Width, float Height) {
 		super(imagePath, X, Y, Width, Height);
 	}
+
+	/**
+	 * Constructor for the Button class.
+	 * @param imagePaths
+	 * @param X
+	 * @param Y
+	 * @param Width
+	 * @param Height
+	 */
 	public Button(List<String> imagePaths, float X, float Y, float Width, float Height) {
 		super(imagePaths, X, Y, Width, Height);
 	}
 
 
+	/**
+	 * This method is used to open the start screen.
+	 * @param isAction 
+	 */
 	protected static void openStartScreen(Boolean isAction) {
 		ScreenUtils.OpenStartScreen();
 		System.out.println("Screen changed to StartScreen");
 	}
+
+	/**
+	 * This method is used to open the gameplay screen.
+	 * @param isAction 
+	 */
 	protected static void openGameplayScreen(Boolean isAction) {
 		ScreenUtils.openGameplayScreen();
 		System.out.println("Screen changed to GameplayScreen");
 	}
 
-	/*
-	 * Added this to open leaderboard and Settings
+	/**
+	 * This method is used to open the settings screen.
+	 * @param isAction
 	 */
     protected static void openSettingsScreen(Boolean isAction){
         ScreenUtils.openSettingsScreen();
         System.out.println("Screen changed to Settings screen");
     }
 
-
+	/**
+	 * This method is used to open the leaderboard screen.
+	 * @param isAction
+	 */
     protected static void openLeaderboardScreen(Boolean isAction){
 		ScreenUtils.openLeaderboardScreen();
 		System.out.println("Screen changed to Leaderboard screen");
 	}
 
+	/**
+	 * Opens event popup
+	 * @param isAction
+	 */
 	protected static void openEventPopup(Boolean isAction) {
 		GameUtils.currentEvent = new Event();
 		System.out.println("Event opened");
 	}
 
+	/**
+	 * Closes event popup
+	 * @param isAction
+	 */
 	protected static void closeEventPopup(Boolean isAction) {
 		GameUtils.currentEvent.eventUI.close();
 		System.out.println("Event closed");
 	}
+
+	/**
+	 * Chooses an event option
+	 * @param isAction
+	 */
 	protected void chooseEventOption(Boolean isAction) {
 		GameUtils.currentEvent.chooseOption(value);
 	}
+
+
+	// Toggles which building is being placed.
 
 	protected static void toggleAccommodationBuilding(Boolean isAction) {
 		GameUtils.map.toggleBuildingPlacement(MapUtils.Placement.AccommodationBuilding);
@@ -88,6 +145,10 @@ public class Button extends Component {
 
 
 	@Override
+	/**
+	 * 	Based on the action, decides what happens.
+	 *  @param Actions The actions to be done.
+	 */
 	public void setClickAction(String Action) {
 		Consumer<Boolean> action = a -> none(a);
 		switch (Action) {

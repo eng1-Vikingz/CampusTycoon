@@ -1,9 +1,6 @@
 package com.vikingz.campustycoon.Util;
 
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.nio.charset.StandardCharsets;
 
 import com.vikingz.campustycoon.Game.Buildings.*;
 import com.vikingz.campustycoon.Game.Maps.Map;
@@ -67,7 +64,7 @@ public class MapUtils {
 	}
 
 	public boolean buildingPlaceable(Building newBuilding) {
-		for (Building Building : map.buildings) {
+		for (Building Building : Map.buildings) {
 			Coordinate b = Building.position;
 			Coordinate newPos = newBuilding.position;
 
@@ -90,7 +87,7 @@ public class MapUtils {
 	}
 
 	public boolean tileHasBuilding(Coordinate tile) {
-		for (Building building : map.buildings) {
+		for (Building building : Map.buildings) {
 			Coordinate pos = building.position;
 
 			// Checks if a building occupies the current tile space
@@ -113,7 +110,7 @@ public class MapUtils {
 
 
 	public void initialiseBuildings() {
-		map.buildings = new ArrayList<Building>();
+		Map.buildings = new ArrayList<Building>();
 
 
 		// Forcefully enables placement mode

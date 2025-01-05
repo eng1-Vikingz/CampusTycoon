@@ -58,13 +58,27 @@ public class LeaderboardScreen implements Screen {
     Table table;
 
 
+    /**
+     * Constructor for the LeaderboardScreen class.
+     */
     public LeaderboardScreen() {
+        this(new SpriteBatch());
+    }
+
+    /**
+     * Constructor for the LeaderboardScreen class.
+     * I needed to add a constructor that takes a SpriteBatch as an argument since
+     * when i was unit testing this class, i had to pass in a 'Mockito' sprite batch
+     * to run the tests in a headless environment.
+     * @param batch
+     */
+    public LeaderboardScreen(SpriteBatch batch) {
 
         super();
 
         this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
-        batch = new SpriteBatch();
+        this.batch = batch;
         stage = new Stage();
         font = new BitmapFont();
         font.getData().setScale(1.5f);
@@ -112,6 +126,9 @@ public class LeaderboardScreen implements Screen {
 
     }
 
+    /**
+     * Creates the title label for the leaderboard screen
+     */
     private void createTitleLbl(){
         Label title = new Label("LEADERBOARD", skin);
         title.setColor(Color.WHITE);
@@ -126,6 +143,11 @@ public class LeaderboardScreen implements Screen {
     }
 
 
+    /**
+     * Adds a label to the screen
+     * Used to add a new entry on the leaderboard
+     * @param text Text to be displayed on the label
+     */
     private void addLabel(String text){
         Label lbl = new Label(text, this.skin);
         lbl.setColor(Color.WHITE);
