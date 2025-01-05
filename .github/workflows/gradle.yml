@@ -70,7 +70,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.1
         with:
-          name: CampusTycoon-${{github.ref_name}}.jar
+          name: CampusTycoon-1.0.0.jar 
         
       - name: release
         uses: softprops/action-gh-release@v1
