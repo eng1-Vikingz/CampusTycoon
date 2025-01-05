@@ -61,34 +61,47 @@ jobs:
         path: lwjgl3/build/libs/
   
   release:
-      strategy:
-        matrix:
-          os: [ubuntu-24.04, windows-2022, macos-14]
-    
-      runs-on: ${{ matrix.os }}
+      runs-on: ubuntu-24.04
       needs: [ "build" ]
       permissions:
         contents: write
 
-      #Only runs when a tag is released
-      if: github.ref_type == 'tag'
+      #Only runs when a tag is released with ubuntu
+      
+      if: github.ref_type == 'tag' 
     
       steps:
       - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
         uses: actions/download-artifact@v4
         with:
-          name: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
+          name: CampusTycoon-${{github.ref_name}}-windows-2022.jar
+
+      - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
+        uses: actions/download-artifact@v4
+        with:
+          name: CampusTycoon-${{github.ref_name}}-ubuntu-24.04.jar
+
       
-      - name: list files
-        run:  ls 
-        
+      - name: Download a Build Artifact #Must USE THE SAME VERSION AS UPLOAD
+        uses: actions/download-artifact@v4
+        with:
+          name: CampusTycoon-${{github.ref_name}}-macos-14.jar
+
+          
+      - name: ubuntu list release files
+        run: ls 
+
         
       - name: release
         uses: softprops/action-gh-release@v1
         with:
-          files: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
+          files: CampusTycoon-${{github.ref_name}}.jar
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      
+      
+        
 
 
 
