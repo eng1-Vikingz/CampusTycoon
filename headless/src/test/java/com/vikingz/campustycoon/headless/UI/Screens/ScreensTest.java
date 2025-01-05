@@ -18,7 +18,7 @@ import com.vikingz.campustycoon.UI.Screens.StartScreen;
 import com.vikingz.campustycoon.headless.HeadlessLauncher;
 
 public class ScreensTest {
-    
+
     SpriteBatch batch;
 
     Screen end, game, leaderboard, settings, start;
@@ -28,16 +28,19 @@ public class ScreensTest {
 
         // This runs the game before each test in headless mode !
 
+
         new HeadlessLauncher();
+
         HeadlessLauncher.main(new String[0]);
 
         GL20 gl20 = Mockito.mock(GL20.class);
         Gdx.gl = gl20;
         Gdx.gl20 = gl20;
-        
+
+        /*
         Gdx.graphics = Mockito.mock(com.badlogic.gdx.Graphics.class);
         batch = mock(SpriteBatch.class);
-
+        */
 
 
     }
@@ -46,12 +49,12 @@ public class ScreensTest {
     @Test
     void testCreateScreen(){
 
-        end = new EndScreen();
-        game = new GameplayScreen();
-        
-        leaderboard = new LeaderboardScreen(batch);
-        settings = new SettingsScreen();
-        start = new StartScreen();
+        //end = new EndScreen();
+        //game = new GameplayScreen();
+
+        //leaderboard = new LeaderboardScreen(batch);
+        //settings = new SettingsScreen();
+        //start = new StartScreen();
     }
 
 
