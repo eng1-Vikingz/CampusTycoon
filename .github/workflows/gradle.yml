@@ -78,6 +78,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: CampusTycoon-${{github.ref_name}}-${{ matrix.os }}.jar
+      
+      - name: list files
+        run:  ls 
+        
         
       - name: release
         uses: softprops/action-gh-release@v1
