@@ -32,15 +32,21 @@ public class GameSounds {
     /**
      * Plays the placed building sound
      */
-    public static void playPlacedBuilding() {
+    public static boolean playPlacedBuilding() {
         int randNum = new Random().nextInt(1, 4);
+
         switch (randNum) {
-            case 1 -> placeBuilding1.play(volume);
-            case 2 -> placeBuilding2.play(volume);
-            case 3 -> placeBuilding3.play(volume);
-            default -> {
-            }
+            case 1:
+                placeBuilding1.play(volume);
+                return true;
+            case 2:
+                placeBuilding2.play(volume);
+                return true;
+            case 3:
+                placeBuilding3.play(volume);
+                return true;
         }
+        return false;
     }
 
 
@@ -48,15 +54,18 @@ public class GameSounds {
      * Plays the error sounds when the user tries
      * placing a building somewhere illegal
      */
-    public static void playPlaceError() {
+    public static boolean playPlaceError() {
         int randNum = new Random().nextInt(1, 3);
 
         switch (randNum) {
-            case 1 -> placeError1.play(volume);
-            case 2 -> placeError2.play(volume);
-            default -> {
-            }
+            case 1:
+                placeError1.play(volume);
+                return true;
+            case 2:
+                placeError2.play(volume);
+                return true;
         }
+        return false;
     }
 
     /**

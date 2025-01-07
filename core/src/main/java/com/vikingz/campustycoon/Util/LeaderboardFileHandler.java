@@ -15,7 +15,7 @@ import com.vikingz.campustycoon.Util.Types.Tuple;
 
 public class LeaderboardFileHandler{
 
-    public static String FILE_NAME = "test.txt";
+    public static String FILE_NAME = "leaderboard.txt";
 
 
     public static HashMap<String, List<Integer>> getLeaderboard(String filename){

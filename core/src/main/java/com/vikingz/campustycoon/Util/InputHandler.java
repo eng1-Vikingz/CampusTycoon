@@ -16,7 +16,7 @@ public class InputHandler implements InputProcessor {
 	@SuppressWarnings("unused")
 	private static final int MiddleClick = 2;
 	
-	private static List<Component> clickables = new ArrayList<Component>();
+	public static List<Component> clickables = new ArrayList<Component>();
 	@SuppressWarnings("unused")
 	private static boolean leftClickDown = false;
 	
@@ -82,7 +82,7 @@ public class InputHandler implements InputProcessor {
 		return Window.defaultHeight - (int)(y * Component.heightRatio);
 	}
 
-	private boolean isTouchWithinButton(int x, int y, Component button) {
+	public boolean isTouchWithinButton(int x, int y, Component button) {
 		if (button == null) {
 			return false; // Button is null, so return false to avoid a NullPointerException
 		}

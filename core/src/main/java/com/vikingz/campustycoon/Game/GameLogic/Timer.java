@@ -75,7 +75,7 @@ public class Timer{
      */
     private String floatToMinSec(float secs){
         
-        int m = Math.round(secs/ 60);
+        int m = Math.round(secs / 60);
         int s = Math.round(secs % 60);
 
         if(m > 100000){

@@ -29,7 +29,10 @@ public class LeaderboardFileHandlerTest {
         
 
         HashMap<String, List<Integer>> leaderboard = LeaderboardFileHandler.getLeaderboard(filename);
+        HashMap<String, List<Integer>> leaderboard2 = LeaderboardFileHandler.getLeaderboard();
         HashMap<String, List<Integer>> expectedLeaderboard = new HashMap<>();
+        
+        LeaderboardFileHandler.addLeaderboardEntry("test", 1);
         
         List<Integer> test1List = new ArrayList<>();
         test1List.add(100);

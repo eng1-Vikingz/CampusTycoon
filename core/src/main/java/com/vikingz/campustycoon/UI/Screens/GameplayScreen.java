@@ -41,7 +41,7 @@ public class GameplayScreen implements Screen{
     @Override
     public void show() {
         if (!com.vikingz.campustycoon.Util.ScreenUtils.GameActive) {
-            timer = new Timer(300); // Sets a countdown for 300 seconds (5 minutes)
+            timer = new Timer(100); // Sets a countdown for 300 seconds (5 minutes)
             timer.start();
             GameUtils.startGame();
             GameUtils.createGameplayUI();
