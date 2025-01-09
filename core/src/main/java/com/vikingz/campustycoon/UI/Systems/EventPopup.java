@@ -1,5 +1,6 @@
 package com.vikingz.campustycoon.UI.Systems;
 
+import com.badlogic.gdx.utils.Array;
 import com.vikingz.campustycoon.Game.GameLogic.Event;
 import com.vikingz.campustycoon.UI.Components.Component;
 import com.vikingz.campustycoon.Util.Drawer;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
  */
 public class EventPopup {
 	public Event event;
-	public List<Component> elements;
-	public List<Component> buttonElements; // Only elements which are passed to the InputHandler
+	public static List<Component> elements = new ArrayList<Component>();
+	public static List<Component> buttonElements = new ArrayList<Component>();
 	
     public EventPopup(Event Event) {
 		event = Event;
@@ -26,8 +27,6 @@ public class EventPopup {
 	 * Initialises the event popup.
 	 */
 	public void initialise() {
-		elements = new ArrayList<Component>();
-		buttonElements = new ArrayList<Component>();
 		GameUtils.createEventPopupUI(event);
 	}
 
@@ -43,4 +42,12 @@ public class EventPopup {
 			Drawer.remove(0, element);
 		}
     }
+
+	public static void addElement(Component element) {
+		elements.add(element);
+	}
+
+	public static Component getLastElement() {
+		return elements.get(elements.size() - 1);
+	}
 }

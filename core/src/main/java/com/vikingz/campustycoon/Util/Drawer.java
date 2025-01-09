@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -22,18 +23,27 @@ public class Drawer {
 	private static List<DrawInfo> drawQueue = new LinkedList<>();
 	public static SpriteBatch spriteBatch = new SpriteBatch();
 	private static BitmapFont font = new BitmapFont();
-	private static Map<String, Texture>
-		textures = new HashMap<String, Texture>(); // Note: this exists because I learned that generating hundreds of new textures every second is NOT a good idea
-	private static Map<Texture, Map<Integer, TextureRegion>>
-		textureRegions = new HashMap<Texture, Map<Integer, TextureRegion>>();
-
+	private static Map<String, Texture> textures = new HashMap<String, Texture>(); // Note: this exists because I learned that generating hundreds of new textures every second is NOT a good idea
+	private static Map<Texture, Map<Integer, TextureRegion>> textureRegions = new HashMap<Texture, Map<Integer, TextureRegion>>();
 
 
 	// Added stage
 	public static Stage stage = new Stage();
 
+
+	/**
+	 * Sets the sprite batch
+	 * @param batch
+	 */
+	public static void setSpriteBatch(SpriteBatch batch) {
+		spriteBatch = batch;
+	}
 	
-	private static class DrawInfo { // Cursed static class with non-static members
+	/**
+	 * DrawInfo
+	 * Used as a data store
+	 */
+	public static class DrawInfo { // Cursed static class with non-static members
 		public int layer; // Used to determine draw order
 		public Component component;
 		
@@ -43,6 +53,26 @@ public class Drawer {
 		}
 	}
 	
+	/**
+	 * Gets the last draw item
+	 * @return
+	 */
+	public static DrawInfo getLastDrawItem(){
+		return drawQueue.get(drawQueue.size()-1);
+	}
+	
+
+	public static void addDrawItem(DrawInfo drawInfo){
+		drawQueue.add(drawInfo);
+	}
+
+	/**
+	 * Pops all components from a given layer
+	 * @param <T>
+	 * @param layer
+	 * @param type
+	 * @return
+	 */
 	public static <T> List<T> popLayer(int layer, T type) {
 		List<T> layerComponents = new ArrayList<T>();
 		
@@ -67,6 +97,9 @@ public class Drawer {
 	
 
 
+	/**
+	 * Draws all components in the drawQueue
+	 */
 	public static void drawAll() {
 		spriteBatch.begin();
 		
@@ -93,6 +126,10 @@ public class Drawer {
 		spriteBatch.end();
 	}
 	
+	/**
+	 * Draws text components
+	 * @param component
+	 */
 	private static void drawText(Component component) {
 		//font.setFixedWidthGlyphs(component.text);
 		font.getRegion().getTexture().setFilter(
@@ -103,6 +140,10 @@ public class Drawer {
 			component.x, component.y);
 	}
 	
+	/**
+	 * Draws sprite components
+	 * @param component
+	 */
 	private static void draw(Component component) {
 		Sprite sprite = component.sprite;
 		sprite.stepAnimation();
@@ -117,6 +158,9 @@ public class Drawer {
 			component.width, component.height); // Size of the image
 	}
 	
+	/**
+	 * Draws sprite components that use a spritesheet
+	 */
 	private static void drawRegion(Component component) {
 		Sprite sprite = component.sprite;
 		sprite.stepAnimation();
@@ -130,6 +174,12 @@ public class Drawer {
 			component.width, component.height); // Size of the image
 	}
 	
+	/**
+	 * Gets the texture region of a sprite from a spritesheet
+	 * @param sheet
+	 * @param sprite
+	 * @return
+	 */
 	private static TextureRegion getTextureRegion(Texture sheet, Sprite sprite) {
 		int spriteID = sprite.getID();
 		
@@ -195,6 +245,10 @@ public class Drawer {
 	// Searches the drawQueue to find the index of the end of a given layer
 	// e.g. in {-1, 0, 0, 1, 1, 1, 2, 2}, searching for '1' would give the index of the first 2
 	private static int binarySearch(int target) {
+		
+		// haha could have used this
+		Collections.binarySearch(null, null);
+
 		int left = 0;
 		int right = drawQueue.size() - 1;
 		int midpoint = 0;
@@ -225,4 +279,6 @@ public class Drawer {
 		midpoint = (left + right) / 2;
 		return midpoint + 1;
 	}
+
+
 }

@@ -15,9 +15,15 @@ import com.vikingz.campustycoon.Util.Types.Tuple;
 
 public class LeaderboardFileHandler{
 
+    // Default filename for the leaderboard data store
     public static String FILE_NAME = "leaderboard.txt";
 
 
+    /**
+     * Gets the leaderboard from a file.
+     * @param filename The name of the file to get the leaderboard from.
+     * @return
+     */
     public static HashMap<String, List<Integer>> getLeaderboard(String filename){
 
         HashMap<String, List<Integer>> leaderboard = new HashMap<String, List<Integer>>();
@@ -40,10 +46,20 @@ public class LeaderboardFileHandler{
         return leaderboard;
     } 
 
+    /**
+     * Gets the leaderboard from the default file.
+     * @return
+     */
     public static HashMap<String, List<Integer>> getLeaderboard(){
         return getLeaderboard(FILE_NAME);
     }
 
+    /**
+     * Converts a list of strings to a list of integers.
+     * Used when reading in values
+     * @param list
+     * @return
+     */
     private static ArrayList<Integer> stringListToIntList(List<String> list){
         ArrayList<Integer> intList = new ArrayList<>();
 
@@ -53,7 +69,13 @@ public class LeaderboardFileHandler{
         return intList;
     }
 
-
+    /**
+     * Adds a new entry to the leaderboard.
+     * @param filename
+     * @param key
+     * @param value
+     * @return
+     */
     public static boolean addLeaderboardEntry(String filename, String key, Integer value){
 
         HashMap<String, List<Integer>> leaderboard = getLeaderboard(filename);
@@ -93,11 +115,22 @@ public class LeaderboardFileHandler{
         return false;
     }
 
+    /**
+     * Adds a new entry to the default leaderboard file.
+     * @param key
+     * @param value
+     * @return
+     */
     public static boolean addLeaderboardEntry(String key, Integer value){
         return addLeaderboardEntry(FILE_NAME, key, value);
     }
 
 
+    /**
+     * Returns the top 5 scores in the leaderboard file.
+     * @param filename
+     * @return
+     */
     public static ArrayList<Tuple<String, Integer>> getLeaderboardTopFive(String filename){
 
         HashMap<String, List<Integer>> leaderboard = getLeaderboard(filename);
@@ -140,6 +173,10 @@ public class LeaderboardFileHandler{
         
     }
 
+    /**
+     * Returns the top 5 scores from the default leaderboard file.
+     * @return
+     */
     public static ArrayList<Tuple<String, Integer>> getLeaderboardTopFive(){
         return getLeaderboardTopFive(FILE_NAME);
     }
@@ -157,6 +194,11 @@ public class LeaderboardFileHandler{
         return index;
     }
 
+    /**
+     * Creates a new file with the given filename.
+     * @param filename
+     * @return
+     */
     public static boolean createNewFile(String filename){
         try{
             File newFile = new File(filename);
@@ -172,6 +214,10 @@ public class LeaderboardFileHandler{
         return false;
     }
 
+    /**
+     * Creates a new file with the default filename.
+     * @return
+     */
     public static boolean createNewFile(){
         return createNewFile(FILE_NAME);
     }

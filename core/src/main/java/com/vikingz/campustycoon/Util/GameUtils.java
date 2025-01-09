@@ -24,6 +24,10 @@ import com.vikingz.campustycoon.UI.Components.MenuText;
 import com.vikingz.campustycoon.UI.Components.Component.Actions;
 import com.vikingz.campustycoon.UI.Components.Component.Anchor;
 
+/**
+ * This class provides utility functions for the game.
+ * Such as setting up certain game objects etc.
+ */
 public class GameUtils {
 	public static Map map;
 	public static Event currentEvent;

@@ -25,7 +25,6 @@ public class MenuText extends Component {
 	// Not needed as text elements don't need to do anything on click
 	@Override
 	public void setClickAction(String action) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setClickAction'");
 	}
 }

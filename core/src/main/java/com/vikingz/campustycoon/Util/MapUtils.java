@@ -9,6 +9,9 @@ import com.vikingz.campustycoon.Game.Tiles.*;
 import com.vikingz.campustycoon.UI.Camera;
 import com.vikingz.campustycoon.Util.Types.Coordinate;
 
+/**
+ * Utility class for handling maps.
+ */
 public class MapUtils {
 	private Map map;
 
@@ -16,6 +19,10 @@ public class MapUtils {
 		map = Map;
 	}
 
+	/**
+	 * Placement
+	 * Contains the different types of buildings that can be placed
+	 */
 	public abstract class Placement {
 		public static final String AccommodationBuilding = "ACCOMMODATION";
 		public static final String StudyBuilding = "STUDY";
@@ -63,6 +70,11 @@ public class MapUtils {
 		}
 	}
 
+	/**
+	 * Checks it a building can be placed at a given position
+	 * @param newBuilding
+	 * @return
+	 */
 	public boolean buildingPlaceable(Building newBuilding) {
 		for (Building Building : Map.buildings) {
 			Coordinate b = Building.position;
@@ -86,11 +98,15 @@ public class MapUtils {
 		return true;
 	}
 
+	/**
+	 * Checks if a building occupies the current tile space
+	 * @param tile
+	 * @return
+	 */
 	public boolean tileHasBuilding(Coordinate tile) {
 		for (Building building : Map.buildings) {
 			Coordinate pos = building.position;
 
-			// Checks if a building occupies the current tile space
 			if (tile.x >= pos.x && tile.x < pos.x + building.width &&
 				tile.y >= pos.y && tile.y < pos.y + building.height) {
 					return true;
@@ -100,6 +116,11 @@ public class MapUtils {
 		return false;
 	}
 
+	/**
+	 * Checks if location is outside the map
+	 * @param tile
+	 * @return
+	 */
 	public boolean outsideMap(Coordinate tile) {
 		if (tile.x >= map.width || tile.x < 0 ||
 				tile.y >= map.height || tile.y < 0) {
@@ -109,6 +130,9 @@ public class MapUtils {
 	}
 
 
+	/**
+	 * Initialises the buildings on the map
+	 */
 	public void initialiseBuildings() {
 		Map.buildings = new ArrayList<Building>();
 
@@ -128,6 +152,9 @@ public class MapUtils {
 		map.placeBuildingBypass(new Coordinate(23, 14));
 	}
 
+	/**
+	 * Initialises the grid of the map
+	 */
 	public void initialiseGrid() {
 		// Read map file from somewhere
 		// Format:
@@ -165,6 +192,11 @@ public class MapUtils {
 		}
 	}
 
+	/**
+	 * Gets a tile from the tile ID
+	 * @param tileID
+	 * @return
+	 */
 	public Tile getTile(int tileID) {
 		Tile tile;
 		switch (tileID) {

@@ -9,6 +9,9 @@ import com.vikingz.campustycoon.UI.Camera;
 import com.vikingz.campustycoon.UI.Window;
 import com.vikingz.campustycoon.UI.Components.Component;
 
+/**
+ * Handles the input from the user.
+ */
 public class InputHandler implements InputProcessor {
 	private static final int LeftClick = 0;
 	@SuppressWarnings("unused")
@@ -32,15 +35,26 @@ public class InputHandler implements InputProcessor {
 		}
 	}
 	
-	
+
+	/**
+	 * Clears the list of clickables
+	 */
 	public static void clear() {
 		clickables = new ArrayList<Component>();
 	}
 	
+	/**
+	 * Adds a button to the list of clickables
+	 * @param button
+	 */
 	public static void add(Component button) {
 		clickables.add(button);
 	}
 	
+	/**
+	 * Adds a list of buttons to the list of clickables
+	 * @param buttons
+	 */
 	public static void add(List<Component> buttons) {
 		clickables.addAll(buttons);
 	}
@@ -82,6 +96,13 @@ public class InputHandler implements InputProcessor {
 		return Window.defaultHeight - (int)(y * Component.heightRatio);
 	}
 
+	/**
+	 * Checks if the touch is within the button
+	 * @param x
+	 * @param y
+	 * @param button
+	 * @return
+	 */
 	public boolean isTouchWithinButton(int x, int y, Component button) {
 		if (button == null) {
 			return false; // Button is null, so return false to avoid a NullPointerException
