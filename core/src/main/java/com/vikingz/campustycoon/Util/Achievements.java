@@ -7,14 +7,13 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class Achievements {
 
     public static ArrayList<String> achievementList = new ArrayList<>();
-    private static HashMap<String,AchievementTargetTypes> achievementTypeList = new HashMap<>();
-    private static HashMap<String, Integer> achievementTargetValueList = new HashMap<>();
+    private static final HashMap<String,AchievementTargetTypes> achievementTypeList = new HashMap<>();
+    private static final HashMap<String, Integer> achievementTargetValueList = new HashMap<>();
 
 
     enum AchievementTargetTypes {
@@ -30,15 +29,15 @@ public class Achievements {
 
     /**
      * loads data via SnakeYaml Parser and loads all needed data into HashMaps
-     * @param yamlFile
-     * @throws IOException
+     * @param yamlFile path to file
+     * @throws IOException if no file is found
      */
     @SuppressWarnings("unchecked")
     public boolean loadYamlContents(String yamlFile) throws IOException {
         try {
             final Properties modules = new Properties();
             Yaml yaml = new Yaml();
-            Map<String, Object> data = (Map<String, Object>) yaml.load(yamlFile);
+            Map<String, Object> data = yaml.load(yamlFile);
             achievementList.addAll((Collection<? extends String>) data.get("achievementList"));
             System.out.println(achievementList);
             for (String achievement : achievementList) {
@@ -81,7 +80,6 @@ public class Achievements {
      */
     public Achievements(String file,boolean test) throws IOException {
         if (test){
-            @SuppressWarnings("resource")
             String yamlFile = new Scanner(new File(file)).useDelimiter("\\Z").next();
             if(!loadYamlContents(yamlFile)){
                 throw new IOException("There has been a problem loading yaml into dictionaries");
