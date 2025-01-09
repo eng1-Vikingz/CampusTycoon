@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import com.vikingz.campustycoon.Game.GameLogic.Event;
+import com.vikingz.campustycoon.UI.Screens.GameplayScreen;
 import com.vikingz.campustycoon.Util.GameUtils;
 import com.vikingz.campustycoon.Util.MapUtils;
 import com.vikingz.campustycoon.Util.ScreenUtils;

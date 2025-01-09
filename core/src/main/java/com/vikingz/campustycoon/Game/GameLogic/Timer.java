@@ -1,5 +1,8 @@
 package com.vikingz.campustycoon.Game.GameLogic;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.vikingz.campustycoon.UI.Components.LeaderboardNewEntryMenu;
 import com.vikingz.campustycoon.UI.Components.MenuText;
 import com.vikingz.campustycoon.Util.Drawer;
 import com.vikingz.campustycoon.Util.ScreenUtils;
@@ -13,6 +16,9 @@ public class Timer{
     private static float timeRemaining;
     private boolean isRunning;
     private boolean hasEnded;
+    Skin skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
+    LeaderboardNewEntryMenu menu;
+
 
     /**
      * Constructor for Timer. 
@@ -30,6 +36,8 @@ public class Timer{
     public void start() {
         isRunning = true;
         hasEnded = false; // Reset if the timer is restarted
+        menu = new LeaderboardNewEntryMenu(skin, this);
+
     }
     
     /**
@@ -73,10 +81,11 @@ public class Timer{
      * @param secs The time in seconds.
      * @return The time in the format of minutes and seconds.
      */
-    private String floatToMinSec(float secs){
+    public static String floatToMinSec(float secs){
         
-        int m = Math.round(secs / 60);
         int s = Math.round(secs % 60);
+        secs -= s;
+        int m = Math.round(secs / 60);
 
         if(m > 100000){
             return null;
@@ -112,8 +121,13 @@ public class Timer{
             isRunning = false; // Stop the timer completely
 
             Drawer.clear();
-            ScreenUtils.OpenEndScreen();
-			BuildingCounter.reset();
+
+
+            Drawer.stage.addActor(menu);
+            menu.toFront();
+            menu.setPosition((Drawer.stage.getWidth() - menu.getWidth()) / 2, ((Drawer.stage.getHeight() - menu.getHeight()) / 2)-50);
+            Gdx.input.setInputProcessor(Drawer.stage);
+
         }
     }
 
@@ -124,4 +138,5 @@ public class Timer{
     public boolean isRunning() {
         return isRunning;
     }
+
 }

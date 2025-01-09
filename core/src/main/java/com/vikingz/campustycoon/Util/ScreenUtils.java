@@ -38,6 +38,8 @@ public final class ScreenUtils {
 
 	public static void openLeaderboardScreen(){
 		//game.setScreen(leaderboardScreen);
+		leaderboardScreen.updateEntries();
+		leaderboardScreen.setupTopFive();
 		currentScreen = leaderboardScreen;
 		leaderboardScreen.takeInput();
 	}

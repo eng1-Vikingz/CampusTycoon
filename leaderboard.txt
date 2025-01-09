@@ -1,4 +1,0 @@
-Damian,1000,100
-Tommy,500
-James,100
-Test,10,9,8

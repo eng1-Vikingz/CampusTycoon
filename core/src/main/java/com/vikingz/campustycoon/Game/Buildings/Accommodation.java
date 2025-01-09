@@ -10,7 +10,7 @@ import com.vikingz.campustycoon.Util.Types.Coordinate;
  */
 public class Accommodation extends Building {
 
-	public static final String defaultImage = "Buildings\\Accommodation.png";
+	public static final String defaultImage = "Buildings\\acom1.png";
 	public static final String buildingName = "Accommodation";
 	public static int cost = 200;
 	public static int width = 3;

@@ -7,7 +7,7 @@ import com.vikingz.campustycoon.Util.Types.Coordinate;
  * This class is used to create a Relaxation building.
  */
 public class Relaxation extends Building {
-	public static final String[] defaultImage = {"Buildings\\Relaxation.png", "Buildings\\Relaxation2.png"};
+	public static final String[] defaultImage = {"Buildings\\ysv.png", "Buildings\\pub.png"};
 	public static final String buildingName = "Relaxation";
 	public static final String buildingName2 = "Relaxation2";
     public static int cost = 200;

@@ -17,7 +17,7 @@ public class Study extends Building{
 	/**
 	 * Changed default image to be an array, therefore we can have multiple textures
 	 */
-	public static final String[] defaultImage = {"Buildings\\Study.png", "Buildings\\Study2.png"};
+	public static final String[] defaultImage = {"Buildings\\rch.png", "Buildings\\pza.png"};
 	public static final String buildingName = "Study";
 	public static final String buildingName2 = "Study2";
     public static int cost = 100;

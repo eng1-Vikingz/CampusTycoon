@@ -36,6 +36,7 @@ package com.vikingz.campustycoon {
             class BankruptMenu
             class Button
             class Component
+            class LeaderboardNewEntryMenu
             class MapBuilding
             class MapTile
             class MenuText

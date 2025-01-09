@@ -88,7 +88,7 @@ public class GameUtils {
 		//setupMenu();
 
 
-		Button buttonAccommodation = new Button("Buildings\\Accommodation.png", -250, 10, 90, 66);
+		Button buttonAccommodation = new Button("Buildings\\acom1.png", -250, 10, 90, 66);
 		buttonAccommodation.setClickAction(Actions.ToggleAccommodationBuilding);
 		buttonAccommodation.setAnchor(Anchor.BottomCentre);
 
@@ -100,7 +100,7 @@ public class GameUtils {
 
 
 		// ORIGINAL STUDY BTN
-        Button buttonStudy = new Button("Buildings\\Study.png", -150, 10, 90, 66);
+        Button buttonStudy = new Button("Buildings\\rch1.png", -150, 10, 90, 66);
 		buttonStudy.setClickAction(Actions.ToggleStudyBuilding);
         buttonStudy.setAnchor(Anchor.BottomCentre);
 
@@ -112,7 +112,7 @@ public class GameUtils {
 
 
 
-        Button buttonCafe = new Button("Buildings\\Cafeteria.png", -50, 10, 90, 66);
+        Button buttonCafe = new Button("Buildings\\macd.png", -50, 10, 90, 66);
 		buttonCafe.setClickAction(Actions.ToggleCafeteriaBuilding);
         buttonCafe.setAnchor(Anchor.BottomCentre);
 
@@ -123,11 +123,11 @@ public class GameUtils {
 		BuildingCounter.UI.add(cafeCount);
 
 
-        Button buttonRelax = new Button("Buildings\\Relaxation.png", 50, 10, 90, 66);
+        Button buttonRelax = new Button("Buildings\\ysv.png", 50, 10, 90, 66);
 		buttonRelax.setClickAction(Actions.ToggleRelaxationBuilding);
         buttonRelax.setAnchor(Anchor.BottomCentre);
 
-        Button buttonRelax2 = new Button("Buildings\\Relaxation2.png", 150, 10, 90, 66);
+        Button buttonRelax2 = new Button("Buildings\\pub.png", 150, 10, 90, 66);
 		buttonRelax2.setClickAction(Actions.ToggleRelaxation2Building);
         buttonRelax2.setAnchor(Anchor.BottomCentre);
 
@@ -141,8 +141,7 @@ public class GameUtils {
         // Button buttonPH5 = new Button("Placeholder.png", 150, 10, 90, 66);
         // buttonPH5.setAnchor(Anchor.BottomCentre);
 
-        Button buttonPH6 = new Button("Placeholder.png",250, 10, 90, 66);
-        buttonPH6.setAnchor(Anchor.BottomCentre);
+
 
         Button buttonDollar = new Button("Dollar.png", -300, 0, 70, 66);
         buttonDollar.setAnchor(Anchor.TopCentre);
@@ -171,7 +170,7 @@ public class GameUtils {
 
 
 		List<Component> UIButtons = Arrays.asList(
-			buttonAccommodation, buttonStudy, buttonCafe, buttonRelax, buttonRelax2, buttonPH6,
+			buttonAccommodation, buttonStudy, buttonCafe, buttonRelax, buttonRelax2,
 			buttonSatisfaction,
 			buttonDollar, buttonHouses, buttonPeople);
 

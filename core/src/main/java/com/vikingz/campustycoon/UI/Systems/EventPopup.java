@@ -12,7 +12,6 @@ import java.util.ArrayList;
 /**
  * This class is used to create an event popup.
  * 
- * OLD IMPLEMENTATION
  */
 public class EventPopup {
 	public Event event;

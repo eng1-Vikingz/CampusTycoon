@@ -45,18 +45,17 @@ public class ScreensTest {
         when(batch.getProjectionMatrix()).thenReturn(new Matrix4());
 
 
-
-        leaderboard = new LeaderboardScreen(true);
     }
-
-
+    
+    
     @Test
     void testCreateScreen(){
-
+        
         end = new EndScreen();
         game = new GameplayScreen();
-
         
+        
+        leaderboard = new LeaderboardScreen(true);
         settings = new SettingsScreen();
         start = new StartScreen();
     }

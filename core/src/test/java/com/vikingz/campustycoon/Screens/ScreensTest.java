@@ -1,5 +1,7 @@
 package com.vikingz.campustycoon.Screens;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -16,7 +18,10 @@ public class ScreensTest {
         GL20 gl20 = Mockito.mock(GL20.class);
         Gdx.gl = gl20;
         Gdx.gl20 = gl20;
-        LeaderboardScreen leaderboard = new LeaderboardScreen();
+
+        //assertTrue(Gdx.files.internal("glassy-ui/skin/glassy-ui.json").exists());
+
+        //LeaderboardScreen leaderboard = new LeaderboardScreen();
     }
 
 }

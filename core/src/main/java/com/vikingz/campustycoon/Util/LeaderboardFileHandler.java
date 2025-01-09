@@ -26,9 +26,7 @@ public class LeaderboardFileHandler{
             while(reader.hasNextLine()){
 
                 String[] line = reader.nextLine().split(",");
-
                 ArrayList<Integer> values = stringListToIntList(Arrays.asList(line).subList(1, line.length));
-
                 leaderboard.put(line[0], values);
 
             }

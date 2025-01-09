@@ -7,7 +7,7 @@ import com.vikingz.campustycoon.Util.Types.Coordinate;
  * The Cafeteria class represents a building of type Cafeteria in the game.
  */
 public class Cafeteria extends Building {
-	public static final String defaultImage = "Buildings\\Cafeteria.png";
+	public static final String defaultImage = "Buildings\\macd.png";
 	public static final String buildingName = "Cafeteria";
     public static int cost = 100;
 	public static int width = 3, height = 3;

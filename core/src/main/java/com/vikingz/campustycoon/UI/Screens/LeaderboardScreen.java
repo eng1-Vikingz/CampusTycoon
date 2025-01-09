@@ -59,6 +59,8 @@ public class LeaderboardScreen implements Screen {
     Table table;
 
 
+    static ArrayList<Tuple<String, Integer>> topFiveEntries = new ArrayList<>();
+
     /**
      * Constructor for the LeaderboardScreen class.
      */
@@ -81,31 +83,20 @@ public class LeaderboardScreen implements Screen {
     public LeaderboardScreen(boolean isHeadless) {
 
         super();
+        this.table = new Table();
 
-        this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
         if(isHeadless){
                 batch = new SpriteBatch();
-                String vertexShader = "attribute vec4 a_position;\n" +
-                                    "void main() {\n" +
-                                    "    gl_Position = a_position;\n" +
-                                    "}";
-                String fragmentShader = "void main() {\n" +
-                                                    "    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);\n" +
-                                                    "}";
-
-                batch.setShader(new ShaderProgram(vertexShader, fragmentShader));
-
-                ShaderProgram.pedantic = false; // Prevent exceptions on shader warnings
-                ShaderProgram dummyShader = new ShaderProgram(vertexShader, fragmentShader);
-                batch.setShader(dummyShader);
         }
         else{
             this.batch = new SpriteBatch();
         }
-        SpriteBatch.createDefaultShader();
+        
+
         
         stage = new Stage();
+        this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
         font = new BitmapFont();
         font.getData().setScale(1.5f);
@@ -122,14 +113,17 @@ public class LeaderboardScreen implements Screen {
             }
         });
 
+
+    }
+
+
+    public void setupTopFive(){
+
+        table.clear();
         // Create layout table
-        this.table = new Table();
         table.setFillParent(true);
         table.top();
         table.center();
-
-
-
 
         createTitleLbl();
 
@@ -137,8 +131,9 @@ public class LeaderboardScreen implements Screen {
         // addLabel("TEST2");
         // addLabel("TEST3");
 
+        topFiveEntries = LeaderboardFileHandler.getLeaderboardTopFive();
 
-        for(Tuple<String, Integer> entry : LeaderboardFileHandler.getLeaderboardTopFive()){
+        for(Tuple<String, Integer> entry : topFiveEntries){
             addLabel(entry.x + " :: " + entry.y);
         }
 
@@ -150,7 +145,6 @@ public class LeaderboardScreen implements Screen {
         table.add(backBtn).pad(PADDING).align(Align.center);
 
         stage.addActor(table);
-
     }
 
     /**
@@ -187,6 +181,10 @@ public class LeaderboardScreen implements Screen {
 
     }
 
+    public void updateEntries(){
+        topFiveEntries = LeaderboardFileHandler.getLeaderboardTopFive();
+    }
+
 
 
     /**
@@ -200,7 +198,7 @@ public class LeaderboardScreen implements Screen {
         Drawer.drawAll();
 
 
-        System.out.println("Rendering leaderboard");
+        //System.out.println("Rendering leaderboard");
         batch.begin();
 
         stage.act(delta);
