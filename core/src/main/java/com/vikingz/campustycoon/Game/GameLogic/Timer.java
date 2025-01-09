@@ -16,37 +16,38 @@ public class Timer{
     private static float timeRemaining;
     private boolean isRunning;
     private boolean hasEnded;
-    Skin skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
+    //Skin skin;
     LeaderboardNewEntryMenu menu;
 
 
     /**
-     * Constructor for Timer. 
+     * Constructor for Timer.
      * @param startTime The time to start the timer at.
      */
-    public Timer(float startTime) {
+    public Timer(float startTime, Skin skin) {
+        //this.skin = skin;
         Timer.timeRemaining = startTime;
         this.isRunning = false;
         this.hasEnded = false;
     }
-    
+
     /**
      * Starts the timer.
      */
     public void start() {
         isRunning = true;
         hasEnded = false; // Reset if the timer is restarted
-        menu = new LeaderboardNewEntryMenu(skin, this);
+        //menu = new LeaderboardNewEntryMenu(skin, this);
 
     }
-    
+
     /**
      * Pauses the timer.
      */
     public void pause() {
         isRunning = false;
     }
-    
+
     /**
      * Resets the timer.
      * @param startTime The time to reset the timer to.
@@ -56,7 +57,7 @@ public class Timer{
         this.isRunning = false;
         this.hasEnded = false;
     }
-    
+
     /**
      *  Updates the timer.
      * @param deltaTime The time since the last update.
@@ -68,7 +69,7 @@ public class Timer{
                 timeRemaining = 0;
                 onTimeUp(); // Call onTimeUp to handle end logic
             }
-			
+
 			if (text != null) {
 				text.text = floatToMinSec(timeRemaining);
 				text.update();
@@ -82,7 +83,7 @@ public class Timer{
      * @return The time in the format of minutes and seconds.
      */
     public static String floatToMinSec(float secs){
-        
+
         int s = Math.round(secs % 60);
         secs -= s;
         int m = Math.round(secs / 60);
@@ -92,10 +93,10 @@ public class Timer{
         }
 
         return "Time: " + String.format("%02d", m) + ":" + String.format("%02d", s);
-        
-    
+
+
     }
-    
+
     /**
      * Gets the time remaining.
      * @return The time remaining.

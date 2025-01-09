@@ -106,5 +106,6 @@ glassy-ui/skin/glassy-ui.atlas
 glassy-ui/skin/glassy-ui.json
 glassy-ui/skin/glassy-ui.png
 leaderboard.csv
+leaderboard.txt
 png/background.png
 test.txt
