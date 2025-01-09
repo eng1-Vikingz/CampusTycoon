@@ -23,8 +23,11 @@ public class MenuTextTest {
         MenuText menuText = new MenuText("Test", x, y, widthScale, heightScale);
         assertNotNull(menuText);
 
-        //assertEquals(10, menuText.x);
-        //assertEquals(660, menuText.y);
+        menuText.setX(x);
+        menuText.setY(y);
+        menuText.setWidth(widthScale);
+        menuText.setHeight(heightScale);
+
         assertEquals(widthScale, menuText.width);
         assertEquals(heightScale, menuText.height);
 

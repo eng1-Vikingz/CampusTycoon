@@ -181,6 +181,11 @@ public class LeaderboardScreen implements Screen {
 
     }
 
+    /**
+     * Updates the entries on the leaderboard 
+     * Call this when a new entry is added to the leaderboard
+     * and the leaderboard needs to be updated
+     */
     public void updateEntries(){
         topFiveEntries = LeaderboardFileHandler.getLeaderboardTopFive();
     }

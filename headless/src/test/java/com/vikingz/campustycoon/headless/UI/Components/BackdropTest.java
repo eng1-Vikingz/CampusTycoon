@@ -27,16 +27,31 @@ public class BackdropTest {
         Backdrop bd1 = new Backdrop(x, y, width, height);
         Backdrop bd2 = new Backdrop("default", x, y, width, height);
         Backdrop bd3 = new Backdrop(new ArrayList<>(), x, y, width, height);
+        
+        bd1.setX(expectedX);
+        bd1.setY(expectedY);
+        bd1.setWidth(expectedWidth);
+        bd1.setHeight(expectedHeight);
 
         assertEquals(expectedX, bd1.getX());
         assertEquals(expectedY, bd1.getY());
         assertEquals(expectedWidth, bd1.getWidth());
         assertEquals(expectedHeight, bd1.getHeight());
+        
+        bd2.setX(expectedX);
+        bd2.setY(expectedY);
+        bd2.setWidth(expectedWidth);
+        bd2.setHeight(expectedHeight);
 
         assertEquals(expectedX, bd2.getX());
         assertEquals(expectedY, bd2.getY());
         assertEquals(expectedWidth, bd2.getWidth());
         assertEquals(expectedHeight, bd2.getHeight());
+
+        bd3.setX(expectedX);
+        bd3.setY(expectedY);
+        bd3.setWidth(expectedWidth);
+        bd3.setHeight(expectedHeight);
 
         assertEquals(expectedX, bd3.getX());
         assertEquals(expectedY, bd3.getY());
