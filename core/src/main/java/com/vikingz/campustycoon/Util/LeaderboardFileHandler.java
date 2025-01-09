@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 
 import com.vikingz.campustycoon.Util.Types.Tuple;
 
+
 public class LeaderboardFileHandler{
 
     // Default filename for the leaderboard data store
-    public static String FILE_NAME = "leaderboard.txt";
+    public static String FILE_NAME = "leaderboard.csv";
 
 
     /**
@@ -41,10 +42,10 @@ public class LeaderboardFileHandler{
         catch (FileNotFoundException e){
             System.out.println("'" + filename + "' did not exist!");
             createNewFile(filename);
-            
+
         }
         return leaderboard;
-    } 
+    }
 
     /**
      * Gets the leaderboard from the default file.
@@ -79,10 +80,13 @@ public class LeaderboardFileHandler{
     public static boolean addLeaderboardEntry(String filename, String key, Integer value){
 
         HashMap<String, List<Integer>> leaderboard = getLeaderboard(filename);
+
         if(leaderboard.keySet().contains(key)){
             List<Integer> values = leaderboard.get(key);
+            System.out.println(values);
             values.add(value);
             leaderboard.put(key, values);
+
         }
         else{
             List<Integer> newValue = new ArrayList<>();
@@ -152,14 +156,14 @@ public class LeaderboardFileHandler{
         }
 
         for(int i = 0; i < 5; i++){
-            
+
 
             try{
                 int index = getMax(values);
                 best.add(new Tuple<String,Integer>(keys.get(index), values.get(index)));
-    
-                System.out.println(keys.get(index) + "::" + values.get(index));
-    
+
+
+
                 keys.remove(index);
                 values.remove(index);
 
@@ -170,7 +174,7 @@ public class LeaderboardFileHandler{
         }
 
         return best;
-        
+
     }
 
     /**
@@ -233,7 +237,7 @@ public class LeaderboardFileHandler{
             System.out.println("Could not remove " + filename);
         }
         return result;
-        
+
     }
 
 }
