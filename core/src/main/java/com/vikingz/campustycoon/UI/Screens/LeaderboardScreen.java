@@ -15,6 +15,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -37,7 +38,7 @@ public class LeaderboardScreen implements Screen {
 
 
     //Used to render UI
-    private final SpriteBatch batch;
+    private SpriteBatch batch;
     private final BitmapFont font;
     private final Stage stage;
     private final Skin skin;
@@ -62,7 +63,12 @@ public class LeaderboardScreen implements Screen {
      * Constructor for the LeaderboardScreen class.
      */
     public LeaderboardScreen() {
-        this(new SpriteBatch());
+        this(false);
+    }
+
+    public LeaderboardScreen(SpriteBatch batch){
+        this(true);
+        this.batch = batch;
     }
 
     /**
@@ -72,13 +78,31 @@ public class LeaderboardScreen implements Screen {
      * to run the tests in a headless environment.
      * @param batch
      */
-    public LeaderboardScreen(SpriteBatch batch) {
+    public LeaderboardScreen(boolean isHeadless) {
 
         super();
 
         this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
-        this.batch = batch;
+        if(isHeadless){
+                batch = new SpriteBatch();
+                String vertexShader = "attribute vec4 a_position;\n" +
+                                    "void main() {\n" +
+                                    "    gl_Position = a_position;\n" +
+                                    "}";
+                String fragmentShader = "void main() {\n" +
+                                                    "    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);\n" +
+                                                    "}";
+
+                batch.setShader(new ShaderProgram(vertexShader, fragmentShader));
+
+                ShaderProgram.pedantic = false; // Prevent exceptions on shader warnings
+                ShaderProgram dummyShader = new ShaderProgram(vertexShader, fragmentShader);
+                batch.setShader(dummyShader);
+        }
+        else{
+            this.batch = new SpriteBatch();
+        }
         SpriteBatch.createDefaultShader();
         
         stage = new Stage();

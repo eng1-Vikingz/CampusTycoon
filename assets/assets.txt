@@ -89,5 +89,6 @@ glassy-ui/skin/font-export.fnt
 glassy-ui/skin/glassy-ui.atlas
 glassy-ui/skin/glassy-ui.json
 glassy-ui/skin/glassy-ui.png
+leaderboard.txt
 png/background.png
 test.txt
