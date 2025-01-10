@@ -42,9 +42,9 @@ public class ScreensTest {
         end = new EndScreen();
         game = new GameplayScreen();
         
-        leaderboard = new LeaderboardScreen(batch);
-        settings = new SettingsScreen();
-        start = new StartScreen();
+        // leaderboard = new LeaderboardScreen(batch);
+        // settings = new SettingsScreen();
+        // start = new StartScreen();
     }
 
 

@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.vikingz.campustycoon.UI.Components.LeaderboardNewEntryMenu;
 import com.vikingz.campustycoon.UI.Components.MenuText;
 import com.vikingz.campustycoon.Util.Drawer;
-import com.vikingz.campustycoon.Util.ScreenUtils;
 
 
 /**
@@ -16,7 +15,7 @@ public class Timer{
     private static float timeRemaining;
     private boolean isRunning;
     private boolean hasEnded;
-    //Skin skin;
+    Skin skin;
     LeaderboardNewEntryMenu menu;
 
 
@@ -25,7 +24,7 @@ public class Timer{
      * @param startTime The time to start the timer at.
      */
     public Timer(float startTime, Skin skin) {
-        //this.skin = skin;
+        this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
         Timer.timeRemaining = startTime;
         this.isRunning = false;
         this.hasEnded = false;
@@ -37,7 +36,7 @@ public class Timer{
     public void start() {
         isRunning = true;
         hasEnded = false; // Reset if the timer is restarted
-        //menu = new LeaderboardNewEntryMenu(skin, this);
+        menu = new LeaderboardNewEntryMenu(this.skin, this);
 
     }
 
