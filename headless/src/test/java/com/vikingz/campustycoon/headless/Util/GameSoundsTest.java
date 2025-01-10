@@ -13,24 +13,25 @@ import com.vikingz.campustycoon.Util.GameSounds;
 import com.vikingz.campustycoon.headless.HeadlessLauncher;
 
 public class GameSoundsTest {
-    
+
 
     @BeforeEach
     void setUpHeadless(){
-
         HeadlessLauncher.main(new String[0]);
         Gdx.audio = org.mockito.Mockito.mock(com.badlogic.gdx.Audio.class);
         Sound mockSound = org.mockito.Mockito.mock(Sound.class);
         org.mockito.Mockito.when(Gdx.audio.newSound(org.mockito.ArgumentMatchers.any())).thenReturn(mockSound);
-
+        //Ensures Classes aren't null
+        new GameSounds();
+        new GameMusic();
     }
-    
+
     @Test
     void testPlayPlacedBuilding(){
         assertTrue(GameSounds.playPlacedBuilding());
-        
+
     }
-    
+
     @Test
     void testPlayPlaceError(){
         assertTrue(GameSounds.playPlaceError());
@@ -41,11 +42,11 @@ public class GameSoundsTest {
         GameSounds.setVolume(0.5f);
         assertTrue(GameSounds.getVolume() == 0.5f);
     }
-    
+
     @Test
     void testGameMusicVolume(){
         GameMusic.setVolume(0.5f);
         assertTrue(GameMusic.getVolume() == 0.5f);
     }
-    
+
 }
