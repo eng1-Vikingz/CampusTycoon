@@ -15,6 +15,8 @@ public class Timer{
     private static float timeRemaining;
     private boolean isRunning;
     private boolean hasEnded;
+    
+    // DONT REMOVE THIS OR IT WILL CRASH
     Skin skin;
     LeaderboardNewEntryMenu menu;
 
@@ -24,7 +26,9 @@ public class Timer{
      * @param startTime The time to start the timer at.
      */
     public Timer(float startTime, Skin skin) {
+        // DONT CHANGE THIS OR IT WILL CRASH, idk why skin is passed as arg
         this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
+        
         Timer.timeRemaining = startTime;
         this.isRunning = false;
         this.hasEnded = false;

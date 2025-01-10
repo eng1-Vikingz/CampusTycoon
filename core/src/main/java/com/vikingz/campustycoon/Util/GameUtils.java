@@ -210,8 +210,11 @@ public class GameUtils {
         moneyText.setAnchor(Anchor.TopCentre);
         MoneyHandler.text = moneyText;
 
+		MenuText helpPrompts = new MenuText("press esc to pause",00,25,2f,2f);
+        helpPrompts.setAnchor(Anchor.TopLeft);
 
-        List<Component> textElements = Arrays.asList(satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText,moneyText);
+
+        List<Component> textElements = Arrays.asList(helpPrompts, satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText,helpPrompts);
 
 		// Add all text to the drawQueue
 		for (Component text : textElements) {
@@ -220,7 +223,6 @@ public class GameUtils {
 		}
 		// No need to add text to the InputHandler (unless you really want to be able to click on it for some reason)
 	}
-
 
 
 	public static void createEventPopupUI(Event event) {
