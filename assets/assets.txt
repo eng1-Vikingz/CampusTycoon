@@ -52,6 +52,7 @@ Tiles/Grass.png
 Tiles/Lake.png
 Tiles/Mountain.png
 Tiles/SpriteMap.png
+achievement.yml
 assets copy.txt
 audio/Background_Music.ogg
 audio/fx_1.ogg

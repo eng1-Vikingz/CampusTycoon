@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import com.vikingz.campustycoon.Util.Types.Coordinate;
 
 public class CoordinateTest {
-    
-
     @Test
     public void testCreateCoordinate_defaultConstructor(){
 
@@ -19,7 +17,6 @@ public class CoordinateTest {
         assertEquals(0, newCoord.x);
         assertEquals(0, newCoord.y);
     }
-
     @Test
     public void testCreateCoordinate_argsConstructor(){
 
@@ -28,7 +25,6 @@ public class CoordinateTest {
         assertEquals(4, newCoord.x);
         assertEquals(5, newCoord.y);
     }
-
 
     @Test 
     void testCoordDistance(){
@@ -39,7 +35,6 @@ public class CoordinateTest {
         assertEquals(1.414, y.distance(x), 0.1);
 
     }
-
     @Test
     void testEquals(){
 

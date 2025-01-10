@@ -15,37 +15,30 @@ public class MoneyHandlerTest {
     public void setup(){
         MoneyHandler.resetBank();   
     }
-
     @Test
     public void testAddMoneyPositive() {
         assertTrue(MoneyHandler.addMoney(500));
         assertEquals(1500, MoneyHandler.getMoney());
     }
-
     @Test
     public void testAddMoneyNegative() {
         MoneyHandler.addMoney(-500);
         assertEquals(500, MoneyHandler.getMoney());
     }
-
     @Test
     public void testAddMoneyInsufficientFunds() {
         assertFalse(MoneyHandler.addMoney(-1500));
         assertEquals(1000, MoneyHandler.getMoney());
     }
-
     @Test
     public void testGetMoney() {
         assertEquals(1000, MoneyHandler.getMoney());
     }
-
     @Test
     public void testUpdate() {
         MoneyHandler.update(5f);
-        assertEquals(1000, MoneyHandler.getMoney()); // Assuming income() does not change money??!
+        assertEquals(1000, MoneyHandler.getMoney());
     }
-
-
 
     @Test
     public void testSpend(){
