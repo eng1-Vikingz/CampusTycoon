@@ -1,0 +1,58 @@
+#sets number of actions to use
+eventList: [ event1,event2,event3,event4,event5 ]
+#satisfaction,Cost
+event1:
+  - Description: "You create a new cafe, you may gain satisfaciton, but is it work the cost? \nAccept 5000, neutral 0, reject 0"
+  #what happens if you accept
+  - acceptGain: 300
+  - acceptCost: 5000
+  #what happens if you don't do anything
+  - neutralGain: -100
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: 0
+  - rejectCost: 0
+event2:
+  - Description: "Door to the computer science\n building is broken, do you \nix it? \nAccept 500, neutral 0, reject 0"
+  #what happens if you accept
+  - acceptGain: 100
+  - acceptCost: 500
+  #what happens if you don't do anything
+  - neutralGain: 100
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: 0
+  - rejectCost: 0
+event3:
+  - Description: "Students start complaining \nthat the computers are running slow, do you upgrade them? \nAccept 20000, neutral 0, reject 0"
+  #what happens if you accept
+  - acceptGain: 600
+  - acceptCost: 20000
+  #what happens if you don't do anything
+  - neutralGain: -200
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: -400
+  - rejectCost: 0
+event4:
+  - Description: "You feel nice today, do \nyou donate to charity? \nAccept 100, neutral 0, reject 0"
+  #what happens if you accept
+  - acceptGain: 500
+  - acceptCost: 100
+  #what happens if you don't do anything
+  - neutralGain: -200
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: -400
+  - rejectCost: 0
+event5:
+  - Description: "Teachers are asking for a \nraise, do you give it \nto them? \nAccept 8000, neutral 0, reject 0"
+  #what happens if you accept
+  - acceptGain: 200
+  - acceptCost: 8000
+  #what happens if you don't do anything
+  - neutralGain: -200
+  - neutralCost: 0
+  #what happens if you reject
+  - rejectGain: -400
+  - rejectCost: 0

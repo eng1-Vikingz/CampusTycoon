@@ -214,7 +214,7 @@ public class GameUtils {
         helpPrompts.setAnchor(Anchor.TopLeft);
 
 
-        List<Component> textElements = Arrays.asList(helpPrompts, satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText,helpPrompts);
+        List<Component> textElements = Arrays.asList(helpPrompts, satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText,helpPrompts, moneyText);
 
 		// Add all text to the drawQueue
 		for (Component text : textElements) {

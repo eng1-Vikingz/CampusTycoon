@@ -41,15 +41,15 @@ public class GameplayScreen implements Screen{
     @Override
     public void show() {
         if (!com.vikingz.campustycoon.Util.ScreenUtils.GameActive) {
-            timer = new Timer(300, skin); // Sets a countdown for 300 seconds (5 minutes)
-            timer.start();
+            this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
             GameUtils.startGame();
             GameUtils.createGameplayUI();
             stateChanged = false;  // Reset stateChanged when the screen is shown
             elapsedTime = 0;
             rand = ThreadLocalRandom.current();
             eventCounter = 0f;
-            this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
+            timer = new Timer(300, new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"))); // Sets a countdown for 300 seconds (5 minutes)
+            timer.start();
             pauseMenu = new PauseMenu(skin);
             bankruptMenu = new BankruptMenu(skin);
             paused = false;
