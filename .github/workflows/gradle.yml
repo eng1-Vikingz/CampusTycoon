@@ -50,10 +50,15 @@ jobs:
         gradle-home-cache-cleanup: true
         cache-read-only: false
       
+    - name: cleanup build
+      run: ./gradlew clean
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-
+      
+    - name: cleanup build for jar making
+      run: ./gradlew clean
+      
     - name: Build Jar for artifacts
       run: ./gradlew jar
       
