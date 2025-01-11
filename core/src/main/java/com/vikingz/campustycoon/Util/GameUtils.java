@@ -61,11 +61,15 @@ public class GameUtils {
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
         buttonNewGame.setAnchor(Anchor.Centre);
 
-        Button buttonLeaderboard = new Button("Leaderboard.png", 0, 20, 262, 66);
+        Button buttonAchievement = new Button("Leaderboard.png", 0, 20, 262, 66);
+        buttonAchievement.setClickAction(Actions.OpenAchievementScreen);
+        buttonAchievement.setAnchor(Anchor.Centre);
+
+        Button buttonLeaderboard = new Button("Leaderboard.png", 0, -50, 262, 66);
         buttonLeaderboard.setClickAction(Actions.OpenLeaderboardScreen);
         buttonLeaderboard.setAnchor(Anchor.Centre);
 
-        Button buttonSettings = new Button("Settings.png", 0, -50, 262, 66);
+        Button buttonSettings = new Button("Settings.png", 0, -120, 262, 66);
         buttonSettings.setClickAction(Actions.OpenSettingsScreen);
         buttonSettings.setAnchor(Anchor.Centre);
 
@@ -73,6 +77,7 @@ public class GameUtils {
         List<Component> startScreenButtonList = Arrays.asList(
 			buttonNewGame,
 			buttonLeaderboard,
+            buttonAchievement,
 			buttonSettings);
 
 		// Add all buttons to the drawQueue

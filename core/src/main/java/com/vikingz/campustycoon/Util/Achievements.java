@@ -2,6 +2,14 @@ package com.vikingz.campustycoon.Util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.vikingz.campustycoon.Game.GameLogic.BuildingCounter;
+import com.vikingz.campustycoon.Game.GameLogic.MoneyHandler;
+import com.vikingz.campustycoon.Game.GameLogic.SatisfactionMeter;
+import com.vikingz.campustycoon.UI.Components.AchievementPopUp;
+import com.vikingz.campustycoon.UI.Components.BankruptMenu;
+import com.vikingz.campustycoon.UI.Screens.GameplayScreen;
+import com.vikingz.campustycoon.Util.Types.Achievement;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
@@ -11,19 +19,23 @@ import java.util.stream.Collectors;
 
 public class Achievements {
 
-    public static ArrayList<String> achievementList = new ArrayList<>();
-    private static final HashMap<String,AchievementTargetTypes> achievementTypeList = new HashMap<>();
-    private static final HashMap<String, Integer> achievementTargetValueList = new HashMap<>();
+    public ArrayList<String> achievementNameList = new ArrayList<>();
+    private final HashMap<String,AchievementTargetTypes> achievementTypeList = new HashMap<>();
+    private final HashMap<String, Integer> achievementTargetValueList = new HashMap<>();
+    public final ArrayList<Achievement> achievementList = new ArrayList<>();
 
+    public final HashSet<String> achievedSet = new HashSet<>();
 
-    enum AchievementTargetTypes {
+    public enum AchievementTargetTypes {
         NumberOfBuildings,
         NumberOfAccommindationBuildings,
         NumberOfCafeteriaBuildings,
         NumberOfRelaxationBuildings,
         NumberOfStudyBuildings,
         SatisfactionScore,
-        AmountOfMoney
+        AmountOfMoney,
+
+        Bankrupt
     }
 
 
@@ -38,22 +50,61 @@ public class Achievements {
             final Properties modules = new Properties();
             Yaml yaml = new Yaml();
             Map<String, Object> data = yaml.load(yamlFile);
-            achievementList.addAll((Collection<? extends String>) data.get("achievementList"));
-            System.out.println(achievementList);
-            for (String achievement : achievementList) {
+            achievementNameList.addAll((Collection<? extends String>) data.get("achievementList"));
+            System.out.println(achievementNameList);
+            for (String achievement : achievementNameList) {
                 final List<Map<String, Object>> values = (List<Map<String, Object>>) data.get(achievement);
                 modules.putAll(values.stream().filter(Objects::nonNull)
                     .flatMap(map -> map.entrySet().stream())
                     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-
                 achievementTypeList.put(achievement,AchievementTargetTypes.valueOf((String) modules.get("type")));
                 achievementTargetValueList.put(achievement,(Integer) modules.get("target"));
+                achievementList.add(new Achievement(achievement,achievementTypeList.get(achievement),achievementTargetValueList.get(achievement)));
             }
+
         }
         catch (Exception e){
             throw new IOException("File Is invalid");
         }
         System.out.println("Achievements loaded");
+        return true;
+    }
+
+    public boolean createNewCheckFile(){
+        try{
+
+            FileHandle File = Gdx.files.local("achieved.csv");
+            if(File.file().createNewFile()){
+                System.out.println("Created new file: 'achieved.csv'");
+                return true;
+            }
+
+        }
+        catch(IOException e){
+            System.out.println("An error occurred, could not create file");
+        }
+        return false;
+    }
+
+    public boolean checkForCheckFile(){
+        FileHandle File = Gdx.files.local("achieved.csv");
+        if(File.exists()){
+            return true;
+        }
+        return createNewCheckFile();
+    }
+
+
+    public boolean updateCheckFile(){
+        if (!checkForCheckFile()){
+            return false;
+        }
+        FileHandle File = Gdx.files.local("achieved.csv");
+        String oldSet = File.readString();
+        for (String old : oldSet.split(",")){
+            achievedSet.add(old);
+        }
+        File.writeString(achievedSetToCsv(),false);
         return true;
     }
 
@@ -65,11 +116,13 @@ public class Achievements {
             if(!loadYamlContents(yamlFile)){
                 throw new IOException("There has been a problem loading yaml into dictionaries");
             }
+
         } catch (Exception e){
             System.err.println("there was a issue trying to read events yaml file,\n" + e);
         }
 
     }
+
 
 
     /**
@@ -90,15 +143,83 @@ public class Achievements {
         }
     }
 
-    public static ArrayList<String> getAchievementList() {
+    public ArrayList<Achievement> getAchievementList() {
         return achievementList;
     }
+    public ArrayList<String> getAchievementNameList() {
+        return achievementNameList;
+    }
 
-    public static HashMap<String, AchievementTargetTypes> getAchievementTypeList() {
+    public HashMap<String, AchievementTargetTypes> getAchievementTypeList() {
         return achievementTypeList;
     }
 
-    public static HashMap<String, Integer> getAchievementTargetValueList() {
+    public HashMap<String, Integer> getAchievementTargetValueList() {
         return achievementTargetValueList;
     }
+
+    public int getTarget(AchievementTargetTypes target){
+        switch (target){
+            case NumberOfBuildings:
+                return BuildingCounter.getTotalBuildingCount();
+            case NumberOfAccommindationBuildings:
+                return BuildingCounter.getBuildingCount("Accommodation");
+            case NumberOfCafeteriaBuildings:
+                return BuildingCounter.getBuildingCount("Cafeteria");
+            case NumberOfRelaxationBuildings:
+                return BuildingCounter.getBuildingCount("Relaxation");
+            case NumberOfStudyBuildings:
+                return BuildingCounter.getBuildingCount("Study");
+            case SatisfactionScore:
+                return SatisfactionMeter.getSatisfactionScore();
+            case AmountOfMoney:
+                return MoneyHandler.getMoney();
+            case Bankrupt:
+                if(MoneyHandler.isPreviousBankrupt()){
+                    return -999;
+                }
+            default:
+                return -1;
+        }
+    }
+
+    public String achievedSetToCsv(){
+        String str = "";
+        for (String achieved : achievedSet){
+            if (!(achieved == "")) {
+                str += achieved + ",";
+            }
+        }
+        return str;
+    }
+
+    public void checkForAchieved(){
+        for (Achievement achievement: achievementList){
+            if (achievement.isAchieved()){
+                achievedSet.add(achievement.name);
+            }
+        }
+        updateCheckFile();
+    }
+
+
+    public void checkForTargets(GameplayScreen gameplayScreen){
+        boolean unlocked = false;
+        for (Achievement achievement: achievementList){
+            if (getTarget(achievement.type) >= achievement.target && !(achievement.target == 0) && !achievement.isAchieved()){
+                achievement.hasBeenAchieved();
+                ((GameplayScreen) ScreenUtils.gameplayScreen).displayAchievementPopUp(achievement);
+                unlocked = true;
+            }
+            else if (achievement.type == AchievementTargetTypes.Bankrupt && getTarget(achievement.type) == -999 && !achievement.isAchieved()){
+                achievement.hasBeenAchieved();
+                ((GameplayScreen) ScreenUtils.gameplayScreen).displayAchievementPopUp(achievement);
+                unlocked = true;
+            }
+        }
+        if (unlocked){
+            checkForAchieved();
+        }
+    }
+
 }

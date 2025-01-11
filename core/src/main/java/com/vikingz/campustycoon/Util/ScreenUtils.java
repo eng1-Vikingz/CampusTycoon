@@ -4,11 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
-import com.vikingz.campustycoon.UI.Screens.EndScreen;
-import com.vikingz.campustycoon.UI.Screens.GameplayScreen;
-import com.vikingz.campustycoon.UI.Screens.LeaderboardScreen;
-import com.vikingz.campustycoon.UI.Screens.SettingsScreen;
-import com.vikingz.campustycoon.UI.Screens.StartScreen;
+import com.vikingz.campustycoon.UI.Screens.*;
 
 public final class ScreenUtils {
     public static boolean GameActive = false;
@@ -18,6 +14,7 @@ public final class ScreenUtils {
 	public static Screen endScreen = new EndScreen();
 
 	public static LeaderboardScreen leaderboardScreen = new LeaderboardScreen();
+    public static AchievementScreen achievementScreen = new AchievementScreen();
     public static SettingsScreen settingsScreen = new SettingsScreen();
 
 	public static Game game;
@@ -43,6 +40,11 @@ public final class ScreenUtils {
 		currentScreen = leaderboardScreen;
 		leaderboardScreen.takeInput();
 	}
+
+    public static void openAchievementScreen(){
+        currentScreen = achievementScreen;
+        achievementScreen.takeInput();
+    }
     public static void openSettingsScreen(){
         currentScreen = settingsScreen;
         settingsScreen.takeInput();
