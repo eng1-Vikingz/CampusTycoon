@@ -61,8 +61,6 @@ jobs:
       
     - name: Build Jar for artifacts
       run: ./gradlew jar
-
-    - if: github.event_name != 'pull_request'
     
     - name: Upload jar to actions artifacts
       uses: actions/upload-artifact@v4
