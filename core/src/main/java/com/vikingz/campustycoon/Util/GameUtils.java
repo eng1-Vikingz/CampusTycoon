@@ -61,7 +61,7 @@ public class GameUtils {
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
         buttonNewGame.setAnchor(Anchor.Centre);
 
-        Button buttonAchievement = new Button("Leaderboard.png", 0, 20, 262, 66);
+        Button buttonAchievement = new Button("achievement.png", 0, 20, 262, 66);
         buttonAchievement.setClickAction(Actions.OpenAchievementScreen);
         buttonAchievement.setAnchor(Anchor.Centre);
 
