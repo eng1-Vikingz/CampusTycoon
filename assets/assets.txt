@@ -52,6 +52,7 @@ Tiles/Grass.png
 Tiles/Lake.png
 Tiles/Mountain.png
 Tiles/SpriteMap.png
+achieved.csv
 achievement.yml
 assets copy.txt
 audio/Background_Music.ogg
@@ -106,6 +107,7 @@ glassy-ui/skin/font-export.fnt
 glassy-ui/skin/glassy-ui.atlas
 glassy-ui/skin/glassy-ui.json
 glassy-ui/skin/glassy-ui.png
+leaderboard.csv
 leaderboard.txt
 png/background.png
 test.txt

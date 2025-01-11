@@ -11,6 +11,8 @@ public class MoneyHandler {
     private static float delayCheque = 4f;
     private static float delay = delayCheque;
 
+    private static boolean previousBankrupt = false;
+
     /**
      * increase the money counter by change
      * @param change int
@@ -20,6 +22,7 @@ public class MoneyHandler {
         //prevents going bankrupt
         if (money+change < 0){
             System.out.println("no money");
+            previousBankrupt = true;
             return false;
         }
         else {
@@ -43,6 +46,14 @@ public class MoneyHandler {
      */
     public static int getMoney() {
         return money;
+    }
+
+    /**
+     * returns if a user tried to go into bankruptcy
+     * @return previousBankrupt boolean
+     */
+    public static boolean isPreviousBankrupt() {
+        return previousBankrupt;
     }
 
     /**

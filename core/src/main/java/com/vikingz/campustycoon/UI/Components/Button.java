@@ -53,7 +53,7 @@ public class Button extends Component {
 
 	/**
 	 * This method is used to open the start screen.
-	 * @param isAction 
+	 * @param isAction
 	 */
 	protected static void openStartScreen(Boolean isAction) {
 		ScreenUtils.OpenStartScreen();
@@ -62,7 +62,7 @@ public class Button extends Component {
 
 	/**
 	 * This method is used to open the gameplay screen.
-	 * @param isAction 
+	 * @param isAction
 	 */
 	protected static void openGameplayScreen(Boolean isAction) {
 		ScreenUtils.openGameplayScreen();
@@ -86,6 +86,15 @@ public class Button extends Component {
 		ScreenUtils.openLeaderboardScreen();
 		System.out.println("Screen changed to Leaderboard screen");
 	}
+
+    /**
+     * This method is used to open the achievement screen.
+     * @param isAction
+     */
+    protected static void openAchievementScreen(Boolean isAction){
+        ScreenUtils.openAchievementScreen();
+        System.out.println("Screen changed to achievement screen");
+    }
 
 	/**
 	 * Opens event popup
@@ -164,6 +173,11 @@ public class Button extends Component {
             case Actions.OpenLeaderboardScreen:
                 action = a -> openLeaderboardScreen(a);
                 break;
+
+            case Actions.OpenAchievementScreen:
+                action = a -> openAchievementScreen(a);
+                break;
+
 
             case Actions.OpenSettingsScreen:
                 action = a -> openSettingsScreen(a);

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.vikingz.campustycoon.Util.Types.Achievement;
 
 /**
  *  This class represents a PauseMenu in the game.
@@ -23,9 +24,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  *
  * To close the pause menu, the user has to press the esc button again.
  */
-public class PauseMenu extends Window {
-
-    public TextButton settingsBtn, quitBtn;
+public class AchievementPopUp extends Window {
+    TextButton quitBtn;
 
     /**
      * Creates a new pause menu
@@ -33,7 +33,7 @@ public class PauseMenu extends Window {
      *  the esc button during the game.
      * @param skin Contains the skin pack to be used with menu
      */
-    public PauseMenu(Skin skin) {
+    public AchievementPopUp(Achievement achievement, Skin skin) {
 
         super("", skin);
 
@@ -42,41 +42,27 @@ public class PauseMenu extends Window {
         this.setMovable(false);
         this.setResizable(false);
 
-        Label message = new Label("Game Paused\n(Click esc to un-pause) ", skin);
+        Label message = new Label("Achievement unlocked: \n" + achievement.name, skin);
         this.add(message).padBottom(20).row();
         this.setBackground(new TextureRegionDrawable(new Texture("png/background.png")));
 
-
-        settingsBtn = new TextButton("Settings", skin);
-
-        quitBtn = new TextButton("Quit", skin);
-        this.add(settingsBtn).pad(10);
+        quitBtn = new TextButton("Dismiss", skin);
         this.add(quitBtn).pad(10);
 
         // Created for yes - no game events
         // The Popup needs to call back to parent object in someway
-
-        settingsBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                ScreenUtils.resetInputProcessor();
-                ScreenUtils.openSettingsScreen();
-                ((GameplayScreen) ScreenUtils.gameplayScreen).setPaused(false);
-                remove();
-            }
-        });
-
         quitBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ScreenUtils.resetInputProcessor();
-                ScreenUtils.OpenEndScreen();
+                com.vikingz.campustycoon.Util.ScreenUtils.resetInputProcessor();
                 ((GameplayScreen) ScreenUtils.gameplayScreen).setPaused(false);
-                ((GameplayScreen) ScreenUtils.gameplayScreen).getAchievementHandle().checkForAchieved();
+                ((GameplayScreen) ScreenUtils.gameplayScreen).setAchieved(false);
                 remove();
-
             }
         });
     }
 
+    public void clickQuit(){
+        quitBtn.toggle();
+    }
 }

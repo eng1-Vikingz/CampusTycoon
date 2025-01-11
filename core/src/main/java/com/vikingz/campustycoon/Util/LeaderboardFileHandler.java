@@ -213,7 +213,7 @@ public class LeaderboardFileHandler{
 
         }
         catch(IOException e){
-            System.out.println("An error occured, could not create file");
+            System.out.println("An error occurred, could not create file");
         }
         return false;
     }
