@@ -61,7 +61,7 @@ public class GameUtils {
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
         buttonNewGame.setAnchor(Anchor.Centre);
 
-        Button buttonAchievement = new Button("Leaderboard.png", 0, 20, 262, 66);
+        Button buttonAchievement = new Button("Achievements.png", 0, 20, 262, 66);
         buttonAchievement.setClickAction(Actions.OpenAchievementScreen);
         buttonAchievement.setAnchor(Anchor.Centre);
 
@@ -358,13 +358,15 @@ public class GameUtils {
 
 
 	public static void createEndScreenUI() {
+        Button buttonNewGame = new Button("New Game.png", 0, 20, 262, 66);
+		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
+        buttonNewGame.setAnchor(Anchor.Centre);
+
+		
 		Button buttonMainMenu = new Button("Main Menu.png", 0, 90, 262, 66);
 		buttonMainMenu.setClickAction(Actions.OpenStartScreen);
         buttonMainMenu.setAnchor(Anchor.Centre);
 
-        Button buttonNewGame = new Button("New Game.png", 0, 20, 262, 66);
-		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
-        buttonNewGame.setAnchor(Anchor.Centre);
 
         List<Component> endScreenButtonList = Arrays.asList(
 			buttonMainMenu,

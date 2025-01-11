@@ -2,7 +2,6 @@ package com.vikingz.campustycoon.Util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-
 import java.util.Random;
 
 public class GameSounds {
