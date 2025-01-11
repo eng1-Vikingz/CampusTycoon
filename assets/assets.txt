@@ -22,6 +22,7 @@ Buildings/allbuildings.psd
 Buildings/macd.png
 Buildings/macdTransparent.png
 Buildings/pub.png
+Buildings/pubOriginal.png
 Buildings/pubTransparent.png
 Buildings/pza.png
 Buildings/pzaTransparent.png
