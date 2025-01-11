@@ -25,6 +25,7 @@ public abstract class Component {
 	public final class Actions {
 		public static final String OpenGameplayScreen = "OPENGAMEPLAYSCREEN";
 		public static final String OpenLeaderboardScreen = "OPENLEADERBOARDSCREEN";
+        public static final String OpenAchievementScreen = "OPENACHIEVEMENTSCREEN";
         public static final String OpenSettingsScreen = "OPENSETTINGSCREEN";
 
 		public static final String OpenStartScreen = "OPENSTARTSCREEN";

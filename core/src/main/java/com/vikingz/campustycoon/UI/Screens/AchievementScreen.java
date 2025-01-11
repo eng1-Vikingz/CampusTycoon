@@ -1,21 +1,10 @@
 package com.vikingz.campustycoon.UI.Screens;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.vikingz.campustycoon.Util.Drawer;
-import com.vikingz.campustycoon.Util.InputHandler;
-import com.vikingz.campustycoon.Util.LeaderboardFileHandler;
-import com.vikingz.campustycoon.Util.ScreenUtils;
-import com.vikingz.campustycoon.Util.Types.Tuple;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -24,15 +13,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.vikingz.campustycoon.Util.Achievements;
+import com.vikingz.campustycoon.Util.Drawer;
+import com.vikingz.campustycoon.Util.ScreenUtils;
+import com.vikingz.campustycoon.Util.Types.Achievement;
 
-/**
- * This class is used for drawing game stats to the screen.
- *
- * This class contains all the labels that are on the
- * top right of the screen that display the users balance,
- * satisfaction etc.
- */
-public class LeaderboardScreen implements Screen {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AchievementScreen implements Screen {
 
     final int PADDING = 3;
 
@@ -57,46 +46,26 @@ public class LeaderboardScreen implements Screen {
 
     // Container for drawing labels to the screen
     Table table;
+    private Achievements achievements;
 
-
-    static ArrayList<Tuple<String, Integer>> topFiveEntries = new ArrayList<>();
-
-    /**
-     * Constructor for the LeaderboardScreen class.
-     */
-    public LeaderboardScreen() {
+    public AchievementScreen(){
         this(false);
     }
-
-    public LeaderboardScreen(SpriteBatch batch){
-        this(true);
-        this.batch = batch;
-    }
-
-    /**
-     * Constructor for the LeaderboardScreen class.
-     * I needed to add a constructor that takes a SpriteBatch as an argument since
-     * when i was unit testing this class, i had to pass in a 'Mockito' sprite batch
-     * to run the tests in a headless environment.
-     * @param isHeadless for testing
-     */
-    public LeaderboardScreen(boolean isHeadless) {
+    public AchievementScreen(boolean isHeadless){
 
         super();
         this.table = new Table();
 
+        stage = new Stage();
+        this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
+
 
         if(isHeadless){
-                batch = new SpriteBatch();
+            batch = new SpriteBatch();
         }
         else{
             this.batch = new SpriteBatch();
         }
-
-
-
-        stage = new Stage();
-        this.skin = new Skin(Gdx.files.internal("glassy-ui/skin/glassy-ui.json"));
 
         font = new BitmapFont();
         font.getData().setScale(1.5f);
@@ -113,45 +82,10 @@ public class LeaderboardScreen implements Screen {
             }
         });
 
-
     }
 
-
-    public void setupTopFive(){
-
-        table.clear();
-        // Create layout table
-        table.setFillParent(true);
-        table.top();
-        table.center();
-
-        createTitleLbl();
-
-        // addLabel("TEST1");
-        // addLabel("TEST2");
-        // addLabel("TEST3");
-
-        topFiveEntries = LeaderboardFileHandler.getLeaderboardTopFive();
-
-        for(Tuple<String, Integer> entry : topFiveEntries){
-            addLabel(entry.x + " :: " + entry.y);
-        }
-
-
-        // Add back button to table
-        table.row();
-        table.row();
-        table.row();
-        table.add(backBtn).pad(PADDING).align(Align.center);
-
-        stage.addActor(table);
-    }
-
-    /**
-     * Creates the title label for the leaderboard screen
-     */
     private void createTitleLbl(){
-        Label title = new Label("LEADERBOARD", skin);
+        Label title = new Label("Achievements", skin);
         title.setColor(Color.WHITE);
         title.setFontScale(3f);
 
@@ -162,7 +96,6 @@ public class LeaderboardScreen implements Screen {
         labels.add(title);
 
     }
-
 
     /**
      * Adds a label to the screen
@@ -181,21 +114,35 @@ public class LeaderboardScreen implements Screen {
 
     }
 
-    /**
-     * Updates the entries on the leaderboard
-     * Call this when a new entry is added to the leaderboard
-     * and the leaderboard needs to be updated
-     */
-    public void updateEntries(){
-        topFiveEntries = LeaderboardFileHandler.getLeaderboardTopFive();
+    @Override
+    public void show() {
+        stage.clear();
+        table.clear();
+        labels.clear();
+        table.setFillParent(true);
+        table.top();
+        createTitleLbl();
+        table.center();
+        achievements = new Achievements("achievement.yml");
+        ArrayList<Achievement> list = achievements.getAchievementList();
+        achievements.checkForAchieved();
+        for (Achievement achievement : list){
+            if (achievements.achievedSet.contains(achievement.name)) {
+                addLabel(achievement.name + " :: COMPLETED");
+            }
+            else{
+                addLabel(achievement.name + " :: NOT COMPLETE");
+            }
+
+        }
+        table.row();
+        table.row();
+        table.row();
+        table.add(backBtn).pad(PADDING).align(Align.center);
+
+        stage.addActor(table);
     }
 
-
-
-    /**
-     * Draws the labels to the screen
-     * @param delta Time since last frame
-     */
     @Override
     public void render(float delta) {
         //clears screen
@@ -211,6 +158,8 @@ public class LeaderboardScreen implements Screen {
         batch.end();
     }
 
+
+
     /**
      * Sets current width and height to the new values when the window is resized
      * @param width New width
@@ -219,6 +168,26 @@ public class LeaderboardScreen implements Screen {
     public void resize(float width, float height){
         this.width = width;
         this.height = height;
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        resize((float) width,(float) height);
     }
 
     /**
@@ -230,36 +199,7 @@ public class LeaderboardScreen implements Screen {
         font.dispose();
     }
 
-
-    @Override
-    public void show() {
-    }
-
-
-    @Override
-    public void resize(int width, int height) {
-    }
-
-
-    @Override
-    public void pause() {
-    }
-
-
-    @Override
-    public void resume() {
-    }
-
-
-    @Override
-    public void hide() {
-        Drawer.clear();
-        InputHandler.clear();
-    }
-
     public void takeInput(){
         Gdx.input.setInputProcessor(stage);
     }
-
 }
-

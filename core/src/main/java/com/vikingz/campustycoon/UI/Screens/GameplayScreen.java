@@ -1,5 +1,6 @@
 package com.vikingz.campustycoon.UI.Screens;
 
+import com.vikingz.campustycoon.UI.Components.AchievementPopUp;
 import com.vikingz.campustycoon.UI.Components.BankruptMenu;
 import com.vikingz.campustycoon.UI.Components.PauseMenu;
 import com.badlogic.gdx.Gdx;
@@ -14,8 +15,10 @@ import com.vikingz.campustycoon.Game.GameLogic.Event;
 import com.vikingz.campustycoon.Game.GameLogic.MoneyHandler;
 import com.vikingz.campustycoon.Game.GameLogic.Timer;
 import com.vikingz.campustycoon.UI.Window;
+import com.vikingz.campustycoon.Util.Achievements;
 import com.vikingz.campustycoon.Util.Drawer;
 import com.vikingz.campustycoon.Util.GameUtils;
+import com.vikingz.campustycoon.Util.Types.Achievement;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -33,6 +36,8 @@ public class GameplayScreen implements Screen{
     private boolean paused;
     private BankruptMenu bankruptMenu;
     private boolean bankrupt;
+    private Achievements achievementHandle;
+    private boolean achieved;
 
 
     /**
@@ -52,6 +57,7 @@ public class GameplayScreen implements Screen{
             timer.start();
             pauseMenu = new PauseMenu(skin);
             bankruptMenu = new BankruptMenu(skin);
+            achievementHandle = new Achievements("achievement.yml");
             paused = false;
             bankrupt = false;
             com.vikingz.campustycoon.Util.ScreenUtils.GameActive = true;
@@ -66,7 +72,6 @@ public class GameplayScreen implements Screen{
         // Clear screen
         Gdx.gl.glClearColor(0.1f, 0.1f, 0.4f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         ScreenUtils.clear(Color.BLACK);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
@@ -78,6 +83,7 @@ public class GameplayScreen implements Screen{
             MoneyHandler.update(delta); // Update the balance of the player
             // Check if the timer has ended and stateChanged is false
             if (timer.hasEnded() && !stateChanged) {
+                achievementHandle.updateCheckFile();
                 stateChanged = true; // Set the flag to true to prevent re-execution
             }
 
@@ -99,6 +105,8 @@ public class GameplayScreen implements Screen{
             }
 
             elapsedTime = 0; // Reset elapsed time
+
+            achievementHandle.checkForTargets(this);
 
         }
         Drawer.drawAll();
@@ -129,7 +137,7 @@ public class GameplayScreen implements Screen{
      */
     @Override
     public void pause() {
-        if (!bankrupt) {
+        if (!bankrupt & !achieved) {
             if (!paused) {
                 Drawer.stage.addActor(pauseMenu);
                 pauseMenu.toFront();
@@ -169,7 +177,21 @@ public class GameplayScreen implements Screen{
         Gdx.input.setInputProcessor(Drawer.stage);
     }
 
+    public void displayAchievementPopUp(Achievement achievement) {
+        this.achieved = true;
+        this.paused = true;
+        AchievementPopUp Menu = new AchievementPopUp(achievement,skin);
+        Drawer.stage.addActor(Menu);
+        Menu.setPosition((Drawer.stage.getWidth() - pauseMenu.getWidth()) / 2, ((Drawer.stage.getHeight() - pauseMenu.getHeight()) / 2)-50);
+        Gdx.input.setInputProcessor(Drawer.stage);
+    }
+
+
     public void setBankrupt(boolean bankrupt) {
         this.bankrupt = bankrupt;
     }
+
+    public void setAchieved(boolean achieved) {this.achieved = achieved;}
+
+    public Achievements getAchievementHandle() {return achievementHandle;}
 }
