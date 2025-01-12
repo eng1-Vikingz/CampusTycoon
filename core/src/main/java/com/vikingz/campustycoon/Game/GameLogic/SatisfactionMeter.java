@@ -14,7 +14,7 @@ public class SatisfactionMeter {
 
     /**
      * Gets the satisfaction score.
-     * @return
+     * @return the satisfaction score
      */
     public static int getSatisfactionScore() {
         return satisfactionScore;
@@ -54,7 +54,7 @@ public class SatisfactionMeter {
 
     /**
      * Modifies the satisfaction score.
-     * @param value
+     * @param value int
      */
     public static void modifySatisfactionScore(int value) {
         satisfactionModifier += value;
