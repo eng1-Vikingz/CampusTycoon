@@ -2,12 +2,9 @@ package com.vikingz.campustycoon.Util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.vikingz.campustycoon.Game.GameLogic.BuildingCounter;
 import com.vikingz.campustycoon.Game.GameLogic.MoneyHandler;
 import com.vikingz.campustycoon.Game.GameLogic.SatisfactionMeter;
-import com.vikingz.campustycoon.UI.Components.AchievementPopUp;
-import com.vikingz.campustycoon.UI.Components.BankruptMenu;
 import com.vikingz.campustycoon.UI.Screens.GameplayScreen;
 import com.vikingz.campustycoon.Util.Types.Achievement;
 import org.yaml.snakeyaml.Yaml;
@@ -17,6 +14,9 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * This class is used to create and manage achievements.
+ */
 public class Achievements {
 
     public ArrayList<String> achievementNameList = new ArrayList<>();
@@ -24,8 +24,15 @@ public class Achievements {
     private final HashMap<String, Integer> achievementTargetValueList = new HashMap<>();
     public final ArrayList<Achievement> achievementList = new ArrayList<>();
 
+    /**
+     * HashSet to store all achieved achievements
+     */
     public final HashSet<String> achievedSet = new HashSet<>();
 
+
+    /**
+     * Enum for the different types of achievements
+     */
     public enum AchievementTargetTypes {
         NumberOfBuildings,
         NumberOfAccommindationBuildings,
@@ -70,6 +77,10 @@ public class Achievements {
         return true;
     }
 
+    /**
+     * Creates a new file to store the achieved achievements
+     * @return
+     */
     public boolean createNewCheckFile(){
         try{
 
@@ -86,6 +97,10 @@ public class Achievements {
         return false;
     }
 
+    /**
+     * Checks if the file exists
+     * @return
+     */
     public boolean checkForCheckFile(){
         FileHandle File = Gdx.files.local("achieved.csv");
         if(File.exists()){
@@ -95,6 +110,10 @@ public class Achievements {
     }
 
 
+    /**
+     * Updates the file with the new achieved achievements
+     * @return
+     */
     public boolean updateCheckFile(){
         if (!checkForCheckFile()){
             return false;

@@ -11,6 +11,9 @@ import com.vikingz.campustycoon.UI.Screens.StartScreen;
 import com.vikingz.campustycoon.Util.InputHandler;
 import com.vikingz.campustycoon.Util.ScreenUtils;
 
+/**
+ * Main entry point for the game.
+ */
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
     @Override
@@ -41,6 +44,9 @@ public class Main extends Game {
 		setScreen(screen);
 	}
 
+    /**
+     * Renders the game.
+     */
 	@Override
 	public void render () {
 

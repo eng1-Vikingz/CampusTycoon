@@ -56,6 +56,9 @@ public class GameUtils {
 
 	}
 
+	/**
+	 * Creates startmenu ui
+	 */
 	public static void createStartMenuUI() {
         Button buttonNewGame = new Button("New Game.png", 0, 90, 262, 66);
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
@@ -91,6 +94,9 @@ public class GameUtils {
 		InputHandler.add(startScreenButtonList);
 	}
 
+	/**
+	 * Creates the UI for the gameplay screen
+	 */
 	public static void createGameplayUI() {
 
 
@@ -230,6 +236,10 @@ public class GameUtils {
 	}
 
 
+	/**
+	 * Creates event popup ui
+	 * @param event
+	 */
 	public static void createEventPopupUI(Event event) {
         Backdrop eventScreenBackdrop = new Backdrop("Backdrop.png", 0, 30, 400, 350);
         eventScreenBackdrop.setAnchor(Anchor.Centre);
@@ -278,6 +288,9 @@ public class GameUtils {
 	}
 
 
+	/**
+	 * Sets up menu
+	 */
 	public static void setupMenu(){
 
 
@@ -357,6 +370,9 @@ public class GameUtils {
 
 
 
+	/**
+	 * Creates end screen ui
+	 */
 	public static void createEndScreenUI() {
         Button buttonNewGame = new Button("New Game.png", 0, 20, 262, 66);
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);

@@ -221,6 +221,9 @@ public class EventLoader {
         return rejectCostLookup;
     }
 
+    /**
+     * Resets all statics to default values
+     */
     public static void resetStatics(){
         eventList = new ArrayList<>();
         descriptionLookup = new HashMap<>();

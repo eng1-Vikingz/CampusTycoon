@@ -61,7 +61,6 @@ public class Event {
 		}
 	}
 
-    // TODO: Temporary choice implementations, will change to abstract functions later (as each individual event should decide what the outcome of choices are)
     
     /**
      * Accepts the event.

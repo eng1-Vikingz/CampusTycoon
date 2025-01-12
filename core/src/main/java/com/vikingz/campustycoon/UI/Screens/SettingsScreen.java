@@ -29,7 +29,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  * top right of the screen that display the users balance,
  * satisfaction etc.
  * 
- * TODO: We should prob put the stats drawing into another class
  */
 public class SettingsScreen implements Screen {
 

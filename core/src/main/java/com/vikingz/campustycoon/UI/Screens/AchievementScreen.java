@@ -21,6 +21,9 @@ import com.vikingz.campustycoon.Util.Types.Achievement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used to create an achievement screen.
+ */
 public class AchievementScreen implements Screen {
 
     final int PADDING = 3;
@@ -48,9 +51,17 @@ public class AchievementScreen implements Screen {
     Table table;
     private Achievements achievements;
 
+    /**
+     * Constructor for the AchievementScreen class.
+     */
     public AchievementScreen(){
         this(false);
     }
+
+    /**
+     * Constructor for the AchievementScreen class.
+     * @param isHeadless
+     */
     public AchievementScreen(boolean isHeadless){
 
         super();
@@ -84,6 +95,9 @@ public class AchievementScreen implements Screen {
 
     }
 
+    /**
+     * Creates a title label for the screen
+     */
     private void createTitleLbl(){
         Label title = new Label("Achievements", skin);
         title.setColor(Color.WHITE);
@@ -114,6 +128,9 @@ public class AchievementScreen implements Screen {
 
     }
 
+    /**
+     * Shows the achievement screen
+     */
     @Override
     public void show() {
         stage.clear();
@@ -143,6 +160,9 @@ public class AchievementScreen implements Screen {
         stage.addActor(table);
     }
 
+    /**
+     * Renders the achievement screen
+     */
     @Override
     public void render(float delta) {
         //clears screen

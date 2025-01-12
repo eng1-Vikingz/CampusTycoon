@@ -69,6 +69,9 @@ public class MapBuilding extends Component {
 		gridBaseHeight = Height;
 	}
 	
+	/*
+	 * Getters and Setters
+	 */
 	private static float getX(float X) {
 		return X * Tile.SpriteSize;
 	}

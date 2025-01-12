@@ -1,9 +1,6 @@
 package com.vikingz.campustycoon.Util.Types;
 
-
 import com.vikingz.campustycoon.Util.Achievements;
-
-
 
 public class Achievement {
     public final String name;
