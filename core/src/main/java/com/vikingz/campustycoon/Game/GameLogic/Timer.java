@@ -16,7 +16,7 @@ public class Timer{
     private boolean isRunning;
     private boolean hasEnded;
 
-    // DONT REMOVE THIS OR IT WILL CRASH
+    // DON'T REMOVE THIS OR IT WILL CRASH
     Skin skin;
     LeaderboardNewEntryMenu menu;
 
@@ -85,15 +85,14 @@ public class Timer{
      */
     public static String floatToMinSec(float secs){
 
-        int s = Math.round(secs % 60);
-        secs -= s;
-        int m = Math.round(secs / 60);
+        int m = Math.floorDiv((int) secs, 60);
+        int s = (int) secs - m * 60;
 
         if(m > 100000){
             return null;
         }
 
-        return "Time: " + String.format("%02d", m) + ":" + String.format("%02d", s);
+        return "Time: " + String.format("%01d", m) + ":" + String.format("%02d", s);
 
 
     }

@@ -24,22 +24,27 @@ public class SatisfactionMeter {
      * Updates the satisfaction score based on a satisfaction formula.
      */
     public static void updateSatisfactionScore() {
-        System.out.println("Satisfaction Function Called");
         satisfactionScore = 0;
 
         for (int i = 0; i < Map.buildings.size(); i++){
             // Loop through all buildings and check distance etc
             double distance;
-            System.out.println(i);
-            System.out.println(Map.buildings.get(i).buildingName);
 
             if (Objects.equals(Map.buildings.get(i).buildingName, "ACCOMMODATION")){
                 for (int j = 0; j < Map.buildings.size(); j++){
                     // Distance falloff function
                     distance = Math.sqrt(Math.pow((Map.buildings.get(i).position.x - Map.buildings.get(j).position.x), 2) + Math.pow((Map.buildings.get(i).position.y - Map.buildings.get(j).position.y), 2));
-                    System.out.println(distance);
-                    System.out.println(Map.buildings.get(j).score);
-                    satisfactionScore += (int) Math.round(Map.buildings.get(j).score * -Math.tanh(0.05 * distance - 0.5) + 1);
+                    satisfactionScore += (int) Math.round(Map.buildings.get(j).score * (-Math.tanh(0.05 * distance - 0.5) + 1));
+                }
+            }
+
+            if (Objects.equals(Map.buildings.get(i).buildingName, "RELAXATION")){
+                for (int j = 0; j < Map.buildings.size(); j++){
+                    // Distance falloff function
+                    distance = Math.sqrt(Math.pow((Map.buildings.get(i).position.x - Map.buildings.get(j).position.x), 2) + Math.pow((Map.buildings.get(i).position.y - Map.buildings.get(j).position.y), 2));
+                    if (distance <= 3){
+                        satisfactionScore += 1;
+                    }
                 }
             }
         }
