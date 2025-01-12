@@ -35,6 +35,7 @@ Buildings/ysvTransparent.png
 Dollar.png
 ExclamationMark.png
 House.png
+Instructions.png
 Leaderboard.png
 Load Game.png
 Main Menu.png
@@ -54,7 +55,6 @@ Tiles/Grass.png
 Tiles/Lake.png
 Tiles/Mountain.png
 Tiles/SpriteMap.png
-achieved.csv
 achievement.yml
 assets copy.txt
 audio/Background_Music.ogg
@@ -109,8 +109,6 @@ glassy-ui/skin/font-export.fnt
 glassy-ui/skin/glassy-ui.atlas
 glassy-ui/skin/glassy-ui.json
 glassy-ui/skin/glassy-ui.png
-instructions.png
-leaderboard.csv
 leaderboard.txt
 png/background.png
 png/backgroundOriginal.png
