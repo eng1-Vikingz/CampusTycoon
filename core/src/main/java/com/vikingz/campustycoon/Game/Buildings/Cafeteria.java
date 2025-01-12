@@ -15,7 +15,7 @@ public class Cafeteria extends Building {
 	/**
 	 * Constructs a Cafeteria building with the default position (0, 0).
 	 * @param Position The coordinate position of the building.
-	 */ 
+	 */
 	public Cafeteria(Coordinate Position) {
 		super(Position, defaultImage, cost,width , height);
         score = 300;
@@ -29,7 +29,7 @@ public class Cafeteria extends Building {
         score = 300;
 	}
 
-	
+
 	/**
 	 * Increments the building counter for Cafeteria buildings by 1.
 	 */
@@ -37,4 +37,12 @@ public class Cafeteria extends Building {
 	public void incrementBuildingCounter() {
 		BuildingCounter.increaseBuildingCounter(buildingName, 1);
 	}
+
+    /**
+     * Decrement the building counter for the building by 1.
+     */
+    @Override
+    public void decrementBuildingCounter() {
+        BuildingCounter.decreaseBuildingCounter(buildingName, 1);
+    }
 }

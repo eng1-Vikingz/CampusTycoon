@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class BuildingCounter {
     private static int totalBuildingCount = 0;
-	
+
 	// [0] = "Accommodation", [1] = "Study", [2] = "Cafeteria", [3] = "Relaxation", [4] = "null"
 	private static int[] buildingCounts = new int[5];
 	public static List<MenuText> UI = new ArrayList<MenuText>();
 	public static MenuText totalCountUI;
-	
+
 	/**
 	 * Resets the counter
 	 */
@@ -33,7 +33,7 @@ public class BuildingCounter {
     public static int getTotalBuildingCount() {
         return totalBuildingCount;
     }
-	
+
 	/**
 	 * Gets the building count of a specific building.
 	 * @param building The building to get the count of.
@@ -42,7 +42,7 @@ public class BuildingCounter {
 	public static int getBuildingCount(String building) {
 		return buildingCounts[getBuildingCountIndex(building)];
 	}
-	
+
 
 	/**
 	 * Updates the display;
@@ -51,7 +51,7 @@ public class BuildingCounter {
 		if (UI.isEmpty()) {
 			return;
 		}
-		
+
 		for (int i = 0; i < buildingCounts.length - 1; i++) {
 			MenuText textDisplay = UI.get(i);
 			textDisplay.text = String.valueOf(buildingCounts[i]);
@@ -60,7 +60,7 @@ public class BuildingCounter {
 		totalCountUI.text = String.valueOf(totalBuildingCount);
 		totalCountUI.update();
 	}
-	
+
 	private static int getBuildingCountIndex(String building) {
 		switch (building) {
 			case Accommodation.buildingName:
@@ -78,7 +78,7 @@ public class BuildingCounter {
 
 	/**
 	 * CHANGED
-	 * 
+	 *
 	 * Gets the building count by the building id.
 	 * @param building The building id.
 	 * @return The building count.
@@ -90,7 +90,7 @@ public class BuildingCounter {
 
 			case "Study":
 				return buildingCounts[1];
-				
+
 			case "Cafeteria":
 				return buildingCounts[2];
 
@@ -105,8 +105,8 @@ public class BuildingCounter {
 		}
 
 	}
-	
-	
+
+
 	/**
 	 * Increases the building count of a specific building.
 	 * @param building The building to increase the count of.
@@ -126,7 +126,7 @@ public class BuildingCounter {
 		buildingCounts[getBuildingCountIndex(building)] -= value;
         decreaseBuildingCounter(value);
     }
-	
+
 
 	/**
 	 * Increases the total building count.

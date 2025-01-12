@@ -5,7 +5,7 @@ import com.vikingz.campustycoon.Util.Types.Coordinate;
 
 /**
  * This class is used to create a Study building.
- * 
+ *
  * CHANGED
  *
  * This class was originally made so that it
@@ -50,4 +50,12 @@ public class Study extends Building{
 	public void incrementBuildingCounter() {
 		BuildingCounter.increaseBuildingCounter(buildingName, 1);
 	}
+
+    /**
+     * Decrement the building counter for the building by 1.
+     */
+    @Override
+    public void decrementBuildingCounter() {
+        BuildingCounter.decreaseBuildingCounter(buildingName, 1);
+    }
 }

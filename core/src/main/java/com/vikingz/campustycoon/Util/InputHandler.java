@@ -18,13 +18,14 @@ public class InputHandler implements InputProcessor {
 	private static final int RightClick = 1;
 	@SuppressWarnings("unused")
 	private static final int MiddleClick = 2;
-	
+
 	public static List<Component> clickables = new ArrayList<Component>();
 	@SuppressWarnings("unused")
 	private static boolean leftClickDown = false;
-	
-	
-	// Removes a component from clickables, so that it stops being processed
+    private static boolean rightClickDown = false;
+
+
+    // Removes a component from clickables, so that it stops being processed
 	// Does a linear search through the list to find the component
 	public static void remove(Component component) {
 		for (int index = 0; index < clickables.size(); index++) {
@@ -34,7 +35,7 @@ public class InputHandler implements InputProcessor {
 			}
 		}
 	}
-	
+
 
 	/**
 	 * Clears the list of clickables
@@ -42,7 +43,7 @@ public class InputHandler implements InputProcessor {
 	public static void clear() {
 		clickables = new ArrayList<Component>();
 	}
-	
+
 	/**
 	 * Adds a button to the list of clickables
 	 * @param button
@@ -50,7 +51,7 @@ public class InputHandler implements InputProcessor {
 	public static void add(Component button) {
 		clickables.add(button);
 	}
-	
+
 	/**
 	 * Adds a list of buttons to the list of clickables
 	 * @param buttons
@@ -58,7 +59,7 @@ public class InputHandler implements InputProcessor {
 	public static void add(List<Component> buttons) {
 		clickables.addAll(buttons);
 	}
-	
+
 	public boolean keyDown(int keycode) {
 		return false;
 	}
@@ -76,7 +77,10 @@ public class InputHandler implements InputProcessor {
 		if (button == LeftClick) {
 			leftClickDown = true;
 		}
-		
+        if (button == RightClick) {
+            rightClickDown = true;
+        }
+
 		for (Component btn : clickables){
 			if (isTouchWithinButton(transformX(x), transformY(y), btn)) {
 				btn.onClick();
@@ -84,7 +88,7 @@ public class InputHandler implements InputProcessor {
 				return true;
 			}
 		}
-		
+
 		Camera.click(x, y, button);
 		return true;
 	}
@@ -117,6 +121,10 @@ public class InputHandler implements InputProcessor {
 			leftClickDown = false;
 			Camera.lift(x, y, button);
 		}
+        else if (button == RightClick){
+            rightClickDown = false;
+            Camera.lift(x, y, button);
+        }
 		return true;
 	}
 

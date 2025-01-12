@@ -1,5 +1,6 @@
 package com.vikingz.campustycoon.UI.Screens;
 
+import com.vikingz.campustycoon.Game.GameLogic.*;
 import com.vikingz.campustycoon.UI.Components.AchievementPopUp;
 import com.vikingz.campustycoon.UI.Components.BankruptMenu;
 import com.vikingz.campustycoon.UI.Components.PauseMenu;
@@ -11,9 +12,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import com.vikingz.campustycoon.Game.GameLogic.Event;
-import com.vikingz.campustycoon.Game.GameLogic.MoneyHandler;
-import com.vikingz.campustycoon.Game.GameLogic.Timer;
 import com.vikingz.campustycoon.UI.Window;
 import com.vikingz.campustycoon.Util.Achievements;
 import com.vikingz.campustycoon.Util.Drawer;

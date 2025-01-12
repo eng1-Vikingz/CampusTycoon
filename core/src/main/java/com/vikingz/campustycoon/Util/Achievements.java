@@ -120,7 +120,7 @@ public class Achievements {
         }
         FileHandle File = Gdx.files.local("achieved.csv");
         String oldSet = File.readString();
-        for (String old : oldSet.split(",")){
+        for (String old : oldSet.split(",")) {
             achievedSet.add(old);
         }
         File.writeString(achievedSetToCsv(),false);
@@ -224,13 +224,14 @@ public class Achievements {
 
     public void checkForTargets(GameplayScreen gameplayScreen){
         boolean unlocked = false;
+        checkForAchieved();
         for (Achievement achievement: achievementList){
-            if (getTarget(achievement.type) >= achievement.target && !(achievement.target == 0) && !achievement.isAchieved()){
+            if (getTarget(achievement.type) >= achievement.target && !(achievement.target == 0) && !achievement.isAchieved() && !(achievedSet.contains(achievement.name)) ) {
                 achievement.hasBeenAchieved();
                 ((GameplayScreen) ScreenUtils.gameplayScreen).displayAchievementPopUp(achievement);
                 unlocked = true;
             }
-            else if (achievement.type == AchievementTargetTypes.Bankrupt && getTarget(achievement.type) == -999 && !achievement.isAchieved()){
+            else if (achievement.type == AchievementTargetTypes.Bankrupt && getTarget(achievement.type) == -999 && !achievement.isAchieved() &&  !(achievedSet.contains(achievement.name))){
                 achievement.hasBeenAchieved();
                 ((GameplayScreen) ScreenUtils.gameplayScreen).displayAchievementPopUp(achievement);
                 unlocked = true;

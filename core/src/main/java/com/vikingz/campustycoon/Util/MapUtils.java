@@ -98,6 +98,19 @@ public class MapUtils {
 		return true;
 	}
 
+    public Building CloseToBuilding(Coordinate pos){
+        for (Building Building : Map.buildings) {
+            Coordinate b = Building.position;
+            if (Math.abs(b.x - pos.x) <= 2 && Math.abs(b.y - pos.y) <= 2 ){
+                return Building;
+            }
+        }
+        return null;
+    }
+
+
+
+
 	/**
 	 * Checks if a building occupies the current tile space
 	 * @param tile

@@ -5,7 +5,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.vikingz.campustycoon.Game.GameLogic.BuildingCounter;
 import com.vikingz.campustycoon.Game.GameLogic.MoneyHandler;
+import com.vikingz.campustycoon.Game.GameLogic.SatisfactionMeter;
 import com.vikingz.campustycoon.UI.Window;
 import com.vikingz.campustycoon.Util.Drawer;
 import com.vikingz.campustycoon.Util.GameUtils;
@@ -20,7 +22,7 @@ public class EndScreen implements Screen{
      * Constructor for the EndScreen class.
      */
     public EndScreen() {
-        
+
     }
 
     /**
@@ -31,6 +33,8 @@ public class EndScreen implements Screen{
         Drawer.clear();
         GameUtils.createEndScreenUI();
         MoneyHandler.resetBank();
+        BuildingCounter.reset();
+        SatisfactionMeter.updateSatisfactionScore();
     }
 
     /**

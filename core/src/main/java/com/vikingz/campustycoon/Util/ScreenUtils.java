@@ -18,6 +18,8 @@ public final class ScreenUtils {
 
 	public static LeaderboardScreen leaderboardScreen = new LeaderboardScreen();
     public static AchievementScreen achievementScreen = new AchievementScreen();
+
+    public static InstructionScreen instructionScreen = new InstructionScreen();
     public static SettingsScreen settingsScreen = new SettingsScreen();
 
 	public static Game game;
@@ -62,6 +64,17 @@ public final class ScreenUtils {
     public static void openAchievementScreen(){
         currentScreen = achievementScreen;
         achievementScreen.takeInput();
+    }
+
+    /**
+     * Opens the Instruction screen
+     */
+    public static void openInstructionScreen(){
+        instructionScreen.createTitleLbl();
+        instructionScreen.addInstructions();
+        instructionScreen.addBackButton();
+        currentScreen = instructionScreen;
+        instructionScreen.takeInput();
     }
 
 	/**
