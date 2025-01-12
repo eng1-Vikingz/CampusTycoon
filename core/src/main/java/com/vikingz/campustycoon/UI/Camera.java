@@ -2,6 +2,8 @@ package com.vikingz.campustycoon.UI;
 
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.vikingz.campustycoon.Game.Buildings.Building;
 import com.vikingz.campustycoon.Game.Maps.Map;
 import com.vikingz.campustycoon.Game.Tiles.Lake;
@@ -176,13 +178,25 @@ public class Camera {
 		}
 	}
 
+    private static void removeBuilding(){
+        if (ScreenUtils.currentScreen == ScreenUtils.gameplayScreen) {
+            map.removeBuildingAtPos(new Coordinate(gridX, gridY));
+            update();
+        }
+    }
+
 	public static void lift(int X, int Y, int button) {
 		// TODO: Add a time based check to this too
 		// Checks that the mouse has barely moved since clicking
 		if (lastClickPos != null &&
-		lastClickPos.distance(new Coordinate(X, Y)) < 5) { // 5 is an extremely arbitrary number
+		lastClickPos.distance(new Coordinate(X, Y)) < 5 &&
+            button == 0) { // 5 is an extremely arbitrary number
 			placeBuilding();
 		}
+        else if (button == 1){
+            removeBuilding();
+        }
+
 	}
 
 	public static void click(int X, int Y, int button) {

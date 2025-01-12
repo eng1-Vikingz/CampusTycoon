@@ -68,11 +68,15 @@ public class GameUtils {
         buttonAchievement.setClickAction(Actions.OpenAchievementScreen);
         buttonAchievement.setAnchor(Anchor.Centre);
 
-        Button buttonLeaderboard = new Button("Leaderboard.png", 0, -50, 262, 66);
+        Button buttonInstructions = new Button("Instructions.png", 0, -50, 262, 66);
+        buttonInstructions.setClickAction(Actions.OpenInstructionScreen);
+        buttonInstructions.setAnchor(Anchor.Centre);
+
+        Button buttonLeaderboard = new Button("Leaderboard.png", 0, -120, 262, 66);
         buttonLeaderboard.setClickAction(Actions.OpenLeaderboardScreen);
         buttonLeaderboard.setAnchor(Anchor.Centre);
 
-        Button buttonSettings = new Button("Settings.png", 0, -120, 262, 66);
+        Button buttonSettings = new Button("Settings.png", 0, -190, 262, 66);
         buttonSettings.setClickAction(Actions.OpenSettingsScreen);
         buttonSettings.setAnchor(Anchor.Centre);
 
@@ -81,6 +85,7 @@ public class GameUtils {
 			buttonNewGame,
 			buttonLeaderboard,
             buttonAchievement,
+            buttonInstructions,
 			buttonSettings);
 
 		// Add all buttons to the drawQueue
@@ -225,7 +230,8 @@ public class GameUtils {
         helpPrompts.setAnchor(Anchor.TopLeft);
 
 
-        List<Component> textElements = Arrays.asList(helpPrompts, satisfactionText, buildingCounterText, accommodationCount, studyCount, cafeCount, relaxCount, timerText,helpPrompts, moneyText);
+        List<Component> textElements = Arrays.asList(helpPrompts, satisfactionText, buildingCounterText, accommodationCount,
+            studyCount, cafeCount, relaxCount, timerText,helpPrompts, moneyText);
 
 		// Add all text to the drawQueue
 		for (Component text : textElements) {
@@ -378,7 +384,7 @@ public class GameUtils {
 		buttonNewGame.setClickAction(Actions.OpenGameplayScreen);
         buttonNewGame.setAnchor(Anchor.Centre);
 
-		
+
 		Button buttonMainMenu = new Button("Main Menu.png", 0, 90, 262, 66);
 		buttonMainMenu.setClickAction(Actions.OpenStartScreen);
         buttonMainMenu.setAnchor(Anchor.Centre);

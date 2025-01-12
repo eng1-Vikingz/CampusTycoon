@@ -96,6 +96,15 @@ public class Button extends Component {
         System.out.println("Screen changed to achievement screen");
     }
 
+    /**
+     * This method is used to open the instruction screen.
+     * @param isAction
+     */
+    protected static void openInstructionScreen(Boolean isAction){
+        ScreenUtils.openInstructionScreen();
+        System.out.println("Screen changed to achievement screen");
+    }
+
 	/**
 	 * Opens event popup
 	 * @param isAction
@@ -176,6 +185,10 @@ public class Button extends Component {
 
             case Actions.OpenAchievementScreen:
                 action = a -> openAchievementScreen(a);
+                break;
+
+            case Actions.OpenInstructionScreen:
+                action = a -> openInstructionScreen(a);
                 break;
 
 

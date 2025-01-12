@@ -84,4 +84,11 @@ public class Building {
 	public void incrementBuildingCounter() {
 		BuildingCounter.increaseBuildingCounter(buildingName, 1);
 	}
+
+    /**
+     * Decrement the building counter for the building by 1.
+     */
+    public void decrementBuildingCounter() {
+        BuildingCounter.decreaseBuildingCounter(buildingName, 1);
+    }
 }

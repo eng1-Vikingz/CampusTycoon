@@ -36,10 +36,18 @@ public class Relaxation extends Building {
 
 	/**
 	 * Constructor for Relaxation building.
-	 * @param Position The position of the building.
 	 */
 	@Override
 	public void incrementBuildingCounter() {
 		BuildingCounter.increaseBuildingCounter(buildingName, 1);
 	}
+
+    /**
+     * Decrement the building counter for the building by 1.
+     */
+    @Override
+    public void decrementBuildingCounter() {
+        BuildingCounter.decreaseBuildingCounter(buildingName, 1);
+    }
+
 }

@@ -127,4 +127,24 @@ public class Map {
 		SatisfactionMeter.updateSatisfactionScore(); // Placing buildings satisfies students!!!
         GameSounds.playPlacedBuilding();
 	}
+
+
+    /**
+     * removes building from game using right click
+     * @param coordinate coord of right click
+     */
+    public void removeBuildingAtPos(Coordinate coordinate)
+    {
+        Building buildingsToRemove = mapUtils.CloseToBuilding(coordinate);
+        if (buildingsToRemove != null) {
+            buildings.remove(buildingsToRemove);
+            System.out.println("Score: " + MapUtils.getBuilding(placementType).score);
+            Drawer.remove(-1, buildingsToRemove.drawInfo);
+            buildingsToRemove.decrementBuildingCounter(); // Number go down (by 1)
+            SatisfactionMeter.updateSatisfactionScore(); // Placing buildings satisfies students!!!
+            GameSounds.playPlaceError();
+            MoneyHandler.addMoney((int) Math.round(buildingsToRemove.cost * 0.8));
+        }
+
+    }
 }

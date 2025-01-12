@@ -35,6 +35,7 @@ public class BuildingCounterTest {
         assertEquals(3, BuildingCounter.getTotalBuildingCount());
     }
 
+
     @Test
     public void testGetBuildingCountByBuilding() {
         BuildingCounter.increaseBuildingCounter("Study", 4);
@@ -46,7 +47,7 @@ public class BuildingCounterTest {
         BuildingCounter.increaseBuildingCounter("Cafeteria", 2);
         BuildingCounter.increaseBuildingCounter("Study", 1);
         BuildingCounter.increaseBuildingCounter("Accomodation", 3);
-        
+
         assertEquals(6, BuildingCounter.getTotalBuildingCount());
     }
 
