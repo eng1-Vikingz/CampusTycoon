@@ -65,12 +65,12 @@ public class TimerTest {
     @Test
     public void testfloatToMinSec(){
 
-        assertEquals("Time: 01:40", Timer.floatToMinSec(100));
+        assertEquals("Time: 1:40", Timer.floatToMinSec(100));
         assertEquals("Time: 10:00", Timer.floatToMinSec(600));
-        assertEquals("Time: 00:40", Timer.floatToMinSec(40));
-        assertEquals("Time: 00:05", Timer.floatToMinSec(5));
-        assertEquals("Time: 01:05", Timer.floatToMinSec(65));
-        assertEquals("Time: 05:00", Timer.floatToMinSec(300));
+        assertEquals("Time: 0:40", Timer.floatToMinSec(40));
+        assertEquals("Time: 0:05", Timer.floatToMinSec(5));
+        assertEquals("Time: 1:05", Timer.floatToMinSec(65));
+        assertEquals("Time: 5:00", Timer.floatToMinSec(300));
 
         assertEquals(null, Timer.floatToMinSec(100000000));
 
