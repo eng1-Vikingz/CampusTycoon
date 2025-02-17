@@ -3,7 +3,7 @@ eclipse.project.name = appName + '-core'
 
 dependencies {
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
-  implementation group: 'org.yaml', name: 'snakeyaml', version: '2.3'
+  implementation group: 'org.yaml', name: 'snakeyaml', version: '2.4'
 
   testImplementation platform('org.junit:junit-bom:5.10.0')
   testImplementation 'org.junit.jupiter:junit-jupiter'
